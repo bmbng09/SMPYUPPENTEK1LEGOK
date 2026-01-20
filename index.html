@@ -1,0 +1,2356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP YUPPENTEK 1 LEGOK</title>
+    <link rel="website icon" type="png" 
+    href="logosmp.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #f59e0b;
+            --dark-color: #1f2937;
+            --light-bg: #f3f4f6;
+            --accent-color: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Admin Styles */
+        .admin-section {
+            display: none;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        .admin-navbar {
+            background: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .admin-sidebar {
+            background: white;
+            min-height: calc(100vh - 70px);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            padding-top: 2rem;
+        }
+
+        .admin-sidebar .nav-link {
+            color: var(--dark-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .admin-sidebar .nav-link:hover {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+        }
+
+        .admin-sidebar .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .admin-content {
+            padding: 2rem;
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .btn-admin {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-admin:hover {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .btn-danger-custom {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger-custom:hover {
+            background: #b91c1c;
+            color: white;
+        }
+
+        .table-actions {
+            white-space: nowrap;
+        }
+
+        .table-actions button {
+            margin: 0 2px;
+        }
+
+        .form-image-preview {
+            max-width: 200px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .custom-toast {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 1rem 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            min-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast-success {
+            border-left: 4px solid #10b981;
+        }
+
+        .toast-error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .toast-success .toast-icon {
+            color: #10b981;
+        }
+
+        .toast-error .toast-icon {
+            color: #ef4444;
+        }
+
+        /* Admin Button */
+        .admin-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .admin-float-btn:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+
+        /* Main Styles */
+        .navbar {
+            /* background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%); */
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Safari */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #fff !important;
+  font-weight: 600; /* lebih tebal */
+  text-shadow:
+    0 1px 3px rgba(0,0,0,0.6),
+    0 0 8px rgba(0,0,0,0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover jadi hitam */
+.navbar-nav .nav-link:hover,
+.navbar-brand:hover {
+  color: #000 !important;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.6);
+}
+
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            /* background: linear-gradient(rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8)), ('assets\header.jpg') center/cover; */
+            background: 
+            /* linear-gradient(rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8)), */
+            url("header.jpg") center/cover no-repeat;
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        /* Program Cards for Ekstrakurikuler */
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .program-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .program-card .card-body {
+            padding: 25px;
+        }
+
+        .program-card .card-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Facility Cards */
+        .facility-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .facility-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .news-date {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Gallery */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 64, 175, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .contact-info i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        .btn-primary-custom {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Stats Counter */
+        .stats-box {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .stats-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .stats-label {
+            color: #000000;
+            font-size: 1.1rem;
+        }
+
+        /* Achievement Section */
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .achievement-icon {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* Detail Page Styles */
+        .detail-page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .detail-page.active {
+            display: block;
+        }
+
+        .detail-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .detail-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .detail-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .detail-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .detail-info {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-button:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li i {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .schedule-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .schedule-table tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .logo {
+            width: 40px;
+            height: auto;
+            transform: translate(-5px, -3px);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Admin Login Section -->
+    <div id="adminLogin" class="admin-section">
+        <div class="login-container">
+            <h2 class="text-center mb-4">Admin Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-admin w-100">Login</button>
+            </form>
+            <div class="text-center mt-3">
+                <small class="text-muted">Default: admin / admin123</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Section -->
+    <div id="adminDashboard" class="admin-section">
+        <nav class="admin-navbar">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">SMP Yuppentek 1 Legok Admin Panel</h4>
+                    <button class="btn btn-outline-light" onclick="handleLogout()">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 admin-sidebar">
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#" onclick="showAdminSection('dashboard')">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                        <a class="nav-link" href="#" onclick="showAdminSection('news')">
+                            <i class="bi bi-newspaper"></i> Kelola Berita
+                        </a>
+                        <a class="nav-link" href="#" onclick="showAdminSection('gallery')">
+                            <i class="bi bi-images"></i> Kelola Galeri
+                        </a>
+                        <a class="nav-link" href="#" onclick="showAdminSection('ekskul')">
+                            <i class="bi bi-star"></i> Kelola Ekstrakurikuler
+                        </a>
+                        <a class="nav-link" href="#" onclick="showAdminSection('facilities')">
+                            <i class="bi bi-building"></i> Kelola Fasilitas
+                        </a>
+                    </nav>
+                </div>
+                <div class="col-md-9 admin-content">
+                    <!-- Dashboard Content -->
+                    <div id="adminDashboardContent" class="admin-content-section">
+                        <h2>Dashboard</h2>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="admin-card text-center">
+                                    <h3 id="totalNews">0</h3>
+                                    <p class="text-muted">Total Berita</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="admin-card text-center">
+                                    <h3 id="totalGallery">0</h3>
+                                    <p class="text-muted">Total Galeri</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="admin-card text-center">
+                                    <h3 id="totalEkskul">8</h3>
+                                    <p class="text-muted">Total Ekstrakurikuler</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="admin-card text-center">
+                                    <h3 id="totalFacilities">6</h3>
+                                    <p class="text-muted">Total Fasilitas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Management -->
+                    <div id="adminNewsContent" class="admin-content-section" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2>Kelola Berita</h2>
+                            <button class="btn btn-admin" onclick="showNewsForm()">
+                                <i class="bi bi-plus"></i> Tambah Berita
+                            </button>
+                        </div>
+                        <div class="admin-card">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul</th>
+                                        <th>Tanggal</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="newsTableBody">
+                                    <!-- News rows will be inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- News Form -->
+                    <div id="newsForm" class="admin-content-section" style="display: none;">
+                        <h2 id="newsFormTitle">Tambah Berita</h2>
+                        <div class="admin-card">
+                            <form onsubmit="handleNewsSubmit(event)">
+                                <input type="hidden" id="newsId">
+                                <div class="mb-3">
+                                    <label for="newsTitleInput" class="form-label">Judul Berita</label>
+                                    <input type="text" class="form-control" id="newsTitleInput" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newsDateInput" class="form-label">Tanggal</label>
+                                    <input type="date" class="form-control" id="newsDateInput" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newsAuthorInput" class="form-label">Penulis</label>
+                                    <input type="text" class="form-control" id="newsAuthorInput" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newsImageInput" class="form-label">URL Gambar</label>
+                                    <input type="url" class="form-control" id="newsImageInput" required>
+                                    <img id="newsImagePreview" class="form-image-preview" style="display: none;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newsContentInput" class="form-label">Konten</label>
+                                    <textarea class="form-control" id="newsContentInput" rows="10" required></textarea>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-admin">Simpan</button>
+                                    <button type="button" class="btn btn-secondary" onclick="showAdminSection('news')">Batal</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Management -->
+                    <div id="adminGalleryContent" class="admin-content-section" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2>Kelola Galeri</h2>
+                            <button class="btn btn-admin" onclick="showGalleryForm()">
+                                <i class="bi bi-plus"></i> Tambah Galeri
+                            </button>
+                        </div>
+                        <div class="admin-card">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul</th>
+                                        <th>Tanggal</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="galleryTableBody">
+                                    <!-- Gallery rows will be inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Form -->
+                    <div id="galleryForm" class="admin-content-section" style="display: none;">
+                        <h2 id="galleryFormTitle">Tambah Galeri</h2>
+                        <div class="admin-card">
+                            <form onsubmit="handleGallerySubmit(event)">
+                                <input type="hidden" id="galleryId">
+                                <div class="mb-3">
+                                    <label for="galleryTitleInput" class="form-label">Judul Kegiatan</label>
+                                    <input type="text" class="form-control" id="galleryTitleInput" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="galleryDateInput" class="form-label">Tanggal</label>
+                                    <input type="date" class="form-control" id="galleryDateInput" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="galleryLocationInput" class="form-label">Lokasi</label>
+                                    <input type="text" class="form-control" id="galleryLocationInput" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="galleryImageInput" class="form-label">URL Gambar Utama</label>
+                                    <input type="url" class="form-control" id="galleryImageInput" required>
+                                    <img id="galleryImagePreview" class="form-image-preview" style="display: none;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="galleryDescriptionInput" class="form-label">Deskripsi</label>
+                                    <textarea class="form-control" id="galleryDescriptionInput" rows="5" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">URL Gambar Terkait (pisahkan dengan koma)</label>
+                                    <input type="text" class="form-control" id="galleryRelatedInput" 
+                                           placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg">
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-admin">Simpan</button>
+                                    <button type="button" class="btn btn-secondary" onclick="showAdminSection('gallery')">Batal</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Ekstrakurikuler Management -->
+                    <div id="adminEkskulContent" class="admin-content-section" style="display: none;">
+                        <h2>Kelola Ekstrakurikuler</h2>
+                        <div class="admin-card">
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle"></i> Ekstrakurikuler bersifat statis. Hubungi developer untuk modifikasi.
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Ekstrakurikuler</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Pramuka</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>PMR</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>PASKBIRA</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Tae Kwon Do</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Voli</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Facilities Management -->
+                    <div id="adminFacilitiesContent" class="admin-content-section" style="display: none;">
+                        <h2>Kelola Fasilitas</h2>
+                        <div class="admin-card">
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle"></i> Fasilitas bersifat statis. Hubungi developer untuk modifikasi.
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Fasilitas</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Laboratorium IPA</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Laboratorium Komputer</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Perpustakaan</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Lapangan Olahraga</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Aula Serbaguna</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>6</td>
+                                        <td>Ruang Multimedia</td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <div class="admin-float-btn" onclick="showAdminLogin()" title="Admin Panel">
+            <i class="bi bi-gear"></i>
+    </div>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#home">
+                    <img src="logosmp.png" alt="logosmpyupp" class="logo">SMP Yuppentek 1 Legok
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">Tentang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#ekskul">Ekstrakurikuler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#facilities">Fasilitas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#achievements">Prestasi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#news">Berita</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#gallery">Galeri</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="hero-content">
+                            <h1>Selamat Datang di SMP YUPPENTEK 1 Legok</h1>
+                            <p>Membentuk Generasi Cerdas, Berkarakter, dan Berprestasi</p>
+                            <a href="assets/brosur.pdf" class="btn-primary-custom"><b>Download Brosur</b></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Stats Section -->
+                        <div class="row mt-5">
+                            <div class="col-6 mb-3">
+                                <div class="stats-box" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="stats-number" data-count="195">0</div>
+                                    <div class="stats-label">Siswa Aktif</div>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="stats-box" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="stats-number" data-count="98">0</div>
+                                    <div class="stats-label">% Kelulusan</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stats-box" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="stats-number" data-count="32">0</div>
+                                    <div class="stats-label">Guru Profesional</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stats-box" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="stats-number" data-count="5"></div>
+                                    <div class="stats-label">Ekstrakurikuler</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <h2 class="section-title">Tentang Sekolah</h2>
+                        <p class="lead">SMP Yuppentek 1 Legok adalah sekolah menengah pertama unggulan yang berkomitmen untuk mencetak lulusan yang cerdas, berkarakter, dan siap bersaing di era global.</p>
+                        <p>Dengan kurikulum yang berbasis karakter dan teknologi, SMP Yuppentek 1 Legok telah membuktikan diri sebagai lembaga pendidikan yang mampu menghasilkan generasi muda yang berprestasi dan berakhlak mulia.</p>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Kurikulum Berbasis Karakter</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Laboratorium Lengkap</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Pembelajaran Digital</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Lingkungan Belajar Nyaman</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5" data-aos="fade-left">
+                        <img src="about.png" alt="Tentang Sekolah" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ekstrakurikuler Section -->
+        <section id="ekskul" class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Ekstrakurikuler</h2>
+                    <p class="lead">Kembangkan bakat dan minat Anda melalui berbagai kegiatan ekstrakurikuler</p>
+                </div>
+                <div class="row g-4" id="ekskulContainer">
+                    <!-- Ekstrakurikuler will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section id="facilities" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Fasilitas Unggulan</h2>
+                    <p class="lead">Dukungan infrastruktur modern untuk pembelajaran optimal</p>
+                </div>
+                <div class="row g-4" id="facilitiesContainer">
+                    <!-- Facilities will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Prestasi Sekolah</h2>
+                    <p class="lead">Pencapaian membanggakan dari siswa-siswi SMP Yuppentek 1 Legok</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="achievement-card">
+                            <i class="bi bi-trophy achievement-icon"></i>
+                            <h5>Juara 1 Lomba Tata Upacara Bendera</h5>
+                            <p>Tingkat Wilayah III 2022</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="achievement-card">
+                            <i class="bi bi-trophy achievement-icon"></i>
+                            <h5>Juara 3 Lomba Tata Upacara Bendera</h5>
+                            <p>Tingkat Kabupaten Tangerang 2022</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="achievement-card">
+                            <i class="bi bi-trophy achievement-icon"></i>
+                            <h5>Juara 2 Kejuaraan Tae Kwon Do Putra SMP</h5>
+                            <p>Tingkat Kabupaten Tangerang 2022</p>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="achievement-card">
+                            <i class="bi bi-music-note achievement-icon"></i>
+                            <h5>Juara 2 FLS2N</h5>
+                            <p>Cabang Tari Tradisional 2023</p>
+                        </div>
+                    </div> -->
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="achievement-card">
+                            <i class="bi bi-people achievement-icon"></i>
+                            <h5>Juara 2 Futsal</h5>
+                            <p>PSB Cup 2016</p>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="achievement-card">
+                            <i class="bi bi-palette achievement-icon"></i>
+                            <h5>Juara 1 Lomba Poster</h5>
+                            <p>Hari Lingkungan Hidup 2023</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Berita & Pengumuman</h2>
+                    <p class="lead">Informasi terkini seputar kegiatan sekolah</p>
+                </div>
+                <div class="row g-4" id="newsContainer">
+                    <!-- News will be dynamically loaded here -->
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn-primary-custom">Lihat Semua Berita</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <!-- <section id="gallery" class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Galeri Kegiatan</h2>
+                    <p class="lead">Dokumentasi kegiatan dan prestasi sekolah</p>
+                </div>
+                <div class="row g-3" id="galleryContainer">
+                    <!-- Gallery items will be dynamically loaded here -->
+                <!-- </div>
+            </div>
+        </section> --> -->
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Hubungi Kami</h2>
+                    <p class="lead">Kami siap membantu Anda dengan informasi yang dibutuhkan</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mb-4" data-aos="fade-right">
+                        <div class="contact-info">
+                            <i class="bi bi-geo-alt"></i>
+                            <h5>Alamat</h5>
+                            <p>JL Raya PLP, No. 47 RT. 002 RW.03<br>Kel. Serdang Wetan, Kec. Legok<br>Kab. Tangerang, Banten 15820</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-up">
+                        <div class="contact-info">
+                            <i class="bi bi-telephone"></i>
+                            <h5>Kontak</h5>
+                            <p>Whatsapp (Siti Nuraeni,A.Md): 0859 - 6033 - 8611<br>Developer (Bambang Istijab): 0882 - 8953 - 2896<br>Email: smpyuppentek1legok@yahoo.co.id</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-left">
+                        <div class="contact-info">
+                            <i class="bi bi-clock"></i>
+                            <h5>Jam Operasional</h5>
+                            <p>Senin - Jumat: 07:00 - 14:00<br>Sabtu: 07:00 - 12:00 (Ekstrakurikuler)<br>Minggu & Hari Libur: Tutup</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                        <div class="card shadow">
+                            <div class="card-body p-4">
+                                <h5 class="card-title mb-4">Kirim Pesan</h5>
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" placeholder="Email" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control" placeholder="No. Telepon">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-control">
+                                                <option>Pilih Subjek</option>
+                                                <option>Informasi PPDB</option>
+                                                <option>Kerjasama</option>
+                                                <option>Pertanyaan Umum</option>
+                                                <option>Lainnya</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn-primary-custom">Kirim Pesan</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <h5 class="mb-3">SMP Yuppentek 1 Legok</h5>
+                        <p>Sekolah menengah pertama unggulan dalam mencetak generasi cerdas, berkarakter, dan berprestasi.</p>
+                        <div class="social-links mt-3">
+                            <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+                            <a href="https://www.instagram.com/smpyuppentek1legok/?utm_source=ig_web_button_share_sheet" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="https://www.tiktok.com/@osis_yusalegta?is_from_webapp=1&sender_device=pc" class="text-white me-3"><i class="bi bi-tiktok fs-5"></i></a>
+                            <!-- <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <h5 class="mb-3">Link Cepat</h5>
+                        <div class="footer-links">
+                            <a href="brosur.pdf" class="d-block mb-2">SPMB</a>
+                            <a href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/20603231"
+                                class="d-block mb-2">Data Pendidikan</a>
+                            <!-- <a href="prestasi.html" class="d-block mb-2">Prestasi</a>
+                            <a href="#" class="d-block mb-2">Alumni</a>
+                            <a href="#" class="d-block mb-2">Karir</a> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <h5 class="mb-3">Newsletter</h5>
+                        <p>Dapatkan informasi terbaru dari sekolah melalui email Anda.</p>
+                        <form class="mt-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email Anda">
+                                <button class="btn btn-warning" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+                <div class="text-center">
+                    <p class="mb-0">&copy; 2025 SMP Yuppentek 1 Legok.  | Developed with Bambang Istijab</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Detail Pages -->
+    <div id="ekskulDetail" class="detail-page">
+        <button class="back-button" onclick="hideDetailPage()">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </button>
+        <div class="detail-header">
+            <div class="container">
+                <h1 id="ekskulTitle">Detail Ekstrakurikuler</h1>
+                <p class="lead">Informasi lengkap ekstrakurikuler SMP Yuppentek 1 Legok</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="detail-image">
+                        <img id="ekskulImage" src="" alt="Ekstrakurikuler Image">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="detail-info">
+                        <h3>Deskripsi</h3>
+                        <p id="ekskulDescription">Deskripsi ekstrakurikuler akan ditampilkan di sini.</p>
+                        
+                        <h4 class="mt-4">Jadwal Latihan</h4>
+                        <ul class="feature-list">
+                            <li id="schedule1"><i class="bi bi-calendar-event"></i> <span></span></li>
+                            <li id="schedule2"><i class="bi bi-calendar-event"></i> <span></span></li>
+                        </ul>
+                        
+                        <h4 class="mt-4">Pembina</h4>
+                        <p id="ekskulCoach">Nama pembina akan ditampilkan di sini.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-info mt-4">
+                <h3>Prestasi Terkini</h3>
+                <ul class="feature-list" id="ekskulAchievements">
+                    <!-- Achievements will be inserted here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="facilityDetail" class="detail-page">
+        <button class="back-button" onclick="hideDetailPage()">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </button>
+        <div class="detail-header">
+            <div class="container">
+                <h1 id="facilityTitle">Detail Fasilitas</h1>
+                <p class="lead">Informasi lengkap fasilitas SMP Yuppentek 1 Legok</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <div class="detail-image">
+                <img id="facilityImage" src="" alt="Facility Image">
+            </div>
+            <div class="detail-info">
+                <h3>Deskripsi Fasilitas</h3>
+                <p id="facilityDescription">Deskripsi fasilitas akan ditampilkan di sini.</p>
+                
+                <h4 class="mt-4">Spesifikasi</h4>
+                <ul class="feature-list" id="facilitySpecs">
+                    <!-- Specs will be inserted here -->
+                </ul>
+                
+                <h4 class="mt-4">Jam Operasional</h4>
+                <p id="facilityHours">Jam operasional akan ditampilkan di sini.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="newsDetail" class="detail-page">
+        <button class="back-button" onclick="hideDetailPage()">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </button>
+        <div class="detail-header">
+            <div class="container">
+                <h1 id="newsTitle">Detail Berita</h1>
+                <p class="lead">Informasi lengkap berita SMP Yuppentek 1 Legok</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <div class="detail-image">
+                <img id="newsImage" src="" alt="News Image">
+            </div>
+            <div class="detail-info">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="news-date" id="newsDate">Tanggal Berita</span>
+                    <span><i class="bi bi-person"></i> <span id="newsAuthor">Admin</span></span>
+                </div>
+                <div id="newsContent">
+                    <!-- News content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="galleryDetail" class="detail-page">
+        <button class="back-button" onclick="hideDetailPage()">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </button>
+        <div class="detail-header">
+            <div class="container">
+                <h1 id="galleryTitle">Detail Galeri</h1>
+                <p class="lead">Dokumentasi kegiatan SMP Yuppentek 1 Legok</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <div class="detail-image">
+                <img id="galleryImage" src="" alt="Gallery Image">
+            </div>
+            <div class="detail-info">
+                <h3 id="galleryActivityTitle">Judul Kegiatan</h3>
+                <p id="galleryDescription">Deskripsi kegiatan akan ditampilkan di sini.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>Tanggal Kegiatan</h5>
+                        <p id="galleryDate">Tanggal kegiatan</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Lokasi</h5>
+                        <p id="galleryLocation">Lokasi kegiatan</p>
+                    </div>
+                </div>
+                
+                <h4 class="mt-4">Dokumentasi Lainnya</h4>
+                <div class="row g-3" id="relatedGallery">
+                    <!-- Related gallery items will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Data Management
+        class DataManager {
+            constructor() {
+                this.initializeData();
+            }
+
+            initializeData() {
+                // Initialize news data if not exists
+                if (!localStorage.getItem('smp_news')) {
+                    const defaultNews = [
+                        {
+                            id: 1,
+                            title: "SMP Yuppentek 1 Legok Raih Juara 1 Olimpiade Sains Provinsi",
+                            date: "2022-09-26",
+                            author: "Tim Humas",
+                            image: "https://picsum.photos/seed/smp-news1/400/250",
+                            content: `<p><strong>Serang</strong> - Tim Olimpiade Sains SMP Yuppentek 1 Legok berhasil meraih juara 1 dalam Olimpiade Sains Tingkat Provinsi Banten yang diselenggarakan di Serang. Prestasi ini menambah deretan pencapaian sekolah di bidang akademik.</p>
+                            <p>Kompetisi yang diikuti oleh 100 tim SMP se-Banten ini berlangsung selama 2 hari. Tim Yuppentek 1 Legok yang terdiri dari 3 siswa berhasil mengungguli pesaing-pesaingnya dengan skor yang memukau.</p>`
+                        },
+                        {
+                            id: 2,
+                            title: "Pembukaan PPDB Tahun Ajaran 2024/2025",
+                            date: "2023-11-10",
+                            author: "Panitia PPDB",
+                            image: "https://picsum.photos/seed/smp-news2/400/250",
+                            content: `<p><strong>Legok</strong> - Panitia Penerimaan Peserta Didik Baru (PPDB) SMP Yuppentek 1 Legok secara resmi membuka pendaftaran untuk tahun ajaran 2024/2025. Pendaftaran dilakukan secara online melalui website resmi sekolah.</p>
+                            <p>Tahun ini sekolah menyediakan kuota 320 siswa baru dengan seleksi berdasarkan nilai akademik, prestasi, dan minat bakat.</p>`
+                        },
+                        {
+                            id: 3,
+                            title: "Peringatan Hari Pahlawan di SMP Yuppentek 1 Legok",
+                            date: "2023-11-05",
+                            author: "OSIS",
+                            image: "https://picsum.photos/seed/smp-news3/400/250",
+                            content: `<p><strong>Legok</strong> - SMP Yuppentek 1 Legok menggelar upacara peringatan Hari Pahlawan dengan khidmat. Kegiatan ini dihadiri oleh seluruh siswa, guru, dan staf sekolah.</p>
+                            <p>Dalam sambutannya, Kepala Sekolah menekankan pentingnya meneladani semangat para pahlawan dalam belajar dan mengabdi pada bangsa.</p>`
+                        }
+                    ];
+                    localStorage.setItem('smp_news', JSON.stringify(defaultNews));
+                }
+
+                // Initialize gallery data if not exists
+                if (!localStorage.getItem('smp_gallery')) {
+                    const defaultGallery = [
+                        {
+                            id: 1,
+                            title: "Upacara Peringatan Hari Kemerdekaan",
+                            date: "2023-08-17",
+                            location: "Lapangan Sekolah",
+                            image: "https://picsum.photos/seed/smp-gallery1/400/300",
+                            description: "Upacara peringatan Hari Kemerdekaan RI ke-78 dilaksanakan dengan khidmat dan meriah.",
+                            related: ["https://picsum.photos/seed/smp-gallery1-1/200/150", "https://picsum.photos/seed/smp-gallery1-2/200/150", "https://picsum.photos/seed/smp-gallery1-3/200/150"]
+                        },
+                        {
+                            id: 2,
+                            title: "Latihan Pramuka Sabtu Minggu",
+                            date: "2023-09-02",
+                            location: "Lapangan Sekolah",
+                            image: "pramuka.webp",
+                            description: "Kegiatan latihan Pramuka Sabtu Minggu untuk membentuk karakter disiplin dan kepemimpinan.",
+                            related: ["https://picsum.photos/seed/smp-gallery2-1/200/150", "https://picsum.photos/seed/smp-gallery2-2/200/150", "https://picsum.photos/seed/smp-gallery2-3/200/150"]
+                        },
+                        {
+                            id: 3,
+                            title: "Lomba Cerdas Cermat antar Kelas",
+                            date: "2023-09-15",
+                            location: "Aula Sekolah",
+                            image: "https://picsum.photos/seed/smp-gallery3/400/300",
+                            description: "Lomba cerdas cermat antar kelas untuk meningkatkan semangat kompetisi dan prestasi akademik.",
+                            related: ["https://picsum.photos/seed/smp-gallery3-1/200/150", "https://picsum.photos/seed/smp-gallery3-2/200/150", "https://picsum.photos/seed/smp-gallery3-3/200/150"]
+                        },
+                        {
+                            id: 4,
+                            title: "Workshop Literasi Digital",
+                            date: "2023-10-05",
+                            location: "Laboratorium Komputer",
+                            image: "https://picsum.photos/seed/smp-gallery4/400/300",
+                            description: "Workshop literasi digital untuk membekali siswa dengan kemampuan teknologi informasi.",
+                            related: ["https://picsum.photos/seed/smp-gallery4-1/200/150", "https://picsum.photos/seed/smp-gallery4-2/200/150", "https://picsum.photos/seed/smp-gallery4-3/200/150"]
+                        },
+                        {
+                            id: 5,
+                            title: "Pertandingan Futsal Antar Kelas",
+                            date: "2023-10-20",
+                            location: "Lapangan Olahraga",
+                            image: "https://picsum.photos/seed/smp-gallery5/400/300",
+                            description: "Turnamen futsal antar kelas untuk meningkatkan semangat sportivitas dan kesehatan.",
+                            related: ["https://picsum.photos/seed/smp-gallery5-1/200/150", "https://picsum.photos/seed/smp-gallery5-2/200/150", "https://picsum.photos/seed/smp-gallery5-3/200/150"]
+                        },
+                        {
+                            id: 6,
+                            title: "Peringatan Maulid Nabi Muhammad SAW",
+                            date: "2023-09-28",
+                            location: "Aula Sekolah",
+                            image: "https://picsum.photos/seed/smp-gallery6/400/300",
+                            description: "Peringatan Maulid Nabi Muhammad SAW dengan berbagai kegiatan religius dan keagamaan.",
+                            related: ["https://picsum.photos/seed/smp-gallery6-1/200/150", "https://picsum.photos/seed/smp-gallery6-2/200/150", "https://picsum.photos/seed/smp-gallery6-3/200/150"]
+                        }
+                    ];
+                    localStorage.setItem('smp_gallery', JSON.stringify(defaultGallery));
+                }
+            }
+
+            getNews() {
+                return JSON.parse(localStorage.getItem('smp_news') || '[]');
+            }
+
+            getGallery() {
+                return JSON.parse(localStorage.getItem('smp_gallery') || '[]');
+            }
+
+            addNews(news) {
+                const newsList = this.getNews();
+                news.id = Date.now();
+                newsList.unshift(news);
+                localStorage.setItem('smp_news', JSON.stringify(newsList));
+                return news;
+            }
+
+            updateNews(id, updatedNews) {
+                const newsList = this.getNews();
+                const index = newsList.findIndex(n => n.id === id);
+                if (index !== -1) {
+                    newsList[index] = { ...newsList[index], ...updatedNews };
+                    localStorage.setItem('smp_news', JSON.stringify(newsList));
+                    return true;
+                }
+                return false;
+            }
+
+            deleteNews(id) {
+                const newsList = this.getNews();
+                const filtered = newsList.filter(n => n.id !== id);
+                localStorage.setItem('smp_news', JSON.stringify(filtered));
+                return true;
+            }
+
+            addGallery(gallery) {
+                const galleryList = this.getGallery();
+                gallery.id = Date.now();
+                galleryList.unshift(gallery);
+                localStorage.setItem('smp_gallery', JSON.stringify(galleryList));
+                return gallery;
+            }
+
+            updateGallery(id, updatedGallery) {
+                const galleryList = this.getGallery();
+                const index = galleryList.findIndex(g => g.id === id);
+                if (index !== -1) {
+                    galleryList[index] = { ...galleryList[index], ...updatedGallery };
+                    localStorage.setItem('smp_gallery', JSON.stringify(galleryList));
+                    return true;
+                }
+                return false;
+            }
+
+            deleteGallery(id) {
+                const galleryList = this.getGallery();
+                const filtered = galleryList.filter(g => g.id !== id);
+                localStorage.setItem('smp_gallery', JSON.stringify(filtered));
+                return true;
+            }
+        }
+
+        // Initialize data manager
+        const dataManager = new DataManager();
+
+        // Ekstrakurikuler data (static)
+        const ekskulData = {
+            pramuka: {
+                title: "Pramuka",
+                image: "pramuka.webp",
+                description: "Kegiatan kepramukaan untuk membentuk karakter disiplin, mandiri, dan cinta alam.",
+                detailImage: "pramuka.webp",
+                detailDescription: "Pramuka adalah ekstrakurikuler wajib di SMP Yuppentek 1 Legok yang bertujuan membentuk karakter siswa yang disiplin, mandiri, memiliki jiwa kepemimpinan, dan cinta terhadap alam.",
+                schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
+                coach: "Hadi Suwardi, S.T., M.M.",
+                achievements: [""]
+            },
+            pmr: {
+                title: "PMR",
+                image: "pmr.webp",
+                description: "Palang Merah Remaja untuk membentuk jiwa sosial dan keterampilan pertolongan pertama.",
+                detailImage: "pmr.webp",
+                detailDescription: "PMR (Palang Merah Remaja) adalah ekstrakurikuler yang fokus pada keterampilan pertolongan pertama, kesehatan, dan jiwa sosial tinggi.",
+                schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
+                coach: "Bambang Istijab",
+                achievements: [""]
+            },
+            paskibra: {
+                title: "PASKIBRA",
+                image: "paskib.webp",
+                description: "Pasukan Pengibar Bendera untuk melatih disiplin dan nasionalisme melalui seni baris-berbaris.",
+                detailImage: "paskib.webp",
+                detailDescription: "Paskibra (Pasukan Pengibar Bendera) adalah pasukan pengibar bendera yang biasanya merupakan ekstrakurikuler di sekolah, bertugas mengibarkan bendera saat upacara rutin dan hari besar nasional di lingkungan sekolah, bertujuan membentuk karakter, disiplin, dan nasionalisme siswa melalui latihan baris-berbaris dan formasi",
+                schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
+                coach: "Bambang Istijab",
+                achievements: [""]
+            },
+            taekwondo: {
+                title: "Tae Kwon Do",
+                image: "taekwondo.jpg",
+                description: "Olahraga bela diri dari Korea Selatan.",
+                detailImage: "taekwondo.jpg",
+                detailDescription: "Taekwondo adalah olahraga bela diri dari Korea Selatan yang mengandalkan tendangan tinggi dan pukulan cepat, dengan kata Tae (kaki), Kwon (tangan/tinju), dan Do (cara/seni) yang berarti seni serangan kaki dan tangan",
+                schedule: ["Senin , 15:30 - 17:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
+                coach: "Yayat Supriatna",
+                achievements: [""]
+            },
+            voli: {
+                title: "Voli",
+                image: "voli.jpeg",
+                description: "Olahraga voli untuk melatih teknik dasar, strategi permainan, dan kerja sama tim.",
+                detailImage: "voli.jpeg",
+                detailDescription: "Voli adalah kegiatan ekstrakurikuler olahraga yang melatih teknik dasar (passing, servis, smash, block) hingga strategi permainan, membangun karakter, kerja sama tim, sportivitas, serta meningkatkan kebugaran fisik (keseimbangan, koordinasi, daya tahan) dan mental siswa melalui latihan rutin dan kompetisi, membentuk pola hidup sehat dan prestasi non-akademik. ",
+                schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
+                coach: "Bambang Istijab",
+                achievements: ["Juara 3 Liga Basket Pelajar 2023", "Juara 1 Turnamen 3x3", "Tim Terbaik Spirit Sportivitas"]
+            }
+        };
+
+        // Facility data (static)
+        const facilityData = {
+            'lab-ipa': {
+                title: "Laboratorium IPA",
+                icon: "bi bi-droplet-half",
+                description: "Laboratorium lengkap untuk praktikum fisika, kimia, dan biologi.",
+                // detailImage: "https://picsum.photos/seed/smp-lab-ipa-detail/800/400",
+                // detailDescription: "Laboratorium IPA SMP Yuppentek 1 Legok dilengkapi dengan peralatan modern untuk mendukung pembelajaran praktikum fisika, kimia, dan biologi.",
+                // specs: ["Ruang Praktikum Fisika", "Ruang Praktikum Kimia", "Ruang Praktikum Biologi", "Peralatan Lengkap dan Modern", "Sistem Ventilasi Baik", "Safety Equipment", "LCD Projector", "Kapasitas 40 Siswa"],
+                // hours: "Senin - Jumat: 07:00 - 16:00<br>Sabtu: 07:00 - 12:00"
+            },
+            'lab-komputer': {
+                title: "Laboratorium Komputer",
+                icon: "bi bi-laptop",
+                description: "40 unit komputer dengan internet cepat untuk pembelajaran digital.",
+                // detailImage: "https://picsum.photos/seed/smp-lab-komputer-detail/800/400",
+                // detailDescription: "Laboratorium Komputer dilengkapi dengan 40 unit komputer terbaru dan koneksi internet cepat untuk mendukung pembelajaran era digital.",
+                // specs: ["40 Unit PC Core i5 Gen 12", "RAM 8GB DDR4", "SSD 256GB", "Monitor 21.5 Inch Full HD", "Internet Fiber Optic", "WiFi 6 Coverage", "Software Original", "Proyektor & Smart TV"],
+                // hours: "Senin - Jumat: 07:00 - 16:00<br>Sabtu: 07:00 - 12:00"
+            },
+            'perpustakaan': {
+                title: "Perpustakaan",
+                icon: "bi bi-book",
+                description: "Koleksi buku lengkap dan ruang baca yang nyaman.",
+                // detailImage: "https://picsum.photos/seed/smp-perpustakaan-detail/800/400",
+                // detailDescription: "Perpustakaan SMP Yuppentek 1 Legok memiliki koleksi buku lengkap dan ruang baca yang nyaman untuk mendukung literasi siswa.",
+                // specs: ["5,000+ Koleksi Buku", "E-Book Corner", "Majalah & Koran", "Reading Room (60 Seats)", "Study Area", "Online Catalog", "Computer Stations", "AC & Lighting Nyaman"],
+                // hours: "Senin - Jumat: 07:30 - 16:30<br>Sabtu: 07:30 - 12:00"
+            },
+            'lapangan': {
+                title: "Lapangan Olahraga",
+                icon: "bi bi-activity",
+                description: "Lapangan multifungsi untuk berbagai cabang olahraga.",
+                // detailImage: "https://picsum.photos/seed/smp-lapangan-detail/800/400",
+                // detailDescription: "Lapangan olahraga multifungsi yang dapat digunakan untuk berbagai cabang olahraga seperti futsal, basket, voli, dan upacara.",
+                // specs: ["Lapangan Futsal Standar", "Lapangan Basket", "Lapangan Voli", "Tribun Penonton", "Penerangan Malam", "Ruang Ganti", "Peralatan Olahraga Lengkap", "Area Parkir"],
+                // hours: "Senin - Sabtu: 07:00 - 17:00<br>Minggu: Tutup"
+            },
+            'aula': {
+                title: "Aula Serbaguna",
+                icon: "bi bi-building",
+                description: "Ruang besar untuk acara sekolah dan pertemuan.",
+                // detailImage: "https://picsum.photos/seed/smp-aula-detail/800/400",
+                // detailDescription: "Aula serbaguna dengan kapasitas besar yang digunakan untuk berbagai acara sekolah seperti seminar, workshop, dan pertemuan.",
+                // specs: ["Kapasitas 500 Orang", "Panggung Besar", "Sound System", "AC Central", "Lighting System", "LCD Projector", "Ruang VIP", "Toilet"],
+                // hours: "Senin - Sabtu: 07:00 - 17:00<br>Minggu & Hari Libur: Tutup"
+            }
+        };
+
+        // Load dynamic content
+        function loadEkskul() {
+            const container = document.getElementById('ekskulContainer');
+            container.innerHTML = '';
+            
+            Object.entries(ekskulData).forEach(([key, ekskul], index) => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-3 col-md-6';
+                col.setAttribute('data-aos', 'fade-up');
+                col.setAttribute('data-aos-delay', (index + 1) * 100);
+                
+                col.innerHTML = `
+                    <a href="#" class="program-card" onclick="showEkskulDetail('${key}')">
+                        <img src="${ekskul.image}" class="card-img-top" alt="${ekskul.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${ekskul.title}</h5>
+                            <p class="card-text">${ekskul.description}</p>
+                        </div>
+                    </a>
+                `;
+                
+                container.appendChild(col);
+            });
+        }
+
+        function loadFacilities() {
+            const container = document.getElementById('facilitiesContainer');
+            container.innerHTML = '';
+            
+            Object.entries(facilityData).forEach(([key, facility], index) => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6';
+                col.setAttribute('data-aos', 'fade-up');
+                col.setAttribute('data-aos-delay', (index + 1) * 100);
+                
+                col.innerHTML = `
+                    <div class="facility-card" onclick="showFacilityDetail('${key}')">
+                        <i class="${facility.icon} facility-icon"></i>
+                        <h5>${facility.title}</h5>
+                        <p>${facility.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(col);
+            });
+        }
+
+        function loadNews() {
+            const container = document.getElementById('newsContainer');
+            const newsList = dataManager.getNews();
+            container.innerHTML = '';
+            
+            newsList.slice(0, 3).forEach((news, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6';
+                col.setAttribute('data-aos', 'fade-up');
+                col.setAttribute('data-aos-delay', (index + 1) * 100);
+                
+                col.innerHTML = `
+                    <a href="#" class="news-card" onclick="showNewsDetail(${news.id})">
+                        <img src="${news.image}" class="card-img-top" alt="${news.title}">
+                        <div class="card-body p-4">
+                            <span class="news-date">${formatDate(news.date)}</span>
+                            <h5 class="card-title">${news.title}</h5>
+                            <p class="card-text">${news.content.substring(0, 100)}...</p>
+                        </div>
+                    </a>
+                `;
+                
+                container.appendChild(col);
+            });
+        }
+
+        function loadGallery() {
+            const container = document.getElementById('galleryContainer');
+            const galleryList = dataManager.getGallery();
+            container.innerHTML = '';
+            
+            galleryList.forEach((item, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6';
+                col.setAttribute('data-aos', 'fade-up');
+                col.setAttribute('data-aos-delay', (index + 1) * 100);
+                
+                col.innerHTML = `
+                    <div class="gallery-item" onclick="showGalleryDetail(${item.id})">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(col);
+            });
+        }
+
+        // Admin Functions
+        function showAdminLogin() {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('adminLogin').classList.add('active');
+            document.getElementById('adminDashboard').classList.remove('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === 'admin123') {
+                document.getElementById('adminLogin').classList.remove('active');
+                document.getElementById('adminDashboard').classList.add('active');
+                loadAdminDashboard();
+                showToast('Login berhasil!', 'success');
+            } else {
+                showToast('Username atau password salah!', 'error');
+            }
+        }
+
+        function handleLogout() {
+            document.getElementById('adminDashboard').classList.remove('active');
+            document.getElementById('mainContent').style.display = 'block';
+            showToast('Logout berhasil!', 'success');
+        }
+
+        function showAdminSection(section) {
+            // Update sidebar active state
+            document.querySelectorAll('.admin-sidebar .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Hide all content sections
+            document.querySelectorAll('.admin-content-section').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show selected section
+            switch(section) {
+                case 'dashboard':
+                    document.getElementById('adminDashboardContent').style.display = 'block';
+                    loadAdminDashboard();
+                    break;
+                case 'news':
+                    document.getElementById('adminNewsContent').style.display = 'block';
+                    loadNewsTable();
+                    break;
+                case 'gallery':
+                    document.getElementById('adminGalleryContent').style.display = 'block';
+                    loadGalleryTable();
+                    break;
+                case 'ekskul':
+                    document.getElementById('adminEkskulContent').style.display = 'block';
+                    break;
+                case 'facilities':
+                    document.getElementById('adminFacilitiesContent').style.display = 'block';
+                    break;
+            }
+        }
+
+        function loadAdminDashboard() {
+            const newsList = dataManager.getNews();
+            const galleryList = dataManager.getGallery();
+            
+            document.getElementById('totalNews').textContent = newsList.length;
+            document.getElementById('totalGallery').textContent = galleryList.length;
+        }
+
+        function loadNewsTable() {
+            const tbody = document.getElementById('newsTableBody');
+            const newsList = dataManager.getNews();
+            tbody.innerHTML = '';
+            
+            newsList.forEach((news, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${news.title}</td>
+                    <td>${formatDate(news.date)}</td>
+                    <td class="table-actions">
+                        <button class="btn btn-sm btn-primary" onclick="editNews(${news.id})">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger-custom" onclick="deleteNews(${news.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function loadGalleryTable() {
+            const tbody = document.getElementById('galleryTableBody');
+            const galleryList = dataManager.getGallery();
+            tbody.innerHTML = '';
+            
+            galleryList.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.title}</td>
+                    <td>${formatDate(item.date)}</td>
+                    <td class="table-actions">
+                        <button class="btn btn-sm btn-primary" onclick="editGallery(${item.id})">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger-custom" onclick="deleteGallery(${item.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function showNewsForm() {
+            document.getElementById('adminNewsContent').style.display = 'none';
+            document.getElementById('newsForm').style.display = 'block';
+            document.getElementById('newsFormTitle').textContent = 'Tambah Berita';
+            document.getElementById('newsId').value = '';
+            document.getElementById('newsTitleInput').value = '';
+            document.getElementById('newsDateInput').value = '';
+            document.getElementById('newsAuthorInput').value = '';
+            document.getElementById('newsImageInput').value = '';
+            document.getElementById('newsContentInput').value = '';
+            document.getElementById('newsImagePreview').style.display = 'none';
+        }
+
+        function showGalleryForm() {
+            document.getElementById('adminGalleryContent').style.display = 'none';
+            document.getElementById('galleryForm').style.display = 'block';
+            document.getElementById('galleryFormTitle').textContent = 'Tambah Galeri';
+            document.getElementById('galleryId').value = '';
+            document.getElementById('galleryTitleInput').value = '';
+            document.getElementById('galleryDateInput').value = '';
+            document.getElementById('galleryLocationInput').value = '';
+            document.getElementById('galleryImageInput').value = '';
+            document.getElementById('galleryDescriptionInput').value = '';
+            document.getElementById('galleryRelatedInput').value = '';
+            document.getElementById('galleryImagePreview').style.display = 'none';
+        }
+
+        function editNews(id) {
+            const news = dataManager.getNews().find(n => n.id === id);
+            if (news) {
+                document.getElementById('adminNewsContent').style.display = 'none';
+                document.getElementById('newsForm').style.display = 'block';
+                document.getElementById('newsFormTitle').textContent = 'Edit Berita';
+                document.getElementById('newsId').value = news.id;
+                document.getElementById('newsTitleInput').value = news.title;
+                document.getElementById('newsDateInput').value = news.date;
+                document.getElementById('newsAuthorInput').value = news.author;
+                document.getElementById('newsImageInput').value = news.image;
+                document.getElementById('newsContentInput').value = news.content;
+                
+                // Show image preview
+                const preview = document.getElementById('newsImagePreview');
+                preview.src = news.image;
+                preview.style.display = 'block';
+            }
+        }
+
+        function editGallery(id) {
+            const gallery = dataManager.getGallery().find(g => g.id === id);
+            if (gallery) {
+                document.getElementById('adminGalleryContent').style.display = 'none';
+                document.getElementById('galleryForm').style.display = 'block';
+                document.getElementById('galleryFormTitle').textContent = 'Edit Galeri';
+                document.getElementById('galleryId').value = gallery.id;
+                document.getElementById('galleryTitleInput').value = gallery.title;
+                document.getElementById('galleryDateInput').value = gallery.date;
+                document.getElementById('galleryLocationInput').value = gallery.location;
+                document.getElementById('galleryImageInput').value = gallery.image;
+                document.getElementById('galleryDescriptionInput').value = gallery.description;
+                document.getElementById('galleryRelatedInput').value = gallery.related.join(', ');
+                
+                // Show image preview
+                const preview = document.getElementById('galleryImagePreview');
+                preview.src = gallery.image;
+                preview.style.display = 'block';
+            }
+        }
+
+        function handleNewsSubmit(event) {
+            event.preventDefault();
+            
+            const newsData = {
+                title: document.getElementById('newsTitleInput').value,
+                date: document.getElementById('newsDateInput').value,
+                author: document.getElementById('newsAuthorInput').value,
+                image: document.getElementById('newsImageInput').value,
+                content: document.getElementById('newsContentInput').value
+            };
+            
+            const id = document.getElementById('newsId').value;
+            
+            if (id) {
+                // Update existing news
+                if (dataManager.updateNews(parseInt(id), newsData)) {
+                    showToast('Berita berhasil diperbarui!', 'success');
+                }
+            } else {
+                // Add new news
+                dataManager.addNews(newsData);
+                showToast('Berita berhasil ditambahkan!', 'success');
+            }
+            
+            showAdminSection('news');
+            loadNews(); // Reload news on main page
+        }
+
+        function handleGallerySubmit(event) {
+            event.preventDefault();
+            
+            const galleryData = {
+                title: document.getElementById('galleryTitleInput').value,
+                date: document.getElementById('galleryDateInput').value,
+                location: document.getElementById('galleryLocationInput').value,
+                image: document.getElementById('galleryImageInput').value,
+                description: document.getElementById('galleryDescriptionInput').value,
+                related: document.getElementById('galleryRelatedInput').value.split(',').map(url => url.trim()).filter(url => url)
+            };
+            
+            const id = document.getElementById('galleryId').value;
+            
+            if (id) {
+                // Update existing gallery
+                if (dataManager.updateGallery(parseInt(id), galleryData)) {
+                    showToast('Galeri berhasil diperbarui!', 'success');
+                }
+            } else {
+                // Add new gallery
+                dataManager.addGallery(galleryData);
+                showToast('Galeri berhasil ditambahkan!', 'success');
+            }
+            
+            showAdminSection('gallery');
+            loadGallery(); // Reload gallery on main page
+        }
+
+        function deleteNews(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus berita ini?')) {
+                if (dataManager.deleteNews(id)) {
+                    showToast('Berita berhasil dihapus!', 'success');
+                    loadNewsTable();
+                    loadNews(); // Reload news on main page
+                }
+            }
+        }
+
+        function deleteGallery(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus galeri ini?')) {
+                if (dataManager.deleteGallery(id)) {
+                    showToast('Galeri berhasil dihapus!', 'success');
+                    loadGalleryTable();
+                    loadGallery(); // Reload gallery on main page
+                }
+            }
+        }
+
+        // Image preview on input change
+        document.getElementById('newsImageInput')?.addEventListener('input', function(e) {
+            const preview = document.getElementById('newsImagePreview');
+            if (e.target.value) {
+                preview.src = e.target.value;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+
+        document.getElementById('galleryImageInput')?.addEventListener('input', function(e) {
+            const preview = document.getElementById('galleryImagePreview');
+            if (e.target.value) {
+                preview.src = e.target.value;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `custom-toast toast-${type}`;
+            toast.innerHTML = `
+                <i class="bi ${type === 'success' ? 'bi-check-circle' : 'bi-x-circle'} toast-icon"></i>
+                <div>
+                    <strong>${type === 'success' ? 'Success' : 'Error'}</strong>
+                    <div>${message}</div>
+                </div>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Utility functions
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        // Detail page functions
+        function showEkskulDetail(ekskulId) {
+            const ekskul = ekskulData[ekskulId];
+            if (!ekskul) return;
+
+            document.getElementById('ekskulTitle').textContent = ekskul.title;
+            document.getElementById('ekskulImage').src = ekskul.detailImage;
+            document.getElementById('ekskulDescription').textContent = ekskul.detailDescription;
+            
+            // Update schedule
+            document.getElementById('schedule1').querySelector('span').textContent = ekskul.schedule[0];
+            document.getElementById('schedule2').querySelector('span').textContent = ekskul.schedule[1];
+            
+            // Update coach
+            document.getElementById('ekskulCoach').textContent = ekskul.coach;
+            
+            // Update achievements
+            const achievementsList = document.getElementById('ekskulAchievements');
+            achievementsList.innerHTML = '';
+            ekskul.achievements.forEach(achievement => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="bi bi-trophy"></i> <span>${achievement}</span>`;
+                achievementsList.appendChild(li);
+            });
+            
+            showDetailPage('ekskulDetail');
+        }
+
+        function showFacilityDetail(facilityId) {
+            const facility = facilityData[facilityId];
+            if (!facility) return;
+
+            document.getElementById('facilityTitle').textContent = facility.title;
+            document.getElementById('facilityImage').src = facility.detailImage;
+            document.getElementById('facilityDescription').textContent = facility.detailDescription;
+            document.getElementById('facilityHours').innerHTML = facility.hours;
+            
+            // Update specs
+            const specsList = document.getElementById('facilitySpecs');
+            specsList.innerHTML = '';
+            facility.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="bi bi-check-circle"></i> <span>${spec}</span>`;
+                specsList.appendChild(li);
+            });
+            
+            showDetailPage('facilityDetail');
+        }
+
+        function showNewsDetail(newsId) {
+            const news = dataManager.getNews().find(n => n.id === newsId);
+            if (!news) return;
+
+            document.getElementById('newsTitle').textContent = news.title;
+            document.getElementById('newsImage').src = news.image;
+            document.getElementById('newsDate').textContent = formatDate(news.date);
+            document.getElementById('newsAuthor').textContent = news.author;
+            document.getElementById('newsContent').innerHTML = news.content;
+            
+            showDetailPage('newsDetail');
+        }
+
+        function showGalleryDetail(galleryId) {
+            const gallery = dataManager.getGallery().find(g => g.id === galleryId);
+            if (!gallery) return;
+
+            document.getElementById('galleryTitle').textContent = gallery.title;
+            document.getElementById('galleryImage').src = gallery.image;
+            document.getElementById('galleryActivityTitle').textContent = gallery.title;
+            document.getElementById('galleryDescription').textContent = gallery.description;
+            document.getElementById('galleryDate').textContent = formatDate(gallery.date);
+            document.getElementById('galleryLocation').textContent = gallery.location;
+            
+            // Update related gallery
+            const relatedGallery = document.getElementById('relatedGallery');
+            relatedGallery.innerHTML = '';
+            gallery.related.forEach(img => {
+                const col = document.createElement('div');
+                col.className = 'col-4';
+                col.innerHTML = `<img src="${img}" class="img-fluid rounded" alt="Related">`;
+                relatedGallery.appendChild(col);
+            });
+            
+            showDetailPage('galleryDetail');
+        }
+
+        function showDetailPage(pageId) {
+            document.getElementById('mainContent').style.display = 'none';
+            document.querySelectorAll('.detail-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function hideDetailPage() {
+            document.getElementById('mainContent').style.display = 'block';
+            document.querySelectorAll('.detail-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEkskul();
+            loadFacilities();
+            loadNews();
+            loadGallery();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stats-number');
+        const speed = 200;
+
+        const countUp = (counter) => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => countUp(counter), 10);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        // Intersection Observer for counter animation
+        const observerOptions = {
+            threshold: 0.7
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    countUp(counter);
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                // navbar.style.background = 'linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                // navbar.style.background = 'linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Form submission handler
+        document.querySelector('form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Show success message
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-success alert-dismissible fade show mt-3';
+            alertDiv.innerHTML = `
+                <strong>Terima kasih!</strong> Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            this.appendChild(alertDiv);
+            this.reset();
+            
+            // Remove alert after 5 seconds
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
