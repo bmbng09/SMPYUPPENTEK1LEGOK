@@ -22,215 +22,30 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Admin Styles */
-        .admin-section {
-            display: none;
-            min-height: 100vh;
-            background-color: #f8f9fa;
-        }
-
-        .admin-section.active {
-            display: block;
-        }
-
-        .admin-navbar {
-            background: var(--dark-color);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .admin-sidebar {
-            background: white;
-            min-height: calc(100vh - 70px);
-            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-            padding-top: 2rem;
-        }
-
-        .admin-sidebar .nav-link {
-            color: var(--dark-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0;
-            transition: all 0.3s ease;
-        }
-
-        .admin-sidebar .nav-link:hover {
-            background-color: var(--light-bg);
-            color: var(--primary-color);
-        }
-
-        .admin-sidebar .nav-link.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .admin-content {
-            padding: 2rem;
-        }
-
-        .admin-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        .login-container {
-            max-width: 400px;
-            margin: 100px auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .btn-admin {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-admin:hover {
-            background: #1e3a8a;
-            color: white;
-        }
-
-        .btn-danger-custom {
-            background: #dc2626;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-danger-custom:hover {
-            background: #b91c1c;
-            color: white;
-        }
-
-        .table-actions {
-            white-space: nowrap;
-        }
-
-        .table-actions button {
-            margin: 0 2px;
-        }
-
-        .form-image-preview {
-            max-width: 200px;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-
-        /* Toast Notification */
-        .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
-
-        .custom-toast {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            padding: 1rem 1.5rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            min-width: 300px;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .toast-success {
-            border-left: 4px solid #10b981;
-        }
-
-        .toast-error {
-            border-left: 4px solid #ef4444;
-        }
-
-        .toast-icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .toast-success .toast-icon {
-            color: #10b981;
-        }
-
-        .toast-error .toast-icon {
-            color: #ef4444;
-        }
-
-        /* Admin Button */
-        .admin-float-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--secondary-color);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .admin-float-btn:hover {
-            background: #dc2626;
-            transform: scale(1.1);
-        }
-
         /* Main Styles */
         .navbar {
-            /* background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%); */
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px); /* Safari */
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-.navbar-brand,
-.navbar-nav .nav-link {
-  color: #fff !important;
-  font-weight: 600; /* lebih tebal */
-  text-shadow:
-    0 1px 3px rgba(0,0,0,0.6),
-    0 0 8px rgba(0,0,0,0.3);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600; /* lebih tebal */
+            text-shadow:
+                0 1px 3px rgba(0,0,0,0.6),
+                0 0 8px rgba(0,0,0,0.3);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
 
-/* Hover jadi hitam */
-.navbar-nav .nav-link:hover,
-.navbar-brand:hover {
-  color: #000 !important;
-  text-shadow: 0 1px 3px rgba(255,255,255,0.6);
-}
-
+        /* Hover jadi hitam */
+        .navbar-nav .nav-link:hover,
+        .navbar-brand:hover {
+            color: #000 !important;
+            text-shadow: 0 1px 3px rgba(255,255,255,0.6);
+        }
 
         .navbar-brand {
             font-weight: bold;
@@ -264,10 +79,7 @@
         }
 
         .hero-section {
-            /* background: linear-gradient(rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8)), ('assets\header.jpg') center/cover; */
-            background: 
-            /* linear-gradient(rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8)), */
-            url("header.jpg") center/cover no-repeat;
+            background: url("header.jpg") center/cover no-repeat;
             color: white;
             padding: 150px 0 100px;
             position: relative;
@@ -525,13 +337,14 @@
         .stats-number {
             font-size: 3rem;
             font-weight: bold;
-            color: #000000;
+            color: #ffffff;
             margin-bottom: 10px;
         }
 
         .stats-label {
-            color: #000000;
+            color: #ffffff;
             font-size: 1.1rem;
+            
         }
 
         /* Achievement Section */
@@ -666,333 +479,16 @@
             height: auto;
             transform: translate(-5px, -3px);
         }
-
     </style>
 </head>
 <body>
-    <!-- Admin Login Section -->
-    <div id="adminLogin" class="admin-section">
-        <div class="login-container">
-            <h2 class="text-center mb-4">Admin Login</h2>
-            <form onsubmit="handleLogin(event)">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" required>
-                </div>
-                <button type="submit" class="btn btn-admin w-100">Login</button>
-            </form>
-            <div class="text-center mt-3">
-                <!-- <small class="text-muted">Default: admin / admin123</small> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Admin Dashboard Section -->
-    <div id="adminDashboard" class="admin-section">
-        <nav class="admin-navbar">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">SMP YUPPENTEK 1 LEGOK Admin Panel</h4>
-                    <button class="btn btn-outline-light" onclick="handleLogout()">
-                        <i class="bi bi-box-arrow-right"></i> Logout
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 admin-sidebar">
-                    <nav class="nav flex-column">
-                        <a class="nav-link active" href="#" onclick="showAdminSection('dashboard')">
-                            <i class="bi bi-speedometer2"></i> Dashboard
-                        </a>
-                        <a class="nav-link" href="#" onclick="showAdminSection('news')">
-                            <i class="bi bi-newspaper"></i> Kelola Berita
-                        </a>
-                        <a class="nav-link" href="#" onclick="showAdminSection('gallery')">
-                            <i class="bi bi-images"></i> Kelola Galeri
-                        </a>
-                        <a class="nav-link" href="#" onclick="showAdminSection('ekskul')">
-                            <i class="bi bi-star"></i> Kelola Ekstrakurikuler
-                        </a>
-                        <a class="nav-link" href="#" onclick="showAdminSection('facilities')">
-                            <i class="bi bi-building"></i> Kelola Fasilitas
-                        </a>
-                    </nav>
-                </div>
-                <div class="col-md-9 admin-content">
-                    <!-- Dashboard Content -->
-                    <div id="adminDashboardContent" class="admin-content-section">
-                        <h2>Dashboard</h2>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="admin-card text-center">
-                                    <h3 id="totalNews">0</h3>
-                                    <p class="text-muted">Total Berita</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="admin-card text-center">
-                                    <h3 id="totalGallery">0</h3>
-                                    <p class="text-muted">Total Galeri</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="admin-card text-center">
-                                    <h3 id="totalEkskul">8</h3>
-                                    <p class="text-muted">Total Ekstrakurikuler</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="admin-card text-center">
-                                    <h3 id="totalFacilities">6</h3>
-                                    <p class="text-muted">Total Fasilitas</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Management -->
-                    <div id="adminNewsContent" class="admin-content-section" style="display: none;">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2>Kelola Berita</h2>
-                            <button class="btn btn-admin" onclick="showNewsForm()">
-                                <i class="bi bi-plus"></i> Tambah Berita
-                            </button>
-                        </div>
-                        <div class="admin-card">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Judul</th>
-                                        <th>Tanggal</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="newsTableBody">
-                                    <!-- News rows will be inserted here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- News Form -->
-                    <div id="newsForm" class="admin-content-section" style="display: none;">
-                        <h2 id="newsFormTitle">Tambah Berita</h2>
-                        <div class="admin-card">
-                            <form onsubmit="handleNewsSubmit(event)">
-                                <input type="hidden" id="newsId">
-                                <div class="mb-3">
-                                    <label for="newsTitleInput" class="form-label">Judul Berita</label>
-                                    <input type="text" class="form-control" id="newsTitleInput" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="newsDateInput" class="form-label">Tanggal</label>
-                                    <input type="date" class="form-control" id="newsDateInput" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="newsAuthorInput" class="form-label">Penulis</label>
-                                    <input type="text" class="form-control" id="newsAuthorInput" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="newsImageInput" class="form-label">URL Gambar</label>
-                                    <input type="url" class="form-control" id="newsImageInput" required>
-                                    <img id="newsImagePreview" class="form-image-preview" style="display: none;">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="newsContentInput" class="form-label">Konten</label>
-                                    <textarea class="form-control" id="newsContentInput" rows="10" required></textarea>
-                                </div>
-                                <div class="d-flex gap-2">
-                                    <button type="submit" class="btn btn-admin">Simpan</button>
-                                    <button type="button" class="btn btn-secondary" onclick="showAdminSection('news')">Batal</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Management -->
-                    <div id="adminGalleryContent" class="admin-content-section" style="display: none;">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2>Kelola Galeri</h2>
-                            <button class="btn btn-admin" onclick="showGalleryForm()">
-                                <i class="bi bi-plus"></i> Tambah Galeri
-                            </button>
-                        </div>
-                        <div class="admin-card">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Judul</th>
-                                        <th>Tanggal</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="galleryTableBody">
-                                    <!-- Gallery rows will be inserted here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Form -->
-                    <div id="galleryForm" class="admin-content-section" style="display: none;">
-                        <h2 id="galleryFormTitle">Tambah Galeri</h2>
-                        <div class="admin-card">
-                            <form onsubmit="handleGallerySubmit(event)">
-                                <input type="hidden" id="galleryId">
-                                <div class="mb-3">
-                                    <label for="galleryTitleInput" class="form-label">Judul Kegiatan</label>
-                                    <input type="text" class="form-control" id="galleryTitleInput" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="galleryDateInput" class="form-label">Tanggal</label>
-                                    <input type="date" class="form-control" id="galleryDateInput" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="galleryLocationInput" class="form-label">Lokasi</label>
-                                    <input type="text" class="form-control" id="galleryLocationInput" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="galleryImageInput" class="form-label">URL Gambar Utama</label>
-                                    <input type="url" class="form-control" id="galleryImageInput" required>
-                                    <img id="galleryImagePreview" class="form-image-preview" style="display: none;">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="galleryDescriptionInput" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control" id="galleryDescriptionInput" rows="5" required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">URL Gambar Terkait (pisahkan dengan koma)</label>
-                                    <input type="text" class="form-control" id="galleryRelatedInput" 
-                                           placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg">
-                                </div>
-                                <div class="d-flex gap-2">
-                                    <button type="submit" class="btn btn-admin">Simpan</button>
-                                    <button type="button" class="btn btn-secondary" onclick="showAdminSection('gallery')">Batal</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Ekstrakurikuler Management -->
-                    <div id="adminEkskulContent" class="admin-content-section" style="display: none;">
-                        <h2>Kelola Ekstrakurikuler</h2>
-                        <div class="admin-card">
-                            <div class="alert alert-info">
-                                <i class="bi bi-info-circle"></i> Ekstrakurikuler bersifat statis. Hubungi developer untuk modifikasi.
-                            </div>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Ekstrakurikuler</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Pramuka</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>PMR</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>PASKBIRA</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Tae Kwon Do</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Voli</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr> -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Facilities Management -->
-                    <div id="adminFacilitiesContent" class="admin-content-section" style="display: none;">
-                        <h2>Kelola Fasilitas</h2>
-                        <div class="admin-card">
-                            <div class="alert alert-info">
-                                <i class="bi bi-info-circle"></i> Fasilitas bersifat statis. Hubungi developer untuk modifikasi.
-                            </div>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Fasilitas</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Laboratorium IPA</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Laboratorium Komputer</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Perpustakaan</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Lapangan Olahraga</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Aula Serbaguna</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <td>6</td>
-                                        <td>Ruang Multimedia</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                    </tr> -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Main Content -->
-    <!-- <div id="mainContent">
-        <div class="admin-float-btn" onclick="showAdminLogin()" title="Admin Panel">
-            <i class="bi bi-gear"></i>
-    </div> -->
-
+    <div id="mainContent">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#home">
-                    <img src="logosmp.png" alt="logosmpyupp" class="logo">SMP YUPPENTEK 1 LEGOK
+                    <img src="logosmp.png" alt="logosmpyupp" class="logo">SMP Yuppentek 1 Legok
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -1017,9 +513,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#news">Berita</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#gallery">Galeri</a>
-                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Kontak</a>
                         </li>
@@ -1045,25 +538,25 @@
                             <div class="col-6 mb-3">
                                 <div class="stats-box" data-aos="fade-up" data-aos-delay="100">
                                     <div class="stats-number" data-count="195">0</div>
-                                    <div class="stats-label">Siswa Aktif</div>
+                                    <div class="stats-label"><b>Siswa Aktif</b></div>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="stats-box" data-aos="fade-up" data-aos-delay="200">
                                     <div class="stats-number" data-count="98">0</div>
-                                    <div class="stats-label">% Kelulusan</div>
+                                    <div class="stats-label"><b>% Kelulusan</b></div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="stats-box" data-aos="fade-up" data-aos-delay="300">
                                     <div class="stats-number" data-count="32">0</div>
-                                    <div class="stats-label">Guru Profesional</div>
+                                    <div class="stats-label"><b>Guru Profesional</b></div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="stats-box" data-aos="fade-up" data-aos-delay="400">
                                     <div class="stats-number" data-count="5"></div>
-                                    <div class="stats-label">Ekstrakurikuler</div>
+                                    <div class="stats-label"><b>Ekstrakurikuler</b></div>
                                 </div>
                             </div>
                         </div>
@@ -1165,13 +658,6 @@
                             <p>Tingkat Kabupaten Tangerang 2022</p>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="achievement-card">
-                            <i class="bi bi-music-note achievement-icon"></i>
-                            <h5>Juara 2 FLS2N</h5>
-                            <p>Cabang Tari Tradisional 2023</p>
-                        </div>
-                    </div> -->
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="achievement-card">
                             <i class="bi bi-people achievement-icon"></i>
@@ -1179,13 +665,6 @@
                             <p>PSB Cup 2016</p>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="achievement-card">
-                            <i class="bi bi-palette achievement-icon"></i>
-                            <h5>Juara 1 Lomba Poster</h5>
-                            <p>Hari Lingkungan Hidup 2023</p>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -1201,23 +680,10 @@
                     <!-- News will be dynamically loaded here -->
                 </div>
                 <div class="text-center mt-4">
-                    <a href="#" class="btn-primary-custom">Lihat Semua Berita</a>
+                    <a href="https://www.instagram.com/smpyuppentek1legok/?utm_source=ig_web_button_share_sheet" class="btn-primary-custom">Lihat Semua Berita</a>
                 </div>
             </div>
         </section>
-
-        <!-- Gallery Section -->
-        <!-- <section id="gallery" class="py-5 bg-light">
-            <div class="container">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="section-title">Galeri Kegiatan</h2>
-                    <p class="lead">Dokumentasi kegiatan dan prestasi sekolah</p>
-                </div>
-                <div class="row g-3" id="galleryContainer">
-                    <!-- Gallery items will be dynamically loaded here -->
-                <!-- </div>
-            </div>
-        </section> --> -->
 
         <!-- Contact Section -->
         <section id="contact" class="py-5">
@@ -1300,7 +766,6 @@
                             <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
                             <a href="https://www.instagram.com/smpyuppentek1legok/?utm_source=ig_web_button_share_sheet" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
                             <a href="https://www.tiktok.com/@osis_yusalegta?is_from_webapp=1&sender_device=pc" class="text-white me-3"><i class="bi bi-tiktok fs-5"></i></a>
-                            <!-- <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a> -->
                         </div>
                     </div>
                     <div class="col-lg-4 mb-4">
@@ -1309,9 +774,6 @@
                             <a href="brosur.pdf" class="d-block mb-2">SPMB</a>
                             <a href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/20603231"
                                 class="d-block mb-2">Data Pendidikan</a>
-                            <!-- <a href="prestasi.html" class="d-block mb-2">Prestasi</a>
-                            <a href="#" class="d-block mb-2">Alumni</a>
-                            <a href="#" class="d-block mb-2">Karir</a> -->
                         </div>
                     </div>
                     <div class="col-lg-4 mb-4">
@@ -1432,46 +894,6 @@
         </div>
     </div>
 
-    <div id="galleryDetail" class="detail-page">
-        <button class="back-button" onclick="hideDetailPage()">
-            <i class="bi bi-arrow-left"></i> Kembali
-        </button>
-        <div class="detail-header">
-            <div class="container">
-                <h1 id="galleryTitle">Detail Galeri</h1>
-                <p class="lead">Dokumentasi kegiatan SMP Yuppentek 1 Legok</p>
-            </div>
-        </div>
-        <div class="detail-content">
-            <div class="detail-image">
-                <img id="galleryImage" src="" alt="Gallery Image">
-            </div>
-            <div class="detail-info">
-                <h3 id="galleryActivityTitle">Judul Kegiatan</h3>
-                <p id="galleryDescription">Deskripsi kegiatan akan ditampilkan di sini.</p>
-                
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <h5>Tanggal Kegiatan</h5>
-                        <p id="galleryDate">Tanggal kegiatan</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5>Lokasi</h5>
-                        <p id="galleryLocation">Lokasi kegiatan</p>
-                    </div>
-                </div>
-                
-                <h4 class="mt-4">Dokumentasi Lainnya</h4>
-                <div class="row g-3" id="relatedGallery">
-                    <!-- Related gallery items will be inserted here -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer"></div>
-
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1482,172 +904,90 @@
             once: true
         });
 
-        // Data Management
-        class DataManager {
-            constructor() {
-                this.initializeData();
+        // Static Data
+        const newsData = [
+            {
+                id: 1,
+                title: "Juara 2 Kategori Kyorugi SMP Putri - Tae Kwon Do",
+                date: "2025-11-30",
+                author: "Tim Humas",
+                image: "berita3.png",
+                content: `Rina Aulia - Siswi SMP Yuppentek 1 Legok yang berhasil meraih juara 2 kategori Kyorugi SMP Putri dalam Kejuaraan Tae Kwon Do.`
+            },
+            {
+                id: 2,
+                title: "Juara Lomba Tata Upacara Bendera",
+                date: "2022-10-26",
+                author: "Panitia PPDB",
+                image: "berita2.webp",
+                content: `SMP Yuppentek 1 Legok berhasil raih Juara 1 Tingkat Wilayah III dan Juara 3 Tingkat Kabupaten Tangerang dalam Lomba Tata Upacara Bendera.`
+            },
+            {
+                id: 3,
+                title: "Pembukaan Sistem Penerimaan Murid Baru (SPMB) ",
+                date: "2025-01-01",
+                author: "Panitia SPMB",
+                image: "berita4.png",
+                content: `<p><strong>SPMB</strong> - Pembukaan pendaftaran untuk siswa/i baru`
             }
+        ];
 
-            initializeData() {
-                // Initialize news data if not exists
-                if (!localStorage.getItem('smp_news')) {
-                    const defaultNews = [
-                        {
-                            id: 1,
-                            title: "SMP Yuppentek 1 Legok Raih Juara 1 Olimpiade Sains Provinsi",
-                            date: "2022-09-26",
-                            author: "Tim Humas",
-                            image: "https://picsum.photos/seed/smp-news1/400/250",
-                            content: `<p><strong>Serang</strong> - Tim Olimpiade Sains SMP Yuppentek 1 Legok berhasil meraih juara 1 dalam Olimpiade Sains Tingkat Provinsi Banten yang diselenggarakan di Serang. Prestasi ini menambah deretan pencapaian sekolah di bidang akademik.</p>
-                            <p>Kompetisi yang diikuti oleh 100 tim SMP se-Banten ini berlangsung selama 2 hari. Tim Yuppentek 1 Legok yang terdiri dari 3 siswa berhasil mengungguli pesaing-pesaingnya dengan skor yang memukau.</p>`
-                        },
-                        {
-                            id: 2,
-                            title: "Pembukaan PPDB Tahun Ajaran 2024/2025",
-                            date: "2023-11-10",
-                            author: "Panitia PPDB",
-                            image: "https://picsum.photos/seed/smp-news2/400/250",
-                            content: `<p><strong>Legok</strong> - Panitia Penerimaan Peserta Didik Baru (PPDB) SMP Yuppentek 1 Legok secara resmi membuka pendaftaran untuk tahun ajaran 2024/2025. Pendaftaran dilakukan secara online melalui website resmi sekolah.</p>
-                            <p>Tahun ini sekolah menyediakan kuota 320 siswa baru dengan seleksi berdasarkan nilai akademik, prestasi, dan minat bakat.</p>`
-                        },
-                        {
-                            id: 3,
-                            title: "Peringatan Hari Pahlawan di SMP Yuppentek 1 Legok",
-                            date: "2023-11-05",
-                            author: "OSIS",
-                            image: "https://picsum.photos/seed/smp-news3/400/250",
-                            content: `<p><strong>Legok</strong> - SMP Yuppentek 1 Legok menggelar upacara peringatan Hari Pahlawan dengan khidmat. Kegiatan ini dihadiri oleh seluruh siswa, guru, dan staf sekolah.</p>
-                            <p>Dalam sambutannya, Kepala Sekolah menekankan pentingnya meneladani semangat para pahlawan dalam belajar dan mengabdi pada bangsa.</p>`
-                        }
-                    ];
-                    localStorage.setItem('smp_news', JSON.stringify(defaultNews));
-                }
-
-                // Initialize gallery data if not exists
-                if (!localStorage.getItem('smp_gallery')) {
-                    const defaultGallery = [
-                        {
-                            id: 1,
-                            title: "Upacara Peringatan Hari Kemerdekaan",
-                            date: "2023-08-17",
-                            location: "Lapangan Sekolah",
-                            image: "https://picsum.photos/seed/smp-gallery1/400/300",
-                            description: "Upacara peringatan Hari Kemerdekaan RI ke-78 dilaksanakan dengan khidmat dan meriah.",
-                            related: ["https://picsum.photos/seed/smp-gallery1-1/200/150", "https://picsum.photos/seed/smp-gallery1-2/200/150", "https://picsum.photos/seed/smp-gallery1-3/200/150"]
-                        },
-                        {
-                            id: 2,
-                            title: "Latihan Pramuka Sabtu Minggu",
-                            date: "2023-09-02",
-                            location: "Lapangan Sekolah",
-                            image: "pramuka.webp",
-                            description: "Kegiatan latihan Pramuka Sabtu Minggu untuk membentuk karakter disiplin dan kepemimpinan.",
-                            related: ["https://picsum.photos/seed/smp-gallery2-1/200/150", "https://picsum.photos/seed/smp-gallery2-2/200/150", "https://picsum.photos/seed/smp-gallery2-3/200/150"]
-                        },
-                        {
-                            id: 3,
-                            title: "Lomba Cerdas Cermat antar Kelas",
-                            date: "2023-09-15",
-                            location: "Aula Sekolah",
-                            image: "https://picsum.photos/seed/smp-gallery3/400/300",
-                            description: "Lomba cerdas cermat antar kelas untuk meningkatkan semangat kompetisi dan prestasi akademik.",
-                            related: ["https://picsum.photos/seed/smp-gallery3-1/200/150", "https://picsum.photos/seed/smp-gallery3-2/200/150", "https://picsum.photos/seed/smp-gallery3-3/200/150"]
-                        },
-                        {
-                            id: 4,
-                            title: "Workshop Literasi Digital",
-                            date: "2023-10-05",
-                            location: "Laboratorium Komputer",
-                            image: "https://picsum.photos/seed/smp-gallery4/400/300",
-                            description: "Workshop literasi digital untuk membekali siswa dengan kemampuan teknologi informasi.",
-                            related: ["https://picsum.photos/seed/smp-gallery4-1/200/150", "https://picsum.photos/seed/smp-gallery4-2/200/150", "https://picsum.photos/seed/smp-gallery4-3/200/150"]
-                        },
-                        {
-                            id: 5,
-                            title: "Pertandingan Futsal Antar Kelas",
-                            date: "2023-10-20",
-                            location: "Lapangan Olahraga",
-                            image: "https://picsum.photos/seed/smp-gallery5/400/300",
-                            description: "Turnamen futsal antar kelas untuk meningkatkan semangat sportivitas dan kesehatan.",
-                            related: ["https://picsum.photos/seed/smp-gallery5-1/200/150", "https://picsum.photos/seed/smp-gallery5-2/200/150", "https://picsum.photos/seed/smp-gallery5-3/200/150"]
-                        },
-                        {
-                            id: 6,
-                            title: "Peringatan Maulid Nabi Muhammad SAW",
-                            date: "2023-09-28",
-                            location: "Aula Sekolah",
-                            image: "https://picsum.photos/seed/smp-gallery6/400/300",
-                            description: "Peringatan Maulid Nabi Muhammad SAW dengan berbagai kegiatan religius dan keagamaan.",
-                            related: ["https://picsum.photos/seed/smp-gallery6-1/200/150", "https://picsum.photos/seed/smp-gallery6-2/200/150", "https://picsum.photos/seed/smp-gallery6-3/200/150"]
-                        }
-                    ];
-                    localStorage.setItem('smp_gallery', JSON.stringify(defaultGallery));
-                }
+        const galleryData = [
+            {
+                id: 1,
+                title: "Upacara Peringatan Hari Kemerdekaan",
+                date: "2023-08-17",
+                location: "Lapangan Sekolah",
+                image: "https://picsum.photos/seed/smp-gallery1/400/300",
+                description: "Upacara peringatan Hari Kemerdekaan RI ke-78 dilaksanakan dengan khidmat dan meriah.",
+                related: ["https://picsum.photos/seed/smp-gallery1-1/200/150", "https://picsum.photos/seed/smp-gallery1-2/200/150", "https://picsum.photos/seed/smp-gallery1-3/200/150"]
+            },
+            {
+                id: 2,
+                title: "Latihan Pramuka Sabtu Minggu",
+                date: "2023-09-02",
+                location: "Lapangan Sekolah",
+                image: "pramuka.webp",
+                description: "Kegiatan latihan Pramuka Sabtu Minggu untuk membentuk karakter disiplin dan kepemimpinan.",
+                related: ["https://picsum.photos/seed/smp-gallery2-1/200/150", "https://picsum.photos/seed/smp-gallery2-2/200/150", "https://picsum.photos/seed/smp-gallery2-3/200/150"]
+            },
+            {
+                id: 3,
+                title: "Lomba Cerdas Cermat antar Kelas",
+                date: "2023-09-15",
+                location: "Aula Sekolah",
+                image: "https://picsum.photos/seed/smp-gallery3/400/300",
+                description: "Lomba cerdas cermat antar kelas untuk meningkatkan semangat kompetisi dan prestasi akademik.",
+                related: ["https://picsum.photos/seed/smp-gallery3-1/200/150", "https://picsum.photos/seed/smp-gallery3-2/200/150", "https://picsum.photos/seed/smp-gallery3-3/200/150"]
+            },
+            {
+                id: 4,
+                title: "Workshop Literasi Digital",
+                date: "2023-10-05",
+                location: "Laboratorium Komputer",
+                image: "https://picsum.photos/seed/smp-gallery4/400/300",
+                description: "Workshop literasi digital untuk membekali siswa dengan kemampuan teknologi informasi.",
+                related: ["https://picsum.photos/seed/smp-gallery4-1/200/150", "https://picsum.photos/seed/smp-gallery4-2/200/150", "https://picsum.photos/seed/smp-gallery4-3/200/150"]
+            },
+            {
+                id: 5,
+                title: "Pertandingan Futsal Antar Kelas",
+                date: "2023-10-20",
+                location: "Lapangan Olahraga",
+                image: "https://picsum.photos/seed/smp-gallery5/400/300",
+                description: "Turnamen futsal antar kelas untuk meningkatkan semangat sportivitas dan kesehatan.",
+                related: ["https://picsum.photos/seed/smp-gallery5-1/200/150", "https://picsum.photos/seed/smp-gallery5-2/200/150", "https://picsum.photos/seed/smp-gallery5-3/200/150"]
+            },
+            {
+                id: 6,
+                title: "Peringatan Maulid Nabi Muhammad SAW",
+                date: "2023-09-28",
+                location: "Aula Sekolah",
+                image: "https://picsum.photos/seed/smp-gallery6/400/300",
+                description: "Peringatan Maulid Nabi Muhammad SAW dengan berbagai kegiatan religius dan keagamaan.",
+                related: ["https://picsum.photos/seed/smp-gallery6-1/200/150", "https://picsum.photos/seed/smp-gallery6-2/200/150", "https://picsum.photos/seed/smp-gallery6-3/200/150"]
             }
-
-            getNews() {
-                return JSON.parse(localStorage.getItem('smp_news') || '[]');
-            }
-
-            getGallery() {
-                return JSON.parse(localStorage.getItem('smp_gallery') || '[]');
-            }
-
-            addNews(news) {
-                const newsList = this.getNews();
-                news.id = Date.now();
-                newsList.unshift(news);
-                localStorage.setItem('smp_news', JSON.stringify(newsList));
-                return news;
-            }
-
-            updateNews(id, updatedNews) {
-                const newsList = this.getNews();
-                const index = newsList.findIndex(n => n.id === id);
-                if (index !== -1) {
-                    newsList[index] = { ...newsList[index], ...updatedNews };
-                    localStorage.setItem('smp_news', JSON.stringify(newsList));
-                    return true;
-                }
-                return false;
-            }
-
-            deleteNews(id) {
-                const newsList = this.getNews();
-                const filtered = newsList.filter(n => n.id !== id);
-                localStorage.setItem('smp_news', JSON.stringify(filtered));
-                return true;
-            }
-
-            addGallery(gallery) {
-                const galleryList = this.getGallery();
-                gallery.id = Date.now();
-                galleryList.unshift(gallery);
-                localStorage.setItem('smp_gallery', JSON.stringify(galleryList));
-                return gallery;
-            }
-
-            updateGallery(id, updatedGallery) {
-                const galleryList = this.getGallery();
-                const index = galleryList.findIndex(g => g.id === id);
-                if (index !== -1) {
-                    galleryList[index] = { ...galleryList[index], ...updatedGallery };
-                    localStorage.setItem('smp_gallery', JSON.stringify(galleryList));
-                    return true;
-                }
-                return false;
-            }
-
-            deleteGallery(id) {
-                const galleryList = this.getGallery();
-                const filtered = galleryList.filter(g => g.id !== id);
-                localStorage.setItem('smp_gallery', JSON.stringify(filtered));
-                return true;
-            }
-        }
-
-        // Initialize data manager
-        const dataManager = new DataManager();
+        ];
 
         // Ekstrakurikuler data (static)
         const ekskulData = {
@@ -1801,10 +1141,9 @@
 
         function loadNews() {
             const container = document.getElementById('newsContainer');
-            const newsList = dataManager.getNews();
             container.innerHTML = '';
             
-            newsList.slice(0, 3).forEach((news, index) => {
+            newsData.slice(0, 3).forEach((news, index) => {
                 const col = document.createElement('div');
                 col.className = 'col-lg-4 col-md-6';
                 col.setAttribute('data-aos', 'fade-up');
@@ -1827,10 +1166,9 @@
 
         function loadGallery() {
             const container = document.getElementById('galleryContainer');
-            const galleryList = dataManager.getGallery();
             container.innerHTML = '';
             
-            galleryList.forEach((item, index) => {
+            galleryData.forEach((item, index) => {
                 const col = document.createElement('div');
                 col.className = 'col-lg-4 col-md-6';
                 col.setAttribute('data-aos', 'fade-up');
@@ -1847,311 +1185,6 @@
                 
                 container.appendChild(col);
             });
-        }
-
-        // Admin Functions
-        function showAdminLogin() {
-            document.getElementById('mainContent').style.display = 'none';
-            document.getElementById('adminLogin').classList.add('active');
-            document.getElementById('adminDashboard').classList.remove('active');
-        }
-
-        function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (username === 'admin' && password === 'bams0906') {
-                document.getElementById('adminLogin').classList.remove('active');
-                document.getElementById('adminDashboard').classList.add('active');
-                loadAdminDashboard();
-                showToast('Login berhasil!', 'success');
-            } else {
-                showToast('Username atau password salah!', 'error');
-            }
-        }
-
-        function handleLogout() {
-            document.getElementById('adminDashboard').classList.remove('active');
-            document.getElementById('mainContent').style.display = 'block';
-            showToast('Logout berhasil!', 'success');
-        }
-
-        function showAdminSection(section) {
-            // Update sidebar active state
-            document.querySelectorAll('.admin-sidebar .nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Hide all content sections
-            document.querySelectorAll('.admin-content-section').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // Show selected section
-            switch(section) {
-                case 'dashboard':
-                    document.getElementById('adminDashboardContent').style.display = 'block';
-                    loadAdminDashboard();
-                    break;
-                case 'news':
-                    document.getElementById('adminNewsContent').style.display = 'block';
-                    loadNewsTable();
-                    break;
-                case 'gallery':
-                    document.getElementById('adminGalleryContent').style.display = 'block';
-                    loadGalleryTable();
-                    break;
-                case 'ekskul':
-                    document.getElementById('adminEkskulContent').style.display = 'block';
-                    break;
-                case 'facilities':
-                    document.getElementById('adminFacilitiesContent').style.display = 'block';
-                    break;
-            }
-        }
-
-        function loadAdminDashboard() {
-            const newsList = dataManager.getNews();
-            const galleryList = dataManager.getGallery();
-            
-            document.getElementById('totalNews').textContent = newsList.length;
-            document.getElementById('totalGallery').textContent = galleryList.length;
-        }
-
-        function loadNewsTable() {
-            const tbody = document.getElementById('newsTableBody');
-            const newsList = dataManager.getNews();
-            tbody.innerHTML = '';
-            
-            newsList.forEach((news, index) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${news.title}</td>
-                    <td>${formatDate(news.date)}</td>
-                    <td class="table-actions">
-                        <button class="btn btn-sm btn-primary" onclick="editNews(${news.id})">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger-custom" onclick="deleteNews(${news.id})">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function loadGalleryTable() {
-            const tbody = document.getElementById('galleryTableBody');
-            const galleryList = dataManager.getGallery();
-            tbody.innerHTML = '';
-            
-            galleryList.forEach((item, index) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${item.title}</td>
-                    <td>${formatDate(item.date)}</td>
-                    <td class="table-actions">
-                        <button class="btn btn-sm btn-primary" onclick="editGallery(${item.id})">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger-custom" onclick="deleteGallery(${item.id})">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function showNewsForm() {
-            document.getElementById('adminNewsContent').style.display = 'none';
-            document.getElementById('newsForm').style.display = 'block';
-            document.getElementById('newsFormTitle').textContent = 'Tambah Berita';
-            document.getElementById('newsId').value = '';
-            document.getElementById('newsTitleInput').value = '';
-            document.getElementById('newsDateInput').value = '';
-            document.getElementById('newsAuthorInput').value = '';
-            document.getElementById('newsImageInput').value = '';
-            document.getElementById('newsContentInput').value = '';
-            document.getElementById('newsImagePreview').style.display = 'none';
-        }
-
-        function showGalleryForm() {
-            document.getElementById('adminGalleryContent').style.display = 'none';
-            document.getElementById('galleryForm').style.display = 'block';
-            document.getElementById('galleryFormTitle').textContent = 'Tambah Galeri';
-            document.getElementById('galleryId').value = '';
-            document.getElementById('galleryTitleInput').value = '';
-            document.getElementById('galleryDateInput').value = '';
-            document.getElementById('galleryLocationInput').value = '';
-            document.getElementById('galleryImageInput').value = '';
-            document.getElementById('galleryDescriptionInput').value = '';
-            document.getElementById('galleryRelatedInput').value = '';
-            document.getElementById('galleryImagePreview').style.display = 'none';
-        }
-
-        function editNews(id) {
-            const news = dataManager.getNews().find(n => n.id === id);
-            if (news) {
-                document.getElementById('adminNewsContent').style.display = 'none';
-                document.getElementById('newsForm').style.display = 'block';
-                document.getElementById('newsFormTitle').textContent = 'Edit Berita';
-                document.getElementById('newsId').value = news.id;
-                document.getElementById('newsTitleInput').value = news.title;
-                document.getElementById('newsDateInput').value = news.date;
-                document.getElementById('newsAuthorInput').value = news.author;
-                document.getElementById('newsImageInput').value = news.image;
-                document.getElementById('newsContentInput').value = news.content;
-                
-                // Show image preview
-                const preview = document.getElementById('newsImagePreview');
-                preview.src = news.image;
-                preview.style.display = 'block';
-            }
-        }
-
-        function editGallery(id) {
-            const gallery = dataManager.getGallery().find(g => g.id === id);
-            if (gallery) {
-                document.getElementById('adminGalleryContent').style.display = 'none';
-                document.getElementById('galleryForm').style.display = 'block';
-                document.getElementById('galleryFormTitle').textContent = 'Edit Galeri';
-                document.getElementById('galleryId').value = gallery.id;
-                document.getElementById('galleryTitleInput').value = gallery.title;
-                document.getElementById('galleryDateInput').value = gallery.date;
-                document.getElementById('galleryLocationInput').value = gallery.location;
-                document.getElementById('galleryImageInput').value = gallery.image;
-                document.getElementById('galleryDescriptionInput').value = gallery.description;
-                document.getElementById('galleryRelatedInput').value = gallery.related.join(', ');
-                
-                // Show image preview
-                const preview = document.getElementById('galleryImagePreview');
-                preview.src = gallery.image;
-                preview.style.display = 'block';
-            }
-        }
-
-        function handleNewsSubmit(event) {
-            event.preventDefault();
-            
-            const newsData = {
-                title: document.getElementById('newsTitleInput').value,
-                date: document.getElementById('newsDateInput').value,
-                author: document.getElementById('newsAuthorInput').value,
-                image: document.getElementById('newsImageInput').value,
-                content: document.getElementById('newsContentInput').value
-            };
-            
-            const id = document.getElementById('newsId').value;
-            
-            if (id) {
-                // Update existing news
-                if (dataManager.updateNews(parseInt(id), newsData)) {
-                    showToast('Berita berhasil diperbarui!', 'success');
-                }
-            } else {
-                // Add new news
-                dataManager.addNews(newsData);
-                showToast('Berita berhasil ditambahkan!', 'success');
-            }
-            
-            showAdminSection('news');
-            loadNews(); // Reload news on main page
-        }
-
-        function handleGallerySubmit(event) {
-            event.preventDefault();
-            
-            const galleryData = {
-                title: document.getElementById('galleryTitleInput').value,
-                date: document.getElementById('galleryDateInput').value,
-                location: document.getElementById('galleryLocationInput').value,
-                image: document.getElementById('galleryImageInput').value,
-                description: document.getElementById('galleryDescriptionInput').value,
-                related: document.getElementById('galleryRelatedInput').value.split(',').map(url => url.trim()).filter(url => url)
-            };
-            
-            const id = document.getElementById('galleryId').value;
-            
-            if (id) {
-                // Update existing gallery
-                if (dataManager.updateGallery(parseInt(id), galleryData)) {
-                    showToast('Galeri berhasil diperbarui!', 'success');
-                }
-            } else {
-                // Add new gallery
-                dataManager.addGallery(galleryData);
-                showToast('Galeri berhasil ditambahkan!', 'success');
-            }
-            
-            showAdminSection('gallery');
-            loadGallery(); // Reload gallery on main page
-        }
-
-        function deleteNews(id) {
-            if (confirm('Apakah Anda yakin ingin menghapus berita ini?')) {
-                if (dataManager.deleteNews(id)) {
-                    showToast('Berita berhasil dihapus!', 'success');
-                    loadNewsTable();
-                    loadNews(); // Reload news on main page
-                }
-            }
-        }
-
-        function deleteGallery(id) {
-            if (confirm('Apakah Anda yakin ingin menghapus galeri ini?')) {
-                if (dataManager.deleteGallery(id)) {
-                    showToast('Galeri berhasil dihapus!', 'success');
-                    loadGalleryTable();
-                    loadGallery(); // Reload gallery on main page
-                }
-            }
-        }
-
-        // Image preview on input change
-        document.getElementById('newsImageInput')?.addEventListener('input', function(e) {
-            const preview = document.getElementById('newsImagePreview');
-            if (e.target.value) {
-                preview.src = e.target.value;
-                preview.style.display = 'block';
-            } else {
-                preview.style.display = 'none';
-            }
-        });
-
-        document.getElementById('galleryImageInput')?.addEventListener('input', function(e) {
-            const preview = document.getElementById('galleryImagePreview');
-            if (e.target.value) {
-                preview.src = e.target.value;
-                preview.style.display = 'block';
-            } else {
-                preview.style.display = 'none';
-            }
-        });
-
-        // Toast notification
-        function showToast(message, type = 'success') {
-            const toastContainer = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `custom-toast toast-${type}`;
-            toast.innerHTML = `
-                <i class="bi ${type === 'success' ? 'bi-check-circle' : 'bi-x-circle'} toast-icon"></i>
-                <div>
-                    <strong>${type === 'success' ? 'Success' : 'Error'}</strong>
-                    <div>${message}</div>
-                </div>
-            `;
-            
-            toastContainer.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
         }
 
         // Utility functions
@@ -2210,7 +1243,7 @@
         }
 
         function showNewsDetail(newsId) {
-            const news = dataManager.getNews().find(n => n.id === newsId);
+            const news = newsData.find(n => n.id === newsId);
             if (!news) return;
 
             document.getElementById('newsTitle').textContent = news.title;
@@ -2223,7 +1256,7 @@
         }
 
         function showGalleryDetail(galleryId) {
-            const gallery = dataManager.getGallery().find(g => g.id === galleryId);
+            const gallery = galleryData.find(g => g.id === galleryId);
             if (!gallery) return;
 
             document.getElementById('galleryTitle').textContent = gallery.title;
@@ -2325,10 +1358,8 @@
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                // navbar.style.background = 'linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%)';
                 navbar.style.backdropFilter = 'blur(10px)';
             } else {
-                // navbar.style.background = 'linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%)';
                 navbar.style.backdropFilter = 'none';
             }
         });
@@ -2353,6 +1384,4 @@
         });
     </script>
 </body>
-
 </html>
-
