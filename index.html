@@ -550,7 +550,7 @@
             transform: translate(-5px, -3px);
         }
 
-        .wa-floating {
+        /* .wa-floating {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -569,20 +569,88 @@
 
             .wa-floating img {
             display: block;
+        } */
+
+        .wa-wrapper {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.4s ease;
         }
+
+            .wa-wrapper.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+            .wa-text {
+            background: #0c0a5d;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+            .wa-floating {
+            background-color: #25D366;
+            border-radius: 50%;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            animation: wa-bounce 2.5s infinite;
+        }
+
+            .wa-floating:hover {
+            animation: none;
+            transform: scale(1.1);
+        }
+
+            @keyframes wa-bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-6px);
+            }
+            60% {
+                transform: translateY(-3px);
+            }
+        }
+
 
 
     </style>
 </head>
 <body>
-    <a href="https://wa.me/6288289532896"
+    <div class="wa-wrapper" id="waFloating">
+        <span class="wa-text">Butuh Info PPDB?</span>
+            <a href="https://wa.me/6285882571023?text=Halo%20Admin%20SMP%20Yuppentek%201%20Legok,%20saya%20ingin%20bertanya%20informasi%20PPDB."
+                class="wa-floating"
+                target="_blank"
+                aria-label="Chat WhatsApp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                    alt="WhatsApp"
+                    width="42">
+            </a>
+    </div>
+
+    <!-- <a href="https://wa.me/6288289532896"
        class="wa-floating"
        target="_blank"
        aria-label="Chat WhatsApp">
        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
             alt="WhatsApp"
             width="48">
-    </a>
+    </a> -->
     <!-- Main Content -->
     <div id="mainContent">
         <!-- Navbar -->
@@ -820,18 +888,13 @@
                             <div class="faq-answer">
                                 <p>Berikut adalah dokumen yang harus disiapkan untuk pendaftaran:</p>
                                 <ul>
+                                    <li>Mengisi Formulir Pendaftaran</li>
                                     <li>Fotokopi Akta Kelahiran (2 lembar)</li>
                                     <li>Fotokopi Kartu Keluarga (2 lembar)</li>
-                                    <li>Fotokopi Rapor Semester 1-5 (masing-masing 2 lembar)</li>
-                                    <li>Pasfoto terbaru ukuran 3x4 (3 lembar) dan 4x6 (3 lembar)</li>
-                                    <li>Surat Keterangan Lulus dari SD/MI (asli)</li>
-                                    <li>Fotokopi SKHUN SD/MI (jika sudah ada)</li>
-                                    <li>Fotokopi NISN (2 lembar)</li>
-                                    <li>Fotokopi KTP orang tua/wali (masing-masing 2 lembar)</li>
-                                    <li>Surat Keterangan Berkelakuan Baik dari sekolah asal</li>
-                                    <li>Bukti pembayaran pendaftaran</li>
+                                    <li>Photo Copy KTP Orang tua (2 lembar)</li>
+                                    <li>Photo Copy Kartu PIP (2 Lembar, Jika Memiliki)</li>
                                 </ul>
-                                <p><em>Catatan: Semua dokumen fotokopi dilegalisir kecuali pasfoto</em></p>
+                                <p><em>Catatan: Persyaratan Lainnya Menyusul Setelah Resmi Menjadi Peserta Didik   SMP YUPPENTEK 1 Legok</em></p>
                             </div>
                         </div>
 
@@ -1012,52 +1075,51 @@
                     </div>
                 </div> -->
                 <div class="row mt-4">
-  <div class="col-lg-8 mx-auto" data-aos="fade-up">
-    <div class="card shadow">
-      <div class="card-body p-4">
-        <h5 class="card-title mb-4">Kirim Pesan</h5>
+                    <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                        <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4">Kirim Pesan</h5>
 
-        <form onsubmit="kirimWA(); return false;">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" required>
-            </div>
+                            <form onsubmit="kirimWA(); return false;">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" required>
+                                </div>
 
-            <div class="col-md-6">
-              <input type="tel" id="telepon" class="form-control" placeholder="No. Telepon">
-            </div>
+                                <div class="col-md-6">
+                                <input type="tel" id="telepon" class="form-control" placeholder="No. Telepon">
+                                </div>
 
-            <div class="col-md-6">
-              <select id="subjek" class="form-control" required>
-                <option value="">Pilih Subjek</option>
-                <option>Pendaftaran Siswa</option>
-                <option>Kerjasama</option>
-                <option>Pertanyaan Umum</option>
-                <option>Lainnya</option>
-              </select>
-            </div>
+                                <div class="col-md-6">
+                                <select id="subjek" class="form-control" required>
+                                    <option value="">Pilih Subjek</option>
+                                    <option>Pendaftaran Siswa</option>
+                                    <option>Kerjasama</option>
+                                    <option>Pertanyaan Umum</option>
+                                    <option>Lainnya</option>
+                                </select>
+                                </div>
 
-            <div class="col-md-6">
-              <input type="text" id="asal" class="form-control" placeholder="Asal SD / Sekolah Sebelumnya">
-            </div>
+                                <div class="col-md-6">
+                                <input type="text" id="asal" class="form-control" placeholder="Asal SD / Sekolah Sebelumnya">
+                                </div>
 
-            <div class="col-12">
-              <textarea id="pesan" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
-            </div>
+                                <div class="col-12">
+                                <textarea id="pesan" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                                </div>
 
-            <div class="col-12 text-center">
-              <button type="submit" class="btn-primary-custom">
-                Kirim via WhatsApp
-              </button>
-            </div>
-          </div>
-        </form>
+                                <div class="col-12 text-center">
+                                <button type="submit" class="btn-primary-custom">
+                                    Kirim via WhatsApp
+                                </button>
+                                </div>
+                            </div>
+                            </form>
 
-      </div>
-    </div>
-  </div>
-</div>
-
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1636,10 +1698,10 @@
         const asal = document.getElementById("asal").value || "-";
         const pesan = document.getElementById("pesan").value;
 
-        const nomorWA = "6288289532896";
+        const nomorWA = "6285882571023";
 
         const text = 
-        `Halo Admin SMP Yuppentek 1 Legok,
+        `Halo bu Deni dari SMP Yuppentek 1 Legok,
 
         Saya ingin menghubungi pihak sekolah dengan detail berikut:
 
@@ -1743,6 +1805,16 @@
             setTimeout(() => {
                 alertDiv.remove();
             }, 5000);
+        });
+
+        const waFloating = document.getElementById("waFloating");
+
+            window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                waFloating.classList.add("show");
+            } else {
+                waFloating.classList.remove("show");
+            }
         });
     </script>
 </body>
