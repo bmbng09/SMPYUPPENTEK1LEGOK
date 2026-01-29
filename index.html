@@ -272,6 +272,76 @@
             margin-bottom: 15px;
         }
 
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--dark-color);
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.show {
+            padding: 0 25px 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+            color: #6c757d;
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark-color);
@@ -479,9 +549,40 @@
             height: auto;
             transform: translate(-5px, -3px);
         }
+
+        .wa-floating {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            border-radius: 50%;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            z-index: 9999;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .wa-floating:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+            }
+
+            .wa-floating img {
+            display: block;
+        }
+
+
     </style>
 </head>
 <body>
+    <a href="https://wa.me/6288289532896"
+       class="wa-floating"
+       target="_blank"
+       aria-label="Chat WhatsApp">
+       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            width="48">
+    </a>
     <!-- Main Content -->
     <div id="mainContent">
         <!-- Navbar -->
@@ -512,6 +613,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#news">Berita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#faq">FAQ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Kontak</a>
@@ -685,6 +789,164 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="lead">Pertanyaan yang sering diajukan tentang SMP Yuppentek 1 Legok</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Di mana lokasi SMP Yuppentek 1 Legok?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>SMP Yuppentek 1 Legok terletak di:</p>
+                                <p><strong>JL Raya PLP, No. 47 RT. 002 RW.03<br>
+                                Kel. Serdang Wetan, Kec. Legok<br>
+                                Kab. Tangerang, Banten 15820</strong></p>
+                                <p>Lokasi sekolah strategis dan mudah diakses dari berbagai arah. Terdapat angkutan umum yang melewati depan sekolah.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Dokumen apa saja yang harus disiapkan untuk pendaftaran?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Berikut adalah dokumen yang harus disiapkan untuk pendaftaran:</p>
+                                <ul>
+                                    <li>Fotokopi Akta Kelahiran (2 lembar)</li>
+                                    <li>Fotokopi Kartu Keluarga (2 lembar)</li>
+                                    <li>Fotokopi Rapor Semester 1-5 (masing-masing 2 lembar)</li>
+                                    <li>Pasfoto terbaru ukuran 3x4 (3 lembar) dan 4x6 (3 lembar)</li>
+                                    <li>Surat Keterangan Lulus dari SD/MI (asli)</li>
+                                    <li>Fotokopi SKHUN SD/MI (jika sudah ada)</li>
+                                    <li>Fotokopi NISN (2 lembar)</li>
+                                    <li>Fotokopi KTP orang tua/wali (masing-masing 2 lembar)</li>
+                                    <li>Surat Keterangan Berkelakuan Baik dari sekolah asal</li>
+                                    <li>Bukti pembayaran pendaftaran</li>
+                                </ul>
+                                <p><em>Catatan: Semua dokumen fotokopi dilegalisir kecuali pasfoto</em></p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Berapa biaya pendaftaran dan SPP di SMP Yuppentek 1 Legok?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Informasi biaya pendidikan untuk tahun ajaran 2024/2025:</p>
+                                <ul>
+                                    <li><strong>Biaya Pendaftaran:</strong> Rp 300.000</li>
+                                    <li><strong>Uang Pangkal:</strong> Rp 3.000.000 (dapat dicicil)</li>
+                                    <li><strong>SPP Bulanan:</strong> Rp 250.000</li>
+                                    <li><strong>Uang Seragam:</strong> Rp 1.500.000 (sekali bayar)</li>
+                                    <li><strong>Uang Buku & LKS:</strong> Rp 800.000 (sekali bayar)</li>
+                                </ul>
+                                <p>Sekolah menyediakan program beasiswa bagi siswa berprestasi dan kurang mampu. Informasi lebih lanjut dapat menghubungi bagian administrasi.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Apa saja ekstrakurikuler yang tersedia di sekolah?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>SMP Yuppentek 1 Legok menyediakan 5 ekstrakurikuler unggulan:</p>
+                                <ul>
+                                    <li><strong>Pramuka</strong> - Wajib untuk semua siswa, melatih kedisiplinan dan karakter</li>
+                                    <li><strong>PMR (Palang Merah Remaja)</strong> - Membentuk jiwa sosial dan keterampilan pertolongan pertama</li>
+                                    <li><strong>Paskibra</strong> - Melatih baris-berbaris dan nasionalisme</li>
+                                    <li><strong>Tae Kwon Do</strong> - Olahraga bela diri untuk kesehatan dan self defense</li>
+                                    <li><strong>Voli</strong> - Olahraga tim yang melatih kerjasama dan sportivitas</li>
+                                </ul>
+                                <p>Setiap ekstrakurikuler dibina oleh pelatih profesional dan berpengalaman di bidangnya.</p>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Apakah ada program beasiswa di SMP Yuppentek 1 Legok?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Ya, sekolah menyediakan beberapa jenis beasiswa:</p>
+                                <ul>
+                                    <li><strong>Beasiswa Prestasi:</strong> Untuk siswa dengan prestasi akademik/non-akademik tinggi</li>
+                                    <li><strong>Beasiswa Kurang Mampu:</strong> Untuk siswa dari keluarga ekonomi kurang mampu</li>
+                                    <li><strong>Beasiswa Yayasan:</strong> Program dari Yayasan Pendidikan Pancasila Karya Bhakti</li>
+                                </ul>
+                                <p>Syarat dan prosedur pendaftaran beasiswa dapat ditanyakan langsung ke bagian administrasi sekolah.</p>
+                            </div>
+                        </div> -->
+
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Bagaimana sistem pembelajaran di SMP Yuppentek 1 Legok?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sekolah menerapkan sistem pembelajaran modern dengan:</p>
+                                <ul>
+                                    <li>Kurikulum Merdeka dengan pengembangan kontekstual</li>
+                                    <li>Pembelajaran berbasis teknologi (digital learning)</li>
+                                    <li>Metode pembelajaran aktif dan student-centered</li>
+                                    <li>Kelas dengan maksimal 32 siswa</li>
+                                    <li>Program remedial dan pengayaan</li>
+                                    <li>Evaluasi berkelanjutan (assessment for learning)</li>
+                                </ul>
+                                <p>Sekolah juga dilengkapi dengan laboratorium dan ujian berbasis komputer untuk mendukung pembelajaran.</p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="faq-item" data-aos="fade-up" data-aos-delay="700">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Apakah ada layanan antar jemput siswa?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Ya, sekolah bekerja sama dengan penyedia jasa antar jemput terpercaya:</p>
+                                <ul>
+                                    <li>Armada terjamin keamanan dan kenyamanannya</li>
+                                    <li>Rute mencakup wilayah Legok dan sekitarnya</li>
+                                    <li>Sopir berpengalaman dan kenal wilayah</li>
+                                    <li>Biaya terjangkau dengan sistem pembayaran bulanan</li>
+                                </ul>
+                                <p>Informasi lebih lanjut tentang rute dan biaya dapat diperoleh di bagian administrasi sekolah.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="800">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Bagaimana cara melakukan pendaftaran online?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Prosedur pendaftaran online:</p>
+                                <ul>
+                                    <li>Mengisi formulir pendaftaran di website sekolah</li>
+                                    <li>Mengunggah dokumen yang diperlukan dalam format PDF/JPG</li>
+                                    <li>Melakukan pembayaran biaya pendaftaran via transfer</li>
+                                    <li>Mengkonfirmasi pembayaran ke admin</li>
+                                    <li>Mendapatkan jadwal tes seleksi</li>
+                                    <li>Mengikuti tes (akademik dan wawancara)</li>
+                                    <li>Melihat pengumuman hasil seleksi online</li>
+                                </ul>
+                                <p>Bagi yang kesulitan, tersedia bantuan pendaftaran di lokasi sekolah.</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="py-5">
             <div class="container">
@@ -715,7 +977,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-4">
+                <!-- <div class="row mt-4">
                     <div class="col-lg-8 mx-auto" data-aos="fade-up">
                         <div class="card shadow">
                             <div class="card-body p-4">
@@ -726,15 +988,12 @@
                                             <input type="text" class="form-control" placeholder="Nama Lengkap" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="email" class="form-control" placeholder="Email" required>
-                                        </div>
-                                        <div class="col-md-6">
                                             <input type="tel" class="form-control" placeholder="No. Telepon">
                                         </div>
                                         <div class="col-md-6">
                                             <select class="form-control">
                                                 <option>Pilih Subjek</option>
-                                                <option>Informasi PPDB</option>
+                                                <option>Pendaftaran Siswa</option>
                                                 <option>Kerjasama</option>
                                                 <option>Pertanyaan Umum</option>
                                                 <option>Lainnya</option>
@@ -744,14 +1003,61 @@
                                             <textarea class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="submit" class="btn-primary-custom">Kirim Pesan</button>
+                                            <button type="submit" class="btn-primary-custom">Daftar Sekarang</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <div class="row mt-4">
+  <div class="col-lg-8 mx-auto" data-aos="fade-up">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h5 class="card-title mb-4">Kirim Pesan</h5>
+
+        <form onsubmit="kirimWA(); return false;">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" required>
+            </div>
+
+            <div class="col-md-6">
+              <input type="tel" id="telepon" class="form-control" placeholder="No. Telepon">
+            </div>
+
+            <div class="col-md-6">
+              <select id="subjek" class="form-control" required>
+                <option value="">Pilih Subjek</option>
+                <option>Pendaftaran Siswa</option>
+                <option>Kerjasama</option>
+                <option>Pertanyaan Umum</option>
+                <option>Lainnya</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <input type="text" id="asal" class="form-control" placeholder="Asal SD / Sekolah Sebelumnya">
+            </div>
+
+            <div class="col-12">
+              <textarea id="pesan" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+            </div>
+
+            <div class="col-12 text-center">
+              <button type="submit" class="btn-primary-custom">
+                Kirim via WhatsApp
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
             </div>
         </section>
 
@@ -918,7 +1224,7 @@
                 id: 2,
                 title: "Juara Lomba Tata Upacara Bendera",
                 date: "2022-10-26",
-                author: "Panitia PPDB",
+                author: "Kesiswaan",
                 image: "berita2.webp",
                 content: `SMP Yuppentek 1 Legok berhasil raih Juara 1 Tingkat Wilayah III dan Juara 3 Tingkat Kabupaten Tangerang dalam Lomba Tata Upacara Bendera.`
             },
@@ -988,6 +1294,30 @@
                 related: ["https://picsum.photos/seed/smp-gallery6-1/200/150", "https://picsum.photos/seed/smp-gallery6-2/200/150", "https://picsum.photos/seed/smp-gallery6-3/200/150"]
             }
         ];
+
+                // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const allQuestions = document.querySelectorAll('.faq-question');
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // Close all other FAQs
+            allQuestions.forEach(q => {
+                if (q !== button) {
+                    q.classList.remove('active');
+                }
+            });
+            
+            allAnswers.forEach(a => {
+                if (a !== answer) {
+                    a.classList.remove('show');
+                }
+            });
+            
+            // Toggle current FAQ
+            button.classList.toggle('active');
+            answer.classList.toggle('show');
+        }
 
         // Ekstrakurikuler data (static)
         const ekskulData = {
@@ -1295,6 +1625,38 @@
             });
             window.scrollTo(0, 0);
         }
+
+        // 
+        // buat kirim wa
+        // 
+        function kirimWA() {
+        const nama = document.getElementById("nama").value;
+        const telepon = document.getElementById("telepon").value || "-";
+        const subjek = document.getElementById("subjek").value;
+        const asal = document.getElementById("asal").value || "-";
+        const pesan = document.getElementById("pesan").value;
+
+        const nomorWA = "6288289532896";
+
+        const text = 
+        `Halo Admin SMP Yuppentek 1 Legok,
+
+        Saya ingin menghubungi pihak sekolah dengan detail berikut:
+
+        Nama   : ${nama}
+        No HP  : ${telepon}
+        Subjek : ${subjek}
+        Asal   : ${asal}
+
+        Pesan:
+        ${pesan}
+
+        Terima kasih.`;
+
+        const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank");
+        }
+
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
