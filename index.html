@@ -63,6 +63,32 @@
             font-weight: 700;         /* tebal */
             text-shadow: none;        /* hapus glow biar clean */
         }
+        .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* cegah turun baris */
+}
+.navbar-brand {
+    font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+}
+@media (max-width: 576px) {
+    .navbar {
+        width: 95%;
+        padding: 8px 15px;
+    }
+
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+
+    .navbar-brand img.logo {
+        height: 28px;
+    }
+}
+.navbar .container {
+    flex-wrap: nowrap;
+}
 
         /* DEFAULT (halaman terang) → hitam */
 .navbar.scrolled .navbar-brand,
