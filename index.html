@@ -23,92 +23,131 @@
         }
 
         /* Main Styles */
-        .navbar {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            
-            width: 85%;
-            max-width: 1100px;
-            padding: 10px 30px;
+        /* ================= NAVBAR OVAL GLASS ================= */
 
-            background: rgba(255, 255, 255, 0.25); /* putih transparan */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+.navbar { 
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 85%;
+    max-width: 1100px;
+    padding: 10px 30px;
 
-            border-radius: 50px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
-            border: 1px solid rgba(255, 255, 255, 0.4); /* efek kaca */
-            
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.15),   /* shadow bawah */
-                0 2px 6px rgba(0,0,0,0.08);    /* shadow halus */
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 
-            z-index: 9999;
-        }
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.15),
+        0 2px 6px rgba(0,0,0,0.08);
 
-        .navbar .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .navbar-nav .nav-link {
-            font-size: 0.95rem;
-            padding: 8px 15px;
-        }
-        .navbar-brand,
-        .navbar-nav .nav-link {
-            color: #000 !important;   /* hitam */
-            font-weight: 700;         /* tebal */
-            text-shadow: none;        /* hapus glow biar clean */
-        }
-        .navbar-brand {
+    z-index: 9999;
+}
+
+/* ================= CONTAINER ================= */
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* 🔥 PENTING: biar menu bisa turun */
+    flex-wrap: wrap;
+}
+
+/* ================= BRAND ================= */
+
+.navbar-brand {
     display: flex;
     align-items: center;
     gap: 8px;
-    white-space: nowrap; /* cegah turun baris */
-}
-.navbar-brand {
+    white-space: nowrap;
+    font-weight: 700;
     font-size: clamp(0.9rem, 2.5vw, 1.4rem);
 }
-@media (max-width: 576px) {
-    .navbar {
-        width: 95%;
-        padding: 8px 15px;
-    }
 
-    .navbar-brand {
-        font-size: 0.9rem;
-    }
-
-    .navbar-brand img.logo {
-        height: 28px;
-    }
-}
-.navbar .container {
-    flex-wrap: nowrap;
+.navbar-brand img.logo {
+    height: 32px;
 }
 
-        /* DEFAULT (halaman terang) → hitam */
-.navbar.scrolled .navbar-brand,
-.navbar.scrolled .nav-link {
-    color: #000 !important;
+/* ================= NAV LINKS ================= */
+
+.navbar-nav .nav-link {
+    font-size: 0.95rem;
+    padding: 8px 15px;
+    font-weight: 700;
+    text-shadow: none;
 }
 
-/* HERO (halaman gelap) → putih */
+/* ================= COLOR CHANGE ON SCROLL ================= */
+
+/* HERO (atas gelap) → putih */
 .navbar:not(.scrolled) .navbar-brand,
 .navbar:not(.scrolled) .nav-link {
     color: #fff !important;
 }
 
-/* Icon menu */
+/* SETELAH SCROLL → hitam */
+.navbar.scrolled .navbar-brand,
+.navbar.scrolled .nav-link {
+    color: #000 !important;
+}
+
+/* ================= TOGGLER BUTTON ================= */
+
+.navbar-toggler {
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+/* Icon menu warna berubah */
 .navbar:not(.scrolled) .navbar-toggler-icon {
     filter: invert(0); /* putih */
 }
 
 .navbar.scrolled .navbar-toggler-icon {
     filter: invert(1); /* hitam */
+}
+
+/* ================= MOBILE VIEW ================= */
+
+@media (max-width: 991px) {
+
+    .navbar {
+        width: 95%;
+        padding: 8px 15px;
+        border-radius: 30px;
+    }
+
+    .navbar-brand {
+        font-size: 0.95rem;
+    }
+
+    .navbar-brand img.logo {
+        height: 28px;
+    }
+
+    /* 🔥 Collapse turun ke bawah */
+    .navbar-collapse {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* Menu tengah */
+    .navbar-nav {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 12px 0;
+        display: block;
+    }
 }
         
         /* .navbar {
