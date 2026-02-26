@@ -57,7 +57,7 @@
     justify-content: space-between;
 
     /* 🔥 PENTING: biar menu bisa turun */
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 /* ================= BRAND ================= */
@@ -73,6 +73,13 @@
 
 .navbar-brand img.logo {
     height: 32px;
+}
+.navbar-brand {
+    flex-grow: 1;   /* isi ruang kiri */
+}
+
+.navbar-toggler {
+    margin-left: auto; /* dorong ke kanan */
 }
 
 /* ================= NAV LINKS ================= */
@@ -2045,4 +2052,5 @@
     </script>
 </body>
 </html>
+
 
