@@ -89,7 +89,22 @@
     margin-left: auto;    
     flex-shrink: 0;      
 }
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* jarak logo-teks ke tombol */
+}
 
+/* Biar tulisan ga kepanjangan */
+.navbar-brand {
+    margin-right: 0;
+    white-space: nowrap;
+}
+
+/* Biar tombol ga terlalu turun */
+.navbar-toggler {
+    padding: 4px 8px;
+}
 /* ================= NAV LINKS ================= */
 
 .navbar-nav .nav-link {
@@ -798,12 +813,17 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#home">
-                    <img src="logosmp.png" alt="logosmpyupp" class="logo">SMP YUPPENTEK 1 Legok
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="navbar-left">
+    <a class="navbar-brand" href="#home">
+        <img src="logosmp.png" alt="logosmpyupp" class="logo">
+        SMP YUPPENTEK 1 Legok
+    </a>
+
+    <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -2060,3 +2080,4 @@
     </script>
 </body>
 </html>
+
