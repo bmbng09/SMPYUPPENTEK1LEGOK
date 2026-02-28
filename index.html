@@ -48,14 +48,6 @@
 
     z-index: 9999;
 }
-.navbar .container {
-    align-items: center;
-}
-
-.navbar-toggler {
-    margin-left: auto;
-    align-self: center;
-}
 
 /* ================= CONTAINER ================= */
 
@@ -67,6 +59,7 @@
     /* 🔥 PENTING: biar menu bisa turun */
     flex-wrap: wrap;
 }
+
 
 /* ================= BRAND ================= */
 
@@ -82,12 +75,19 @@
 .navbar-brand img.logo {
     height: 32px;
 }
+
 .navbar-brand {
-    flex-grow: 1;   /* isi ruang kiri */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex: 1;              
+    min-width: 0;       
 }
 
 .navbar-toggler {
-    margin-left: auto; /* dorong ke kanan */
+    margin-left: auto;    
+    flex-shrink: 0;      
 }
 
 /* ================= NAV LINKS ================= */
@@ -2060,9 +2060,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
