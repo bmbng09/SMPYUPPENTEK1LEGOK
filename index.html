@@ -23,38 +23,41 @@
         }
 
         /* Main Styles */
-        /* ================= NAVBAR ================= */
+        /* ================= NAVBAR OVAL GLASS ================= */
 
-.navbar {
+.navbar { 
     position: fixed;
     top: 20px;
-    left: 0;
-    right: 0;
-    margin: auto;
-
-    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 85%;
     max-width: 1100px;
-    padding: 10px 18px;
+    padding: 10px 30px;
 
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
-    border-radius: 40px;
-    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.15),
+        0 2px 6px rgba(0,0,0,0.08);
 
     z-index: 9999;
 }
 
-
-/* Container: brand kiri — toggle kanan */
+/* ================= CONTAINER ================= */
 
 .navbar .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap; /* penting */
+
+    /* 🔥 PENTING: biar menu bisa turun */
+    flex-wrap: wrap;
 }
 
 
@@ -64,51 +67,76 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
-    font-weight: 700;
-    font-size: 1rem;
     white-space: nowrap;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 2.5vw, 1.4rem);
 }
 
 .navbar-brand img.logo {
-    height: 30px;
+    height: 32px;
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-/* ================= TOGGLER ================= */
+    flex: 1;              
+    min-width: 0;       
+}
 
 .navbar-toggler {
-    margin-left: auto;
-    border-radius: 10px;
-    padding: 4px 10px;
+    margin-left: auto;    
+    flex-shrink: 0;      
 }
 
-
-/* ================= MENU ================= */
-
-.navbar-collapse {
-    width: 100%;
-    margin-top: 12px;
-}
-
-.navbar-nav {
-    width: 100%;
-    text-align: center;
-}
+/* ================= NAV LINKS ================= */
 
 .navbar-nav .nav-link {
-    padding: 12px 0;
+    font-size: 0.95rem;
+    padding: 8px 15px;
     font-weight: 700;
+    text-shadow: none;
 }
 
+/* ================= COLOR CHANGE ON SCROLL ================= */
 
-/* ================= MOBILE ================= */
+/* HERO (atas gelap) → putih */
+.navbar:not(.scrolled) .navbar-brand,
+.navbar:not(.scrolled) .nav-link {
+    color: #fff !important;
+}
+
+/* SETELAH SCROLL → hitam */
+.navbar.scrolled .navbar-brand,
+.navbar.scrolled .nav-link {
+    color: #000 !important;
+}
+
+/* ================= TOGGLER BUTTON ================= */
+
+.navbar-toggler {
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+/* Icon menu warna berubah */
+.navbar:not(.scrolled) .navbar-toggler-icon {
+    filter: invert(0); /* putih */
+}
+
+.navbar.scrolled .navbar-toggler-icon {
+    filter: invert(1); /* hitam */
+}
+
+/* ================= MOBILE VIEW ================= */
 
 @media (max-width: 991px) {
 
     .navbar {
         width: 95%;
-        border-radius: 28px;
+        padding: 8px 15px;
+        border-radius: 30px;
     }
 
     .navbar-brand {
@@ -116,15 +144,24 @@
     }
 
     .navbar-brand img.logo {
-        height: 26px;
+        height: 28px;
     }
 
+    /* 🔥 Collapse turun ke bawah */
     .navbar-collapse {
-        background: rgba(255,255,255,0.35);
-        backdrop-filter: blur(15px);
+        width: 100%;
+        margin-top: 15px;
+    }
 
-        border-radius: 18px;
-        padding: 8px 0;
+    /* Menu tengah */
+    .navbar-nav {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 12px 0;
+        display: block;
     }
 }
         
@@ -761,19 +798,12 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-              <!-- BRAND -->
-    <a class="navbar-brand" href="#home">
-      <img src="logosmp.png" class="logo">
-      SMP YUPPENTEK 1 LEGOK
-    </a>
-
-    <!-- HAMBURGER -->
-    <button class="navbar-toggler" type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav">
-
-      <span class="navbar-toggler-icon"></span>
-    </button>
+                <a class="navbar-brand" href="#home">
+                    <img src="logosmp.png" alt="logosmpyupp" class="logo">SMP YUPPENTEK 1 Legok
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -2030,8 +2060,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
