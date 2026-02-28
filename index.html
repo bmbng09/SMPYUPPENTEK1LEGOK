@@ -23,14 +23,15 @@
         }
 
         /* Main Styles */
-        /* ================= NAVBAR OVAL GLASS ================= */
+      /* ================= NAVBAR OVAL GLASS ================= */
 
 .navbar { 
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
     width: 85%;
     max-width: 1100px;
     padding: 10px 30px;
@@ -49,15 +50,14 @@
     z-index: 9999;
 }
 
+
 /* ================= CONTAINER ================= */
 
 .navbar .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    /* 🔥 PENTING: biar menu bisa turun */
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* penting agar collapse turun */
 }
 
 
@@ -67,44 +67,32 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    white-space: nowrap;
+
     font-weight: 700;
     font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
 }
 
 .navbar-brand img.logo {
     height: 32px;
 }
 
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
 
-    flex: 1;              
-    min-width: 0;       
-}
+/* ================= TOGGLER BUTTON ================= */
 
 .navbar-toggler {
-    margin-left: auto;    
-    flex-shrink: 0;      
-}
-.navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* jarak logo-teks ke tombol */
-}
+    margin-left: auto;
+    flex-shrink: 0;
 
-/* Biar tulisan ga kepanjangan */
-.navbar-brand {
-    margin-right: 0;
-    white-space: nowrap;
-}
-
-/* Biar tombol ga terlalu turun */
-.navbar-toggler {
     padding: 4px 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
 }
+
+
 /* ================= NAV LINKS ================= */
 
 .navbar-nav .nav-link {
@@ -113,6 +101,7 @@
     font-weight: 700;
     text-shadow: none;
 }
+
 
 /* ================= COLOR CHANGE ON SCROLL ================= */
 
@@ -128,35 +117,30 @@
     color: #000 !important;
 }
 
-/* ================= TOGGLER BUTTON ================= */
 
-.navbar-toggler {
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 10px;
-}
+/* ================= TOGGLER ICON COLOR ================= */
 
-/* Icon menu warna berubah */
+/* HERO → putih */
 .navbar:not(.scrolled) .navbar-toggler-icon {
-    filter: invert(0); /* putih */
+    filter: invert(0);
 }
 
+/* SCROLL → hitam */
 .navbar.scrolled .navbar-toggler-icon {
-    filter: invert(1); /* hitam */
+    filter: invert(1);
 }
 
-/* ================= MOBILE VIEW ================= */
 
 /* ================= MOBILE NAVBAR ================= */
+
 @media (max-width: 991px) {
 
-    /* Navbar oval */
     .navbar {
         width: 95%;
         padding: 8px 15px;
         border-radius: 30px;
     }
 
-    /* Brand */
     .navbar-brand {
         font-size: 0.95rem;
     }
@@ -165,7 +149,7 @@
         height: 28px;
     }
 
-    /* Collapse menu turun ke bawah & ikut lebar navbar */
+    /* Collapse turun ke bawah */
     .navbar-collapse {
         width: 100%;
         flex-basis: 100%;
@@ -177,6 +161,8 @@
 
         border-radius: 20px;
         padding: 10px 0;
+
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     /* Menu tengah */
@@ -2091,6 +2077,7 @@
     </script>
 </body>
 </html>
+
 
 
 
