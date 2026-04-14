@@ -773,7 +773,23 @@
         }
     </style>
 </head>
+    <!-- SweetAlert2 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <body>
+
+        <div class="wa-wrapper" id="daftarFloating" style="bottom: 90px;">
+    <span class="wa-text" style="background:#1e40af;">Daftar Sekarang!</span>
+    <button onclick="bukaFormPendaftaran()"
+        style="background:#1e40af;border:none;border-radius:50%;padding:12px;box-shadow:0 4px 10px rgba(0,0,0,0.25);cursor:pointer;animation:wa-bounce 2.5s infinite;"
+        aria-label="Pendaftaran Online">
+        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
+        </svg>
+    </button>
+    </div>
     <div class="wa-wrapper" id="waFloating">
         <span class="wa-text">Butuh Info PPDB?</span>
             <a href="https://wa.me/6285882571023?text=Halo%20Admin%20SMP%20Yuppentek%201%20Legok,%20saya%20ingin%20bertanya%20informasi%20PPDB."
@@ -1566,6 +1582,227 @@
             loadNews();
             loadGallery();
         });
+        // ============================================================
+// CONFIG — ganti URL ini dengan URL deployment Apps Script kamu
+// ============================================================
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzMJ7Zl3Yaq0PTk1CFIV5k_xyBQCegsitl2NGlwFJyM0qwbOOqlJagMZsKRQNMbTcp/exec";
+
+// Floating daftar muncul saat scroll
+const daftarFloating = document.getElementById('daftarFloating');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) daftarFloating.classList.add('show');
+  else daftarFloating.classList.remove('show');
+});
+
+function tampilNamaFile(input, targetId) {
+  const el = document.getElementById(targetId);
+  if (input.files && input.files[0]) {
+    el.textContent = '✅ ' + input.files[0].name;
+    el.style.color = '#059669';
+  } else {
+    el.textContent = 'Belum ada file dipilih';
+    el.style.color = '#9ca3af';
+  }
+}
+
+function bukaFormPendaftaran() {
+  Swal.fire({
+    title: '',
+    html: `
+      <div style="text-align:left;">
+        <div style="background:#1e40af;margin:-1.25em -1.4em 1.2em;padding:1.2em 1.4em;border-radius:8px 8px 0 0;display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <div>
+            <div style="color:#fff;font-weight:700;font-size:1rem;">Formulir Pendaftaran Siswa Baru</div>
+            <div style="color:rgba(255,255,255,0.8);font-size:0.82rem;">SMP Yuppentek 1 Legok — TA 2025/2026</div>
+          </div>
+        </div>
+        <style>
+          .rf-section{font-weight:700;color:#1e40af;font-size:0.78rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e7eb;padding-bottom:4px;margin:12px 0 8px}
+          .rf-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+          .rf-field{display:flex;flex-direction:column;gap:3px;margin-bottom:8px}
+          .rf-label{font-size:0.75rem;font-weight:600;color:#374151}
+          .rf-input{width:100%;padding:8px 10px;border:1px solid #d1d5db;border-radius:8px;font-size:0.88rem;box-sizing:border-box;font-family:inherit}
+          .rf-input:focus{outline:none;border-color:#1e40af;box-shadow:0 0 0 2px rgba(30,64,175,0.15)}
+          .rf-upload{border:1.5px dashed #d1d5db;border-radius:8px;padding:8px 10px;display:flex;align-items:center;gap:8px;margin-bottom:7px;cursor:pointer;transition:border-color .2s}
+          .rf-upload:hover{border-color:#1e40af}
+          .rf-upload-icon{width:30px;height:30px;border-radius:6px;background:#e0e7ff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+          .rf-upload-info{font-size:0.78rem;color:#6b7280;line-height:1.4}
+          .rf-upload-info strong{color:#1e40af}
+          .rf-fname{font-size:0.75rem;color:#9ca3af;margin-top:1px}
+          .rf-opt{background:#fef3c7;color:#92400e;font-size:0.68rem;padding:2px 7px;border-radius:10px;margin-left:5px}
+        </style>
+
+        <div class="rf-section">Data diri calon siswa</div>
+        <div class="rf-row">
+          <div class="rf-field">
+            <label class="rf-label">Nama Lengkap *</label>
+            <input class="rf-input" id="rf_nama" type="text" placeholder="Sesuai akta kelahiran">
+          </div>
+          <div class="rf-field">
+            <label class="rf-label">Jenis Kelamin *</label>
+            <select class="rf-input" id="rf_jk">
+              <option value="">-- Pilih --</option>
+              <option>Laki-laki</option>
+              <option>Perempuan</option>
+            </select>
+          </div>
+        </div>
+        <div class="rf-row">
+          <div class="rf-field">
+            <label class="rf-label">Tempat Lahir *</label>
+            <input class="rf-input" id="rf_tmptlahir" type="text" placeholder="Kota/kabupaten">
+          </div>
+          <div class="rf-field">
+            <label class="rf-label">Tanggal Lahir *</label>
+            <input class="rf-input" id="rf_tgllahir" type="date">
+          </div>
+        </div>
+        <div class="rf-field">
+          <label class="rf-label">Asal Sekolah (SD) *</label>
+          <input class="rf-input" id="rf_asalsd" type="text" placeholder="Nama SD asal">
+        </div>
+
+        <div class="rf-section">Data orang tua / wali</div>
+        <div class="rf-field">
+          <label class="rf-label">Nama Orang Tua / Wali *</label>
+          <input class="rf-input" id="rf_ortu" type="text" placeholder="Nama lengkap">
+        </div>
+        <div class="rf-row">
+          <div class="rf-field">
+            <label class="rf-label">No. WhatsApp *</label>
+            <input class="rf-input" id="rf_wa" type="tel" placeholder="08xxxxxxxxxx">
+          </div>
+          <div class="rf-field">
+            <label class="rf-label">Email (opsional)</label>
+            <input class="rf-input" id="rf_email" type="email" placeholder="email@contoh.com">
+          </div>
+        </div>
+        <div class="rf-field">
+          <label class="rf-label">Alamat Lengkap *</label>
+          <textarea class="rf-input" id="rf_alamat" rows="2" placeholder="Jalan, RT/RW, Desa/Kel, Kecamatan" style="resize:none;"></textarea>
+        </div>
+
+        <div class="rf-section">Upload dokumen persyaratan</div>
+        <div class="rf-upload" onclick="document.getElementById('rf_file_akte').click()">
+          <div class="rf-upload-icon">📄</div>
+          <div><div class="rf-upload-info"><strong>Akta Kelahiran</strong> — PDF, maks. 5 MB *</div><div class="rf-fname" id="rfn_akte">Belum ada file dipilih</div></div>
+        </div>
+        <input type="file" id="rf_file_akte" accept=".pdf" style="display:none" onchange="tampilNamaFile(this,'rfn_akte')">
+
+        <div class="rf-upload" onclick="document.getElementById('rf_file_kk').click()">
+          <div class="rf-upload-icon">🏠</div>
+          <div><div class="rf-upload-info"><strong>Kartu Keluarga</strong> — PDF, maks. 5 MB *</div><div class="rf-fname" id="rfn_kk">Belum ada file dipilih</div></div>
+        </div>
+        <input type="file" id="rf_file_kk" accept=".pdf" style="display:none" onchange="tampilNamaFile(this,'rfn_kk')">
+
+        <div class="rf-upload" onclick="document.getElementById('rf_file_ktp').click()">
+          <div class="rf-upload-icon">🪪</div>
+          <div><div class="rf-upload-info"><strong>KTP Orang Tua</strong> — PDF, maks. 5 MB *</div><div class="rf-fname" id="rfn_ktp">Belum ada file dipilih</div></div>
+        </div>
+        <input type="file" id="rf_file_ktp" accept=".pdf" style="display:none" onchange="tampilNamaFile(this,'rfn_ktp')">
+
+        <div class="rf-upload" onclick="document.getElementById('rf_file_pip').click()">
+          <div class="rf-upload-icon">💳</div>
+          <div><div class="rf-upload-info"><strong>Kartu PIP</strong> — PDF, maks. 5 MB <span class="rf-opt">Opsional</span></div><div class="rf-fname" id="rfn_pip">Belum ada file dipilih</div></div>
+        </div>
+        <input type="file" id="rf_file_pip" accept=".pdf" style="display:none" onchange="tampilNamaFile(this,'rfn_pip')">
+
+        <p style="font-size:0.72rem;color:#9ca3af;margin-top:10px;">* Wajib diisi. Data & dokumen disimpan langsung ke Google Drive & Spreadsheet sekolah.</p>
+      </div>
+    `,
+    width: '600px',
+    showCancelButton: true,
+    confirmButtonText: '📨 Kirim Pendaftaran',
+    cancelButtonText: 'Batal',
+    confirmButtonColor: '#1e40af',
+    cancelButtonColor: '#6b7280',
+    showLoaderOnConfirm: true,
+    allowOutsideClick: false,
+    preConfirm: async () => {
+      const nama      = document.getElementById('rf_nama').value.trim();
+      const jk        = document.getElementById('rf_jk').value;
+      const tmptlahir = document.getElementById('rf_tmptlahir').value.trim();
+      const tgllahir  = document.getElementById('rf_tgllahir').value;
+      const asalsd    = document.getElementById('rf_asalsd').value.trim();
+      const ortu      = document.getElementById('rf_ortu').value.trim();
+      const wa        = document.getElementById('rf_wa').value.trim();
+      const email     = document.getElementById('rf_email').value.trim();
+      const alamat    = document.getElementById('rf_alamat').value.trim();
+
+      const fileAkte = document.getElementById('rf_file_akte').files[0];
+      const fileKK   = document.getElementById('rf_file_kk').files[0];
+      const fileKTP  = document.getElementById('rf_file_ktp').files[0];
+      const filePIP  = document.getElementById('rf_file_pip').files[0];
+
+      if (!nama || !jk || !tmptlahir || !tgllahir || !asalsd || !ortu || !wa || !alamat) {
+        Swal.showValidationMessage('⚠️ Harap lengkapi semua field yang wajib diisi (*).');
+        return false;
+      }
+      if (!fileAkte || !fileKK || !fileKTP) {
+        Swal.showValidationMessage('⚠️ Harap upload Akta Kelahiran, Kartu Keluarga, dan KTP Orang Tua.');
+        return false;
+      }
+      const maxSize = 5 * 1024 * 1024;
+      for (const f of [fileAkte, fileKK, fileKTP, filePIP].filter(Boolean)) {
+        if (f.size > maxSize) {
+          Swal.showValidationMessage(`⚠️ File "${f.name}" melebihi batas 5 MB.`);
+          return false;
+        }
+      }
+
+      const toBase64 = (file) => new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload = () => res(r.result.split(',')[1]);
+        r.onerror = () => rej(new Error('Gagal membaca file'));
+        r.readAsDataURL(file);
+      });
+
+      try {
+        const payload = {
+          nama, jk, tmptlahir, tgllahir, asalsd,
+          ortu, wa, email, alamat,
+          file_akte: await toBase64(fileAkte),
+          file_kk:   await toBase64(fileKK),
+          file_ktp:  await toBase64(fileKTP),
+          file_pip:  filePIP ? await toBase64(filePIP) : null,
+        };
+
+        const res = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload),
+        });
+        const result = await res.json();
+
+        if (result.status !== 'ok') {
+          Swal.showValidationMessage('❌ Gagal menyimpan data: ' + (result.message || 'Coba lagi.'));
+          return false;
+        }
+        return { nama };
+      } catch (err) {
+        Swal.showValidationMessage('❌ Koneksi gagal. Periksa internet dan coba lagi.');
+        return false;
+      }
+    }
+  }).then((result) => {
+    if (result.isConfirmed && result.value) {
+      Swal.fire({
+        icon: 'success',
+        title: '🎉 Pendaftaran Berhasil!',
+        html: `
+          <p>Terima kasih, <strong>${result.value.nama}</strong>!</p>
+          <p style="color:#6b7280;font-size:0.9rem;margin-top:8px;">
+            Data & dokumen kamu sudah tersimpan ke sistem sekolah.<br>
+            Pihak sekolah akan menghubungi via WhatsApp dalam 1–2 hari kerja.
+          </p>`,
+        confirmButtonColor: '#1e40af',
+        confirmButtonText: 'Oke, Terima Kasih!'
+      });
+    }
+  });
+}
     </script>
 </body>
 </html>
