@@ -1079,7 +1079,7 @@
                         <div class="contact-info">
                             <i class="bi bi-telephone"></i>
                             <h5>Kontak</h5>
-                            <p>Whatsapp (Siti Nuraeni,A.Md): 0859 - 6033 - 8611<br>Developer (Bambang Istijab): 0882 - 8953 - 2896<br>Email: smpyuppentek1legok@yahoo.co.id</p>
+                            <p>Whatsapp (Siti Nuraeni,A.Md): 0859 - 6033 - 8611<br>Developer (Bambang Istijab): 0882 - 8953 - 2896<br>Email: smpyuppentek1legok@gmail.com</p>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-4" data-aos="fade-left">
@@ -1138,7 +1138,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-4">
-                        <h5 class="mb-3">SMP Yuppentek 1 Legok</h5>
+                        <h5 class="mb-3">SMP YUPPENTEK 1 LEGOK</h5>
                         <p>Sekolah menengah pertama unggulan dalam mencetak generasi cerdas, berkarakter, dan berprestasi.</p>
                         <div class="social-links mt-3">
                             <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
@@ -1166,7 +1166,7 @@
                 </div>
                 <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
                 <div class="text-center">
-                    <p class="mb-0">&copy; 2025 SMP Yuppentek 1 Legok. | Developed with Bambang Istijab</p>
+                    <p class="mb-0">&copy; 2025 SMP YUPPENTEK 1 LEGOK. | Developed with Bambang Istijab</p>
                 </div>
             </div>
         </footer>
@@ -1588,7 +1588,7 @@
         // ============================================================
 // CONFIG — ganti URL ini dengan URL deployment Apps Script kamu
 // ============================================================
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzMJ7Zl3Yaq0PTk1CFIV5k_xyBQCegsitl2NGlwFJyM0qwbOOqlJagMZsKRQNMbTcp/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby24ozmBax3097v-2Z2JOlKvMPqU6f8BbElDBjWyO3mddCTHblqSy4oRWKh4Z44RcdE/exec";
 
 // Floating daftar muncul saat scroll
 const daftarFloating = document.getElementById('daftarFloating');
@@ -1632,7 +1632,7 @@ function bukaFormPendaftaran() {
 
         <div style="background:#1e40af;margin:-1.25em -1.4em 1.2em;padding:1.2em 1.4em;border-radius:8px 8px 0 0;">
           <div style="color:#fff;font-weight:700;font-size:1rem;">Formulir Pendaftaran Siswa Baru</div>
-          <div style="color:rgba(255,255,255,0.75);font-size:0.82rem;margin-top:2px;">SMP Yuppentek 1 Legok — TA 2025/2026</div>
+          <div style="color:rgba(255,255,255,0.75);font-size:0.82rem;margin-top:2px;">SMP Yuppentek 1 Legok — TA 2026/2027</div>
         </div>
 
         <div class="rf-section">Data diri calon siswa</div>
@@ -1733,10 +1733,19 @@ function bukaFormPendaftaran() {
             <div class="rf-fname" id="rfn_pip">Belum ada file dipilih</div>
           </div>
         </div>
+        
+        <div style="display:flex;gap:8px;margin-top:12px;align-items:center;">
+        <button type="button" onclick="salinRekening()" style="flex:1;padding:10px;background:#006400;color:#fff;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            Info Pembayaran BCA
+        </button>
+        </div>
+
         <input type="file" id="rf_file_pip" accept=".pdf" style="display:none" onchange="tampilNamaFile(this,'rfn_pip')">
 
         <p style="font-size:0.72rem;color:#9ca3af;margin-top:10px;">* Wajib diisi. Data dan dokumen disimpan langsung ke Google Drive dan Spreadsheet sekolah.</p>
       </div>
+      
     `,
     width: '600px',
     zIndex: 99999,
@@ -1828,6 +1837,43 @@ function bukaFormPendaftaran() {
         confirmButtonText: 'Oke, Terima Kasih'
       });
     }
+  });
+}
+
+function salinRekening() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Info Pembayaran',
+    html: `
+      <div style="text-align:left;line-height:1.8;">
+        <p style="margin-bottom:12px;color:#6b7280;font-size:0.9rem;">Silakan lakukan pembayaran ke rekening berikut:</p>
+        <div style="background:#f3f4f6;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+          <div style="font-size:0.78rem;color:#6b7280;margin-bottom:2px;">Bank</div>
+          <div style="font-weight:700;font-size:1rem;color:#1f2937;">Bank Central Asia (BCA)</div>
+        </div>
+        <div style="background:#f3f4f6;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+          <div style="font-size:0.78rem;color:#6b7280;margin-bottom:4px;">Nomor Rekening</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div style="font-weight:700;font-size:1.2rem;color:#1f2937;letter-spacing:2px;">6581001301</div>
+            <button onclick="
+              navigator.clipboard.writeText('6581001301').then(() => {
+                this.textContent = 'Tersalin!';
+                this.style.background = '#059669';
+                setTimeout(() => { this.textContent = 'Salin'; this.style.background = '#1e40af'; }, 2000);
+              })
+            " style="padding:4px 12px;background:#1e40af;color:#fff;border:none;border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s;">Salin</button>
+          </div>
+        </div>
+        <div style="background:#f3f4f6;border-radius:8px;padding:14px 16px;">
+          <div style="font-size:0.78rem;color:#6b7280;margin-bottom:2px;">Atas Nama</div>
+          <div style="font-weight:700;font-size:1rem;color:#1f2937;">Wita</div>
+        </div>
+        <p style="font-size:0.78rem;color:#9ca3af;margin-top:12px;">Simpan bukti transfer dan tunjukkan saat daftar ulang.</p>
+      </div>
+    `,
+    confirmButtonText: 'Oke',
+    confirmButtonColor: '#1e40af',
+    zIndex: 999999,
   });
 }
     </script>
