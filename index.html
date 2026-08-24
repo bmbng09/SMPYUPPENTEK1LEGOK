@@ -14,6 +14,7 @@
             --primary-color: #1e40af;
             --secondary-color: #f59e0b;
             --dark-color: #1f2937;
+            --accent:#f5a623;
             --light-bg: #f3f4f6;
             --accent-color: #10b981;
         }
@@ -574,6 +575,30 @@
             margin-bottom: 20px;
         }
 
+
+            /* ABOUT */
+    .about{padding:90px 0;background:var(--light-bg);}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+    .about-images{position:relative;height:440px;}
+    .about-images img{border-radius:12px;object-fit:cover;}
+    .about-img-main{width:62%;height:300px;position:absolute;top:0;left:0;}
+    .about-img-sec{width:55%;height:240px;position:absolute;bottom:0;right:0;border:5px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.12);}
+    .about-badge{position:absolute;bottom:80px;left:0;background:var(--accent);color:#fff;border-radius:10px;padding:14px 30px;text-align:center;box-shadow:0 6px 20px rgba(245,166,35,.35);}
+    .about-badge .yrs{font-size:26px;font-weight:800;line-height:2;}
+    .about-badge .lbl{font-size:11px;line-height:2;}
+    .about-content h2{font-size:34px;font-weight:800;line-height:1.25;margin-bottom:18px;}
+    .about-content h2 span{color:var(--primary);}
+    .about-content>p{font-size:14px;color:var(--text-light);line-height:1.8;margin-bottom:24px;}
+    .ab-svc{display:flex;gap:14px;margin-bottom:18px;}
+    .ab-svc-icon{width:44px;height:44px;flex-shrink:0;background:#e8f5f3;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:18px;}
+    .ab-svc-text h5{font-size:14px;font-weight:700;margin-bottom:4px;}
+    .ab-svc-text p{font-size:13px;color:var(--text-light);line-height:1.6;margin:0;}
+    .about-bottom{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:10px;}
+    .ph-cta{display:flex;align-items:center;gap:10px;}
+    .ph-cta-icon{width:46px;height:46px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;}
+    .ph-cta-text .lb{font-size:11px;color:var(--text-light);}
+    .ph-cta-text .nb{font-size:15px;font-weight:700;color:var(--text);}
+
         /* ================= DETAIL PAGES ================= */
         .detail-page {
             display: none;
@@ -873,8 +898,49 @@
             </div>
         </section>
 
+                <!-- ABOUT -->
+        <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+            <div class="about-images">
+                <img src="aboutt.jpg" alt="Belajar" class="about-img-main"/>
+                <img src="abouttt.jpg" alt="Diskusi" class="about-img-sec"/>
+                <div class="about-badge"><div class="yrs">42+</div><div class="lbl">Tahun<br>Mengabdi</div></div>
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Tentang Sekolah</h2>
+                <h2>Sistem Pendidikan Kami <span>Menginspirasi</span> Anda.</h2>
+                <p>SMP Yuppentek 1 Legok adalah sekolah menengah pertama unggulan yang berkomitmen untuk mencetak lulusan yang cerdas, berkarakter, dan siap bersaing di era global.</p>
+                <p>Dengan kurikulum yang berbasis karakter dan teknologi, SMP Yuppentek 1 Legok telah membuktikan diri sebagai lembaga pendidikan yang mampu menghasilkan generasi muda yang berprestasi dan berakhlak mulia.</p>
+                <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Kurikulum Berbasis Karakter</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Laboratorium Lengkap</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Pembelajaran Digital</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Lingkungan Belajar Nyaman</span>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
         <!-- About Section -->
-        <section id="about" class="py-5">
+        <!-- <section id="about" class="py-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6" data-aos="fade-right">
@@ -909,7 +975,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Ekstrakurikuler Section -->
         <section id="ekskul" class="py-5 bg-light">
