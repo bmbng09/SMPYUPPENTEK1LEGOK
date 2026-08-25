@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berita & Pengumuman — SMP Yuppentek 1 Legok</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<style>
+:root {
+  --primary: #1e40af;
+  --primary-light: #3b82f6;
+  --accent: #f59e0b;
+  --dark: #0f172a;
+  --gray-900: #1f2937;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-300: #d1d5db;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #dc2626;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Sans 3',sans-serif;background:#f1f4f8;color:var(--gray-900);}
+a{text-decoration:none;color:inherit;}
+img{display:block;width:100%;object-fit:cover;}
+
+/* ─── TOPBAR ─── */
+.topbar{background:var(--dark);color:rgba(255,255,255,0.6);font-size:0.75rem;padding:7px 0;border-bottom:2px solid var(--primary);}
+.topbar .inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;}
+.topbar a{color:rgba(255,255,255,0.75);font-weight:600;display:flex;align-items:center;gap:6px;transition:color .2s;}
+.topbar a:hover{color:var(--accent);}
+
+/* ─── HEADER ─── */
+.site-header{background:var(--white);border-bottom:1px solid var(--gray-300);padding:0;}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:20px;height:64px;}
+.site-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:var(--primary);letter-spacing:-0.5px;white-space:nowrap;}
+.site-logo span{color:var(--accent);}
+.header-divider{width:1px;height:32px;background:var(--gray-300);}
+.header-tagline{font-size:0.78rem;color:var(--gray-500);line-height:1.4;}
+
+/* ─── NAV ─── */
+.site-nav{background:var(--primary);position:sticky;top:0;z-index:999;}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:2px;}
+.nav-item{padding:13px 16px;font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.8);cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;}
+.nav-item:hover,.nav-item.active{color:#fff;border-bottom-color:var(--accent);}
+.nav-search{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.nav-search input{background:rgba(255,255,255,0.12);border:none;border-radius:20px;padding:6px 14px;color:#fff;font-size:0.8rem;outline:none;width:160px;}
+.nav-search input::placeholder{color:rgba(255,255,255,0.5);}
+
+/* ─── BREAKING ─── */
+.breaking{background:var(--white);border-bottom:1px solid var(--gray-300);padding:8px 0;overflow:hidden;}
+.breaking-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px;}
+.breaking-label{background:var(--red);color:#fff;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:3px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em;}
+.breaking-text{font-size:0.82rem;color:var(--gray-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* ─── LAYOUT ─── */
+.page-wrap{max-width:1200px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:1fr 300px;gap:24px;}
+@media(max-width:900px){.page-wrap{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+/* ─── SECTION TITLE ─── */
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;border-bottom:2px solid var(--gray-300);padding-bottom:10px;}
+.section-head h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--dark);}
+.section-head .line{flex:1;height:2px;}
+
+/* ─── HERO GRID ─── */
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:4px;border-radius:10px;overflow:hidden;margin-bottom:28px;}
+.hero-main{grid-column:1;grid-row:1/3;position:relative;cursor:pointer;height:380px;}
+.hero-main img{height:100%;object-fit:cover;}
+.hero-side{position:relative;cursor:pointer;height:188px;}
+.hero-side img{height:100%;object-fit:cover;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 60%);transition:opacity .3s;}
+.hero-main:hover .hero-overlay,.hero-side:hover .hero-overlay{opacity:.7;}
+.hero-label{position:absolute;top:12px;left:12px;background:var(--primary);color:#fff;font-size:0.65rem;font-weight:700;padding:3px 9px;border-radius:3px;text-transform:uppercase;letter-spacing:.05em;}
+.hero-content{position:absolute;bottom:0;left:0;right:0;padding:16px;}
+.hero-main .hero-content{padding:20px;}
+.hero-title{font-family:'Playfair Display',serif;color:#fff;line-height:1.25;margin-bottom:6px;}
+.hero-main .hero-title{font-size:1.3rem;}
+.hero-side .hero-title{font-size:0.88rem;}
+.hero-meta{font-size:0.72rem;color:rgba(255,255,255,.7);}
+@media(max-width:600px){.hero-grid{grid-template-columns:1fr;}.hero-main{height:240px;}.hero-side{height:160px;grid-column:1;grid-row:auto;}}
+
+/* ─── ARTICLE ROW (horizontal card) ─── */
+.article-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--gray-100);cursor:pointer;transition:background .15s;}
+.article-row:last-child{border-bottom:none;}
+.article-row:hover .ar-title{color:var(--primary);}
+.ar-thumb{width:90px;height:68px;border-radius:6px;flex-shrink:0;overflow:hidden;}
+.ar-thumb img{height:100%;object-fit:cover;transition:transform .3s;}
+.article-row:hover .ar-thumb img{transform:scale(1.05);}
+.ar-body{flex:1;min-width:0;}
+.ar-cat{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--primary);background:#e0e7ff;padding:2px 8px;border-radius:3px;display:inline-block;margin-bottom:5px;}
+.ar-title{font-size:0.88rem;font-weight:600;color:var(--gray-900);line-height:1.35;margin-bottom:5px;transition:color .2s;}
+.ar-meta{font-size:0.72rem;color:var(--gray-500);}
+
+/* ─── ARTICLE CARD (vertical) ─── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:28px;}
+.article-card{background:var(--white);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+.ac-thumb{height:160px;overflow:hidden;}
+.ac-thumb img{height:100%;object-fit:cover;transition:transform .35s;}
+.article-card:hover .ac-thumb img{transform:scale(1.06);}
+.ac-body{padding:14px;}
+.ac-cat{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--primary);background:#e0e7ff;padding:2px 8px;border-radius:3px;display:inline-block;margin-bottom:7px;}
+.ac-title{font-size:0.9rem;font-weight:600;color:var(--gray-900);line-height:1.35;margin-bottom:6px;transition:color .2s;}
+.article-card:hover .ac-title{color:var(--primary);}
+.ac-excerpt{font-size:0.78rem;color:var(--gray-500);line-height:1.55;margin-bottom:8px;}
+.ac-meta{font-size:0.72rem;color:var(--gray-500);}
+
+/* ─── SECTIONS ─── */
+.section-box{background:var(--white);border-radius:8px;padding:20px;margin-bottom:24px;}
+
+/* ─── SIDEBAR ─── */
+.sidebar{}
+.sidebar-widget{background:var(--white);border-radius:8px;padding:18px;margin-bottom:20px;}
+.widget-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);border-bottom:2px solid var(--primary);padding-bottom:8px;margin-bottom:14px;}
+.widget-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--gray-100);cursor:pointer;transition:opacity .2s;}
+.widget-item:last-child{border-bottom:none;}
+.widget-item:hover{opacity:.75;}
+.wi-thumb{width:64px;height:50px;border-radius:5px;overflow:hidden;flex-shrink:0;}
+.wi-thumb img{height:100%;object-fit:cover;}
+.wi-title{font-size:0.8rem;font-weight:600;color:var(--gray-900);line-height:1.3;margin-bottom:3px;}
+.wi-date{font-size:0.7rem;color:var(--gray-500);}
+.stay-connected{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.sc-btn{display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:opacity .2s;}
+.sc-btn:hover{opacity:.85;}
+.sc-fb{background:#1877f2;color:#fff;}
+.sc-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;}
+.sc-yt{background:#ff0000;color:#fff;}
+.sc-tt{background:#000;color:#fff;}
+
+/* ─── DETAIL VIEW ─── */
+.detail-view{display:none;}
+.detail-view.active{display:block;}
+.list-view.hidden{display:none;}
+
+.detail-wrap{max-width:1200px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:1fr 300px;gap:28px;}
+@media(max-width:900px){.detail-wrap{grid-template-columns:1fr;}.detail-sidebar{display:none;}}
+
+.detail-main{}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:600;color:var(--primary);cursor:pointer;border:none;background:none;padding:0;margin-bottom:20px;transition:color .2s;}
+.back-btn:hover{color:var(--accent);}
+
+.detail-hero{border-radius:10px;overflow:hidden;margin-bottom:24px;}
+.detail-hero img{width:100%;height:440px;object-fit:cover;}
+@media(max-width:600px){.detail-hero img{height:220px;}}
+
+.detail-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.detail-cat{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:var(--primary);padding:4px 12px;border-radius:3px;}
+.detail-date,.detail-author{font-size:0.8rem;color:var(--gray-500);display:flex;align-items:center;gap:4px;}
+
+.detail-title{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:12px;}
+@media(max-width:600px){.detail-title{font-size:1.4rem;}}
+.detail-lead{font-size:1.05rem;color:var(--gray-500);line-height:1.7;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--gray-300);}
+
+.article-content p{font-size:0.97rem;line-height:1.85;color:var(--gray-700);margin-bottom:16px;}
+.article-content ul{margin:16px 0 16px 24px;}
+.article-content li{font-size:0.97rem;line-height:2;color:var(--gray-700);}
+.article-content blockquote{border-left:4px solid var(--primary);padding:14px 20px;background:#f0f4ff;border-radius:0 8px 8px 0;margin:20px 0;font-style:italic;color:var(--gray-700);}
+.article-content h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--dark);margin:24px 0 12px;}
+
+.share-bar{display:flex;align-items:center;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid var(--gray-300);}
+.share-label{font-size:0.8rem;font-weight:600;color:var(--gray-500);}
+.share-btn{padding:7px 16px;border-radius:5px;font-size:0.78rem;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;gap:5px;}
+.share-wa{background:#25d366;color:#fff;}
+.share-copy{background:var(--gray-100);color:var(--gray-700);}
+.share-copy:hover{background:var(--gray-300);}
+
+.related-section{margin-top:32px;}
+.related-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--primary);}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}
+.related-card{background:var(--white);border-radius:7px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;}
+.related-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.1);}
+.related-card img{height:110px;object-fit:cover;}
+.related-card .rc-body{padding:10px 12px;}
+.related-card .rc-title{font-size:0.82rem;font-weight:600;color:var(--gray-900);line-height:1.3;margin-bottom:4px;}
+.related-card:hover .rc-title{color:var(--primary);}
+.related-card .rc-date{font-size:0.7rem;color:var(--gray-500);}
+
+/* ─── PAGINATION ─── */
+.pagination{display:flex;gap:6px;justify-content:center;margin-top:20px;}
+.pg-btn{width:34px;height:34px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:600;cursor:pointer;border:1px solid var(--gray-300);background:var(--white);color:var(--gray-700);transition:all .2s;}
+.pg-btn:hover,.pg-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="inner">
+    <a href="index.html"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
+    <span>SMP YUPPENTEK 1 Legok — Serdang Wetan, Legok, Tangerang</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="site-header">
+  <div class="header-inner">
+    <div class="site-logo">YUSALEGTA<span>NEWS</span></div>
+    <div class="header-divider"></div>
+    <div class="header-tagline">Portal Berita & Pengumuman<br>SMP YUPPENTEK 1 Legok</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-item active" onclick="filterKategori('Semua')">Semua</div>
+    <div class="nav-item" onclick="filterKategori('Prestasi')">Prestasi</div>
+    <div class="nav-item" onclick="filterKategori('Kegiatan')">Kegiatan</div>
+    <div class="nav-item" onclick="filterKategori('Pengumuman')">Pengumuman</div>
+    <div class="nav-item" onclick="filterKategori('SPMB')">SPMB</div>
+    <div class="nav-search">
+      <input type="text" placeholder="Cari berita..." oninput="cariBerita(this.value)">
+      <i class="bi bi-search" style="color:rgba(255,255,255,.6);font-size:.9rem;"></i>
+    </div>
+  </div>
+</nav>
+
+<!-- BREAKING NEWS -->
+<div class="breaking">
+  <div class="breaking-inner">
+    <span class="breaking-label">Terbaru</span>
+    <span class="breaking-text" id="breakingText"></span>
+  </div>
+</div>
+
+<!-- LIST VIEW -->
+<div class="list-view" id="listView">
+  <div class="page-wrap">
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- Hero Grid -->
+      <div class="hero-grid" id="heroGrid"></div>
+
+      <!-- Berita Terkini -->
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Berita Terkini</h2>
+        </div>
+        <div id="articleRows"></div>
+      </div>
+
+      <!-- Semua Artikel -->
+      <div class="section-head" style="margin-top:4px;">
+        <h2>Semua Artikel</h2>
+      </div>
+      <div class="card-grid" id="cardGrid"></div>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-title">Artikel Populer</div>
+        <div id="popularWidget"></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-title">Ikuti Kami</div>
+        <div class="stay-connected">
+          <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" target="_blank" class="sc-btn sc-fb"><i class="bi bi-facebook"></i> Facebook</a>
+          <a href="https://www.instagram.com/smp.yuppentek1legok/" target="_blank" class="sc-btn sc-ig"><i class="bi bi-instagram"></i> Instagram</a>
+          <!-- <a href="https://www.youtube.com" target="_blank" class="sc-btn sc-yt"><i class="bi bi-youtube"></i> YouTube</a> -->
+          <a href="https://www.tiktok.com/@osissmpyuppentek1legok?is_from_webapp=1&sender_device=pc" target="_blank" class="sc-btn sc-tt"><i class="bi bi-tiktok"></i> TikTok</a>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-title">Artikel Terkait</div>
+        <div id="recentWidget"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- DETAIL VIEW -->
+<div class="detail-view" id="detailView">
+  <div class="detail-wrap">
+    <main class="detail-main">
+      <button class="back-btn" onclick="kembali()">
+        <i class="bi bi-arrow-left"></i> Semua Berita
+      </button>
+      <div class="detail-meta">
+        <span class="detail-cat" id="dCat"></span>
+        <span class="detail-date"><i class="bi bi-calendar3"></i> <span id="dDate"></span></span>
+        <span class="detail-author"><i class="bi bi-person"></i> <span id="dAuthor"></span></span>
+      </div>
+      <h1 class="detail-title" id="dTitle"></h1>
+      <p class="detail-lead" id="dLead"></p>
+      <div class="detail-hero"><img id="dImage" src="" alt=""></div>
+      <div class="article-content" id="dContent"></div>
+      <div class="share-bar">
+        <span class="share-label">Bagikan:</span>
+        <button class="share-btn share-wa" onclick="shareWA()"><i class="bi bi-whatsapp"></i> WhatsApp</button>
+        <button class="share-btn share-copy" onclick="salinLink()"><i class="bi bi-link-45deg"></i> Salin Link</button>
+      </div>
+      <div class="related-section">
+        <h3>Berita Lainnya</h3>
+        <div class="related-grid" id="relatedGrid"></div>
+      </div>
+    </main>
+    <aside class="detail-sidebar sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-title">Artikel Populer</div>
+        <div id="popularWidget2"></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-title">Ikuti Kami</div>
+        <div class="stay-connected">
+          <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" target="_blank" class="sc-btn sc-fb"><i class="bi bi-facebook"></i> Facebook</a>
+          <a href="https://www.instagram.com/smpyuppentek1legok/" target="_blank" class="sc-btn sc-ig"><i class="bi bi-instagram"></i> Instagram</a>
+          <a href="https://www.youtube.com" target="_blank" class="sc-btn sc-yt"><i class="bi bi-youtube"></i> YouTube</a>
+          <a href="https://www.tiktok.com/@osis_yusalegta" target="_blank" class="sc-btn sc-tt"><i class="bi bi-tiktok"></i> TikTok</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const newsData = [
+  {
+    id: 1,
+    title: "Juara 1 Kategori Kyorugi Cadet Putri - Kejurnas Tae Kwon Do Gubernur Banten Cup 2026",
+    date: "2026-07-12",
+    author: "Tim Humas",
+    category: "Prestasi",
+    image: "berita3.png",
+    excerpt: "Rina Aulia berhasil meraih juara 1 kategori Kyorugi Cadet Putri dalam Kejurnas Tae Kwon Do Gubernur Banten Cup 2026.",
+    content: `
+      <p>Sebuah prestasi membanggakan kembali diraih oleh siswa SMP Yuppentek 1 Legok. <strong>Rina Aulia</strong>, siswi kelas VIII, berhasil meraih <strong>Juara 1 Kategori Kyorugi Cadet Putri</strong> dalam Kejurnas Tae Kwon Do Gubernur Banten Cup 2026.</p>
+      <p>Kejuaraan ini diikuti oleh puluhan sekolah dari seluruh Kabupaten Tangerang. Rina tampil dengan penuh semangat dan menunjukkan teknik bertarung yang matang hasil latihan intensif bersama pelatih Yayat Supriatna.</p>
+      <blockquote>"Saya sangat senang dan bangga bisa membawa nama sekolah. Ini hasil kerja keras latihan selama berbulan-bulan." — Rina Aulia</blockquote>
+      <p>Kepala sekolah menyampaikan apresiasi yang setinggi-tingginya atas pencapaian ini dan berharap prestasi serupa dapat terus diraih oleh siswa-siswi SMP Yuppentek 1 Legok di masa mendatang.</p>
+      <h3>Tentang Kejuaraan</h3>
+      <p>Kejuaraan Tae Kwon Do Tingkat Kabupaten Tangerang diikuti oleh lebih dari 200 atlet dari berbagai sekolah. Kategori Kyorugi adalah pertarungan penuh yang menguji kecepatan, teknik, dan strategi.</p>
+    `
+  },
+  {
+    id: 2,
+    title: "Juara Lomba Tata Upacara Bendera Tingkat Kabupaten",
+    date: "2022-10-26",
+    author: "Kesiswaan",
+    category: "Prestasi",
+    image: "berita2.webp",
+    excerpt: "SMP Yuppentek 1 Legok raih Juara 1 Tingkat Wilayah III dan Juara 3 Tingkat Kabupaten Tangerang dalam Lomba Tata Upacara Bendera.",
+    content: `
+      <p>SMP Yuppentek 1 Legok kembali mengharumkan nama sekolah dengan meraih dua penghargaan sekaligus dalam <strong>Lomba Tata Upacara Bendera</strong> tahun 2022.</p>
+      <ul>
+        <li><strong>Juara 1</strong> — Tingkat Wilayah III</li>
+        <li><strong>Juara 3</strong> — Tingkat Kabupaten Tangerang</li>
+      </ul>
+      <p>Pasukan PASKIBRA sekolah telah berlatih dengan disiplin tinggi selama lebih dari dua bulan di bawah bimbingan pembina Bambang Istijab. Penampilan mereka dinilai sangat rapi, kompak, dan penuh semangat nasionalisme oleh para juri.</p>
+      <blockquote>"Kami berlatih setiap hari tanpa libur. Hasilnya sepadan dengan perjuangan kami." — Ketua PASKIBRA</blockquote>
+      <p>Prestasi ini menjadi bukti nyata bahwa program PASKIBRA di SMP Yuppentek 1 Legok telah berkembang dengan sangat baik dan mampu bersaing di tingkat kabupaten.</p>
+    `
+  },
+  {
+    id: 3,
+    title: "Peserta Jumbara PMR Tingkat Nasional IX 2023",
+    date: "2023-07-10",
+    author: "Kesiswaan",
+    category: "Prestasi",
+    image: "pebri.jpeg",
+    excerpt: "Febri Falentino menjadi peserta Jumbara PMR Tingkat Nasional IX 2023 yang diselenggarakan di Provinsi Lampung.",
+    content: `
+      <p><strong>Febri Falentino</strong>, siswa SMP Yuppentek 1 Legok, berhasil terpilih menjadi peserta <strong>Jumbara PMR Tingkat Nasional IX 2023</strong> yang diselenggarakan di Provinsi Lampung pada tanggal 02–10 Juli 2023.</p>
+      <p>Jumbara (Jumpa Bakti Gembira) PMR merupakan kegiatan nasional Palang Merah Remaja yang mempertemukan perwakilan terbaik dari seluruh provinsi di Indonesia.</p>
+      <blockquote>"Pengalaman ini sangat berharga. Saya bisa bertemu teman-teman dari seluruh Indonesia dan belajar banyak hal baru." — Febri Falentino</blockquote>
+      <p>Keikutsertaan Febri di ajang nasional ini tidak lepas dari pembinaan intensif ekstrakurikuler PMR di bawah bimbingan Bambang Istijab selaku pembina PMR sekolah.</p>
+      <h3>Tentang Jumbara PMR Nasional</h3>
+      <p>Jumbara PMR Nasional adalah ajang empat tahunan yang diselenggarakan oleh PMI Pusat sebagai wadah pertemuan, evaluasi, dan pengembangan PMR dari seluruh Indonesia. Kegiatan ini mencakup berbagai lomba, bakti sosial, dan kegiatan kepalangmerahan.</p>
+    `
+  },
+  {
+    id: 4,
+    title: "Pengumuman SPMB Tahun Ajaran 2025/2026",
+    date: "2025-05-01",
+    author: "Admin Sekolah",
+    category: "SPMB",
+    image: "berita4.png",
+    excerpt: "Pendaftaran Peserta Didik Baru SMP YUPPENTEK 1 Legok tahun ajaran 2025/2026 resmi dibuka. Segera daftarkan putra-putri Anda.",
+    content: `
+      <p>SMP Yuppentek 1 Legok dengan bangga mengumumkan pembukaan <strong>Sistem Penerimaan Murid Baru  (SPMB)</strong> untuk Tahun Ajaran 2026/2027.</p>
+      <h3>Persyaratan Pendaftaran</h3>
+      <ul>
+        <li>Mengisi Formulir Pendaftaran</li>
+        <li>Fotokopi Akta Kelahiran (2 lembar)</li>
+        <li>Fotokopi Kartu Keluarga (2 lembar)</li>
+        <li>Fotokopi KTP Orang Tua (2 lembar)</li>
+        <li>Fotokopi Kartu PIP (2 lembar, jika memiliki)</li>
+      </ul>
+      <h3>Cara Mendaftar</h3>
+      <p>Pendaftaran dapat dilakukan secara online melalui website sekolah atau langsung datang ke kantor administrasi sekolah pada jam operasional (Senin–Jumat, 07.00–14.00 WIB).</p>
+      <blockquote>Kuota terbatas! Segera daftarkan putra-putri Anda sebelum kuota penuh.</blockquote>
+      <p>Untuk informasi lebih lanjut hubungi: <strong>0858-8257-1023</strong> (WhatsApp)</p>
+    `
+  },
+  {
+    id: 5,
+    title: "Pembiasaan di Lapangan Setiap Hari Rabu",
+    date: "2026-08-25",
+    author: "Waka. Kesiswaan",
+    category: "Pengumuman",
+    image: "berita5.jpeg",
+    excerpt: "Setiap hari Rabu sebelum kegiatan belajar mengajar (KBM) dimulai, seluruh siswa mengikuti kegiatan pembiasaan di lapangan yang diawali dengan menyanyikan lagu Indonesia Raya, Mars Yuppentek, dan Senam Anak Indonesia Hebat, kemudian dilanjutkan dengan kegiatan literasi.",
+    content: `
+       Setiap hari Rabu, sebelum kegiatan belajar mengajar (KBM) dimulai, seluruh siswa mengikuti kegiatan pembiasaan yang dilaksanakan di lapangan sekolah. Kegiatan ini menjadi salah satu rutinitas positif untuk membangun kedisiplinan, semangat, serta karakter siswa sebelum memulai pembelajaran.
+
+    Kegiatan pembiasaan diawali dengan menyanyikan lagu Indonesia Raya secara bersama-sama sebagai bentuk penanaman rasa cinta tanah air dan semangat kebangsaan. Setelah itu, kegiatan dilanjutkan dengan menyanyikan Mars Yuppentek untuk menumbuhkan semangat dan kebersamaan seluruh warga sekolah.
+
+    Selanjutnya, seluruh siswa mengikuti Senam Anak Indonesia Hebat. Kegiatan senam ini bertujuan untuk menjaga kebugaran tubuh sekaligus membuat siswa lebih siap dan bersemangat dalam mengikuti kegiatan pembelajaran.
+
+    Setelah rangkaian kegiatan di lapangan selesai, siswa melanjutkan kegiatan literasi. Melalui kegiatan ini, siswa diberikan kesempatan untuk membaca dan menambah wawasan sebelum memulai proses pembelajaran.
+
+    Setelah seluruh rangkaian pembiasaan dan literasi selesai, kegiatan belajar mengajar (KBM) kemudian dimulai seperti biasa. Diharapkan kegiatan rutin setiap hari Rabu ini dapat membentuk kebiasaan positif, meningkatkan kedisiplinan, serta menciptakan suasana belajar yang lebih siap, aktif, dan menyenangkan bagi seluruh siswa.
+    `
+  },
+  {
+    id: 6,
+    title: "Deklarasi MPLS Ramah 2026",
+    date: "2026-07-17",
+    author: "Panitia MPLS Ramah",
+    category: "Kegiatan",
+    image: "berita6.png",
+    excerpt: "Peserta MPLS Ramah 2026 SMP Yuppentek 1 Legok mengikuti deklarasi bersama sebagai bentuk komitmen untuk menciptakan lingkungan sekolah yang aman, nyaman, dan bebas dari perundungan, kekerasan, diskriminasi, serta segala bentuk perlakuan yang merugikan. ",
+    content: `
+    Pada Kamis, 17 Juli 2026, peserta Masa Pengenalan Lingkungan Sekolah (MPLS) Ramah 2026 SMP Yuppentek 1 Legok mengikuti kegiatan Deklarasi Peserta MPLS Ramah. Kegiatan ini menjadi salah satu rangkaian MPLS yang bertujuan untuk menanamkan nilai-nilai positif serta membangun komitmen bersama dalam menciptakan lingkungan sekolah yang aman dan nyaman bagi seluruh peserta didik.
+
+    Dalam kegiatan tersebut, para peserta MPLS menyatakan komitmen untuk bersama-sama menciptakan lingkungan sekolah yang aman, menyenangkan, dan terbebas dari segala bentuk perundungan, kekerasan, diskriminasi, maupun perlakuan yang dapat merugikan peserta didik.
+
+    Deklarasi dilakukan secara bersama-sama dengan melibatkan peserta MPLS. Para siswa turut membubuhkan tanda tangan sebagai bentuk kesediaan dan komitmen untuk menjaga lingkungan sekolah agar tetap ramah, saling menghargai, serta menjunjung tinggi sikap toleransi dan kepedulian terhadap sesama.
+
+    Melalui deklarasi ini, diharapkan seluruh peserta MPLS dapat memahami bahwa sekolah bukan hanya tempat untuk belajar, tetapi juga tempat untuk tumbuh dan berkembang dalam suasana yang positif, aman, dan saling mendukung.
+
+    Kegiatan Deklarasi Peserta MPLS Ramah 2026 menjadi langkah awal dalam membangun budaya sekolah yang mengedepankan rasa aman, penghargaan terhadap sesama, serta semangat kebersamaan. Dengan komitmen bersama, SMP Yuppentek 1 Legok terus berupaya mewujudkan lingkungan pendidikan yang ramah bagi seluruh siswa.
+    `
+  },
+  {
+    id: 7,
+    title: "Juara 3 Pantomim Tingkat Kecamatan pada FLS3N 2026",
+    date: "2026-05-01",
+    author: "Waka. Kesiswaan",
+    category: "Prestasi",
+    image: "Pantomim.png",
+    excerpt: "Selamat kepada Lulu Ukhotimah dan Nurul Khodizah J.S yang berhasil meraih Juara 3 Pantomim tingkat Kecamatan pada ajang Festival Lomba Seni dan Sastra Siswa Nasional (FLS3N) 2026.",
+    content: `
+Prestasi membanggakan kembali diraih oleh siswa SMP Yuppentek 1 Legok dalam ajang Festival Lomba Seni dan Sastra Siswa Nasional (FLS3N) 2026. Kali ini, prestasi diraih melalui cabang lomba Pantomim tingkat Kecamatan.
+
+    Dua siswi SMP Yuppentek 1 Legok, yaitu Lulu Ukhotimah dan Nurul Khodizah J.S, berhasil menunjukkan kemampuan dan kreativitas mereka dalam penampilan pantomim. Dengan kerja sama, ekspresi, dan penghayatan yang baik, keduanya mampu memberikan penampilan terbaik dalam kompetisi tersebut.
+
+    Atas penampilan yang diberikan, Lulu Ukhotimah dan Nurul Khodizah J.S berhasil meraih Juara 3 Pantomim tingkat Kecamatan pada ajang FLS3N 2026.
+
+    Pencapaian ini menjadi kebanggaan bagi SMP Yuppentek 1 Legok sekaligus menjadi bukti bahwa siswa-siswi memiliki potensi dan bakat yang dapat dikembangkan melalui berbagai bidang, termasuk seni dan sastra.
+
+    Semoga prestasi ini dapat menjadi motivasi bagi Lulu Ukhotimah, Nurul Khodizah J.S, dan seluruh siswa SMP Yuppentek 1 Legok untuk terus berlatih, berkarya, dan mengembangkan potensi yang dimiliki. Selamat atas prestasi yang diraih dan teruslah mengukir prestasi!
+    `
+  },
+  {
+    id: 8,
+    title: "Dokumentasi Lomba HUT RI SMP Yuppentek 1 Legok",
+    date: "2026-08-18",
+    author: "Waka. Kesiswaan",
+    category: "Kegiatan",
+    image: "berita7.png",
+    excerpt: "Dalam rangka memeriahkan Hari Ulang Tahun Republik Indonesia, SMP Yuppentek 1 Legok menggelar berbagai kegiatan dan perlombaan yang diikuti dengan penuh antusias oleh siswa serta seluruh warga sekolah.",
+    content: `
+        Dalam rangka memperingati dan memeriahkan Hari Ulang Tahun Republik Indonesia, SMP Yuppentek 1 Legok turut menyelenggarakan berbagai kegiatan dan perlombaan yang melibatkan siswa serta warga sekolah.
+
+    Kegiatan lomba HUT RI berlangsung dengan penuh semangat dan antusias. Para siswa mengikuti berbagai perlombaan dengan suasana yang meriah, seru, dan penuh kebersamaan. Selain menjadi sarana hiburan, kegiatan ini juga menjadi kesempatan bagi siswa untuk berinteraksi, bekerja sama, serta menunjukkan semangat sportivitas.
+
+    Berbagai momen keseruan selama kegiatan terdokumentasi melalui foto-foto yang menggambarkan antusiasme siswa dan guru dalam mengikuti rangkaian perlombaan. Keceriaan dan semangat kebersamaan terlihat dalam setiap kegiatan yang dilaksanakan.
+
+    Melalui kegiatan peringatan HUT RI ini, SMP Yuppentek 1 Legok tidak hanya mengajak siswa untuk merayakan kemerdekaan, tetapi juga menanamkan nilai-nilai persatuan, kebersamaan, gotong royong, dan sportivitas dalam kehidupan di lingkungan sekolah.
+
+    Semoga semangat kemerdekaan yang tercipta dalam kegiatan ini dapat terus tumbuh dan menjadi motivasi bagi seluruh warga SMP Yuppentek 1 Legok untuk terus belajar, bertumbuh, berprestasi, serta memberikan kontribusi positif bagi lingkungan sekitar.
+    `
+  },
+  {
+    id: 9,
+    title: "Pagelaran dalam Rangka HUT Pramuka Tahun 2026",
+    date: "2026-08-19",
+    author: "Waka. Kesiswaan",
+    category: "Kegiatan",
+    image: "berita8.jpeg",
+    excerpt: "Siswa-siswi SMP Yuppentek 1 Legok turut berpartisipasi dalam kegiatan pagelaran dalam rangka memperingati HUT Pramuka Tahun 2026 tingkat Kabupaten Tangerang.",
+    content: `
+Dalam rangka memperingati Hari Pramuka Tahun 2026, siswa-siswi SMP YUPPENTEK 1 Legok turut berpartisipasi dalam kegiatan pagelaran yang diselenggarakan dalam rangkaian peringatan HUT Pramuka tingkat Kabupaten Tangerang. Kegiatan ini menjadi salah satu momentum bagi para siswa untuk menunjukkan kreativitas, semangat, dan kekompakan dalam mengikuti kegiatan kepramukaan. Dengan mengenakan seragam Pramuka dan mengikuti rangkaian kegiatan dengan penuh antusias, siswa-siswi SMP Yuppentek 1 Legok turut memeriahkan peringatan HUT Pramuka bersama peserta dari berbagai sekolah dan satuan pendidikan di Kabupaten Tangerang. Keikutsertaan dalam kegiatan pagelaran ini tidak hanya menjadi pengalaman bagi para siswa, tetapi juga menjadi sarana untuk menumbuhkan rasa percaya diri, kedisiplinan, kerja sama, serta semangat kebersamaan. Nilai-nilai tersebut sejalan dengan semangat pendidikan kepramukaan dalam membentuk karakter generasi muda. SMP Yuppentek 1 Legok mengapresiasi semangat dan partisipasi seluruh siswa yang telah mengikuti kegiatan dengan baik. Semoga pengalaman dalam kegiatan HUT Pramuka tingkat Kabupaten Tangerang ini dapat menjadi pengalaman yang berkesan sekaligus memotivasi siswa untuk terus aktif, kreatif, dan berprestasi dalam berbagai kegiatan. Selamat memperingati Hari Pramuka Tahun 2026. Terus tumbuhkan semangat Pramuka, berkarya, dan mengabdi untuk generasi muda yang tangguh dan berkarakter.
+    `
+  }
+];
+
+let filteredData = [...newsData];
+let activeId = null;
+
+function formatDate(d) {
+  return new Date(d).toLocaleDateString('id-ID', { year:'numeric', month:'long', day:'numeric' });
+}
+
+function formatDateShort(d) {
+  return new Date(d).toLocaleDateString('id-ID', { year:'numeric', month:'short', day:'numeric' });
+}
+
+// Breaking news
+document.getElementById('breakingText').textContent = newsData[0].title + ' — ' + newsData[3].title;
+
+function renderList() {
+  const data = filteredData;
+
+  // Hero grid — 3 artikel pertama
+  const hero = document.getElementById('heroGrid');
+  if (data.length === 0) { hero.innerHTML = ''; }
+  else {
+    const main = data[0];
+    const side1 = data[1] || null;
+    const side2 = data[2] || null;
+    hero.innerHTML = `
+      <div class="hero-main" onclick="bukaDetail(${main.id})">
+        <img src="${main.image}" alt="${main.title}">
+        <div class="hero-overlay"></div>
+        <span class="hero-label">${main.category}</span>
+        <div class="hero-content">
+          <div class="hero-title">${main.title}</div>
+          <div class="hero-meta"><i class="bi bi-calendar3"></i> ${formatDateShort(main.date)} &nbsp;·&nbsp; ${main.author}</div>
+        </div>
+      </div>
+      ${side1 ? `<div class="hero-side" onclick="bukaDetail(${side1.id})">
+        <img src="${side1.image}" alt="${side1.title}">
+        <div class="hero-overlay"></div>
+        <span class="hero-label">${side1.category}</span>
+        <div class="hero-content">
+          <div class="hero-title">${side1.title}</div>
+          <div class="hero-meta">${formatDateShort(side1.date)}</div>
+        </div>
+      </div>` : ''}
+      ${side2 ? `<div class="hero-side" onclick="bukaDetail(${side2.id})">
+        <img src="${side2.image}" alt="${side2.title}">
+        <div class="hero-overlay"></div>
+        <span class="hero-label">${side2.category}</span>
+        <div class="hero-content">
+          <div class="hero-title">${side2.title}</div>
+          <div class="hero-meta">${formatDateShort(side2.date)}</div>
+        </div>
+      </div>` : ''}
+    `;
+  }
+
+  // Article rows — 3 berikutnya
+  const rows = document.getElementById('articleRows');
+  const rowData = data.slice(3, 6);
+  rows.innerHTML = rowData.length === 0
+    ? '<p style="color:var(--gray-500);font-size:.9rem;padding:16px 0;">Tidak ada berita ditemukan.</p>'
+    : rowData.map(n => `
+      <div class="article-row" onclick="bukaDetail(${n.id})">
+        <div class="ar-thumb"><img src="${n.image}" alt="${n.title}"></div>
+        <div class="ar-body">
+          <span class="ar-cat">${n.category}</span>
+          <div class="ar-title">${n.title}</div>
+          <div class="ar-meta"><i class="bi bi-calendar3"></i> ${formatDateShort(n.date)} &nbsp;·&nbsp; ${n.author}</div>
+        </div>
+      </div>`).join('');
+
+  // Card grid — semua
+  const grid = document.getElementById('cardGrid');
+  grid.innerHTML = data.map(n => `
+    <div class="article-card" onclick="bukaDetail(${n.id})">
+      <div class="ac-thumb"><img src="${n.image}" alt="${n.title}"></div>
+      <div class="ac-body">
+        <span class="ac-cat">${n.category}</span>
+        <div class="ac-title">${n.title}</div>
+        <p class="ac-excerpt">${n.excerpt}</p>
+        <div class="ac-meta"><i class="bi bi-calendar3"></i> ${formatDateShort(n.date)}</div>
+      </div>
+    </div>`).join('');
+
+  // Sidebar widgets
+  renderSidebar('popularWidget');
+  renderSidebar('recentWidget');
+}
+
+function renderSidebar(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = newsData.slice(0, 4).map(n => `
+    <div class="widget-item" onclick="bukaDetail(${n.id})">
+      <div class="wi-thumb"><img src="${n.image}" alt="${n.title}"></div>
+      <div>
+        <div class="wi-title">${n.title}</div>
+        <div class="wi-date">${formatDateShort(n.date)}</div>
+      </div>
+    </div>`).join('');
+}
+
+function bukaDetail(id) {
+  const n = newsData.find(x => x.id === id);
+  if (!n) return;
+  activeId = id;
+  document.getElementById('dCat').textContent    = n.category;
+  document.getElementById('dDate').textContent   = formatDate(n.date);
+  document.getElementById('dAuthor').textContent = n.author;
+  document.getElementById('dTitle').textContent  = n.title;
+  document.getElementById('dLead').textContent   = n.excerpt;
+  document.getElementById('dImage').src          = n.image;
+  document.getElementById('dContent').innerHTML  = n.content;
+
+  // Related
+  const rel = document.getElementById('relatedGrid');
+  rel.innerHTML = newsData.filter(x => x.id !== id).slice(0, 4).map(x => `
+    <div class="related-card" onclick="bukaDetail(${x.id})">
+      <img src="${x.image}" alt="${x.title}">
+      <div class="rc-body">
+        <div class="rc-title">${x.title}</div>
+        <div class="rc-date">${formatDateShort(x.date)}</div>
+      </div>
+    </div>`).join('');
+
+  renderSidebar('popularWidget2');
+
+  document.getElementById('listView').classList.add('hidden');
+  document.getElementById('detailView').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function kembali() {
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('listView').classList.remove('hidden');
+  window.scrollTo(0, 0);
+}
+
+function filterKategori(kat) {
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  event.target.classList.add('active');
+  filteredData = kat === 'Semua' ? [...newsData] : newsData.filter(n => n.category === kat);
+  renderList();
+}
+
+function cariBerita(q) {
+  const query = q.toLowerCase();
+  filteredData = query
+    ? newsData.filter(n => n.title.toLowerCase().includes(query) || n.excerpt.toLowerCase().includes(query))
+    : [...newsData];
+  renderList();
+}
+
+function shareWA() {
+  const n = newsData.find(x => x.id === activeId);
+  if (!n) return;
+  const text = `Berita dari SMP Yuppentek 1 Legok:\n\n*${n.title}*\n\n${n.excerpt}\n\nSelengkapnya di website sekolah.`;
+  window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+}
+
+function salinLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = event.target.closest('button');
+    const ori = btn.innerHTML;
+    btn.innerHTML = '<i class="bi bi-check"></i> Tersalin!';
+    btn.style.background = '#d1fae5';
+    btn.style.color = '#065f46';
+    setTimeout(() => { btn.innerHTML = ori; btn.style.background = ''; btn.style.color = ''; }, 2000);
+  });
+}
+
+renderList();
+</script>
+</body>
+</html>
