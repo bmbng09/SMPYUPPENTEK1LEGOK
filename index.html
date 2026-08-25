@@ -732,85 +732,293 @@
     }
 }
 
+/* ABOUT */
+.about{padding:90px 0;background:var(--light-bg);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-images{position:relative;height:440px;}
+.about-images img{border-radius:12px;object-fit:cover;}
+.about-img-main{width:62%;height:300px;position:absolute;top:0;left:0;}
+.about-img-sec{width:55%;height:240px;position:absolute;bottom:0;right:0;border:5px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.12);}
+.about-badge{position:absolute;bottom:80px;left:0;background:var(--accent);color:#fff;border-radius:10px;padding:14px 30px;text-align:center;box-shadow:0 6px 20px rgba(245,166,35,.35);}
+.about-badge .yrs{font-size:26px;font-weight:800;line-height:2;}
+.about-badge .lbl{font-size:11px;line-height:2;}
+.about-content h2{font-size:34px;font-weight:800;line-height:1.25;margin-bottom:18px;}
+.about-content h2 span{color:var(--primary);}
+.about-content>p{font-size:14px;color:var(--text-light);line-height:1.8;margin-bottom:24px;}
+.ab-svc{display:flex;gap:14px;margin-bottom:18px;}
+.ab-svc-icon{width:44px;height:44px;flex-shrink:0;background:#e8f5f3;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:18px;}
+.ab-svc-text h5{font-size:14px;font-weight:700;margin-bottom:4px;}
+.ab-svc-text p{font-size:13px;color:var(--text-light);line-height:1.6;margin:0;}
+.about-bottom{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:10px;}
+.ph-cta{display:flex;align-items:center;gap:10px;}
+.ph-cta-icon{width:46px;height:46px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;}
+.ph-cta-text .lb{font-size:11px;color:var(--text-light);}
+.ph-cta-text .nb{font-size:15px;font-weight:700;color:var(--text);}
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+   RESPONSIVE ABOUT - TABLET & MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
 
+    /* =========================
+       SECTION
+    ========================= */
+    .about {
+        padding: 60px 0;
+        overflow: hidden;
+    }
+
+    /* =========================
+       GRID JADI 1 KOLOM
+    ========================= */
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 45px;
     }
 
+    /* =========================
+       AREA GAMBAR
+    ========================= */
     .about-images {
-        height: 400px;
+        position: relative;
+        width: 100%;
+        max-width: 430px;
+        height: 380px;
+        margin: 0 auto;
     }
 
+    /* =========================
+       GAMBAR UTAMA
+    ========================= */
+    .about-img-main {
+        width: 72%;
+        height: 270px;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        border-radius: 14px;
+    }
+
+    /* =========================
+       GAMBAR KEDUA
+    ========================= */
+    .about-img-sec {
+        width: 58%;
+        height: 205px;
+        bottom: 0;
+        right: 0;
+        object-fit: cover;
+        border: 5px solid #fff;
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+    }
+
+    /* =========================
+       BADGE 42+
+    ========================= */
+    .about-badge {
+        left: 0;
+        bottom: 25px;
+
+        padding: 12px 24px;
+        border-radius: 12px;
+
+        z-index: 5;
+
+        box-shadow:
+            0 6px 20px rgba(245, 166, 35, .30);
+    }
+
+    .about-badge .yrs {
+        font-size: 25px;
+        line-height: 1.5;
+    }
+
+    .about-badge .lbl {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    /* =========================
+       CONTENT
+    ========================= */
+    .about-content {
+        width: 100%;
+    }
+
+    .about-content h2 {
+        font-size: 30px;
+        line-height: 1.25;
+        margin-bottom: 16px;
+    }
+
+    .about-content > p {
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    /* =========================
+       TYPEWRITER MOBILE
+       Matikan animasi supaya
+       tidak overflow
+    ========================= */
     .typewriter {
+        width: auto !important;
+        max-width: 100%;
         white-space: normal;
+        overflow: visible;
     }
 
     .about.show-animation .typewriter {
-        width: 100%;
+        width: auto !important;
         animation: none;
     }
 
     .about.show-animation .typewriter::after {
         display: none;
     }
-}
 
-
-/* =========================
-   REDUCE MOTION
-   Untuk user yang mematikan
-   animasi di perangkat
-========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .animate-left,
-    .animate-right,
-    .animate-up,
-    .animate-badge {
-        opacity: 1;
-        transform: none;
-        transition: none;
+    /* =========================
+       CHECKLIST
+       JADI 1 KOLOM
+    ========================= */
+    .about-content .row {
+        margin-top: 25px !important;
     }
 
-    .typewriter {
+    .about-content .row > .col-6 {
         width: 100%;
-        animation: none !important;
     }
 
-    .typewriter::after {
-        display: none;
+    .checklist {
+        font-size: 13px;
+        margin-bottom: 14px !important;
     }
 }
 
-            /* ABOUT */
-    .about{padding:90px 0;background:var(--light-bg);}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-    .about-images{position:relative;height:440px;}
-    .about-images img{border-radius:12px;object-fit:cover;}
-    .about-img-main{width:62%;height:300px;position:absolute;top:0;left:0;}
-    .about-img-sec{width:55%;height:240px;position:absolute;bottom:0;right:0;border:5px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.12);}
-    .about-badge{position:absolute;bottom:80px;left:0;background:var(--accent);color:#fff;border-radius:10px;padding:14px 30px;text-align:center;box-shadow:0 6px 20px rgba(245,166,35,.35);}
-    .about-badge .yrs{font-size:26px;font-weight:800;line-height:2;}
-    .about-badge .lbl{font-size:11px;line-height:2;}
-    .about-content h2{font-size:34px;font-weight:800;line-height:1.25;margin-bottom:18px;}
-    .about-content h2 span{color:var(--primary);}
-    .about-content>p{font-size:14px;color:var(--text-light);line-height:1.8;margin-bottom:24px;}
-    .ab-svc{display:flex;gap:14px;margin-bottom:18px;}
-    .ab-svc-icon{width:44px;height:44px;flex-shrink:0;background:#e8f5f3;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:18px;}
-    .ab-svc-text h5{font-size:14px;font-weight:700;margin-bottom:4px;}
-    .ab-svc-text p{font-size:13px;color:var(--text-light);line-height:1.6;margin:0;}
-    .about-bottom{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:10px;}
-    .ph-cta{display:flex;align-items:center;gap:10px;}
-    .ph-cta-icon{width:46px;height:46px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;}
-    .ph-cta-text .lb{font-size:11px;color:var(--text-light);}
-    .ph-cta-text .nb{font-size:15px;font-weight:700;color:var(--text);}
+
+
+/* =========================================================
+   MOBILE KECIL
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .about {
+        padding: 50px 0;
+    }
+
+    .about-grid {
+        gap: 35px;
+    }
+
+    /* =========================
+       AREA GAMBAR
+    ========================= */
+    .about-images {
+        max-width: 350px;
+        height: 330px;
+    }
+
+    /* =========================
+       GAMBAR UTAMA
+    ========================= */
+    .about-img-main {
+        width: 74%;
+        height: 235px;
+    }
+
+    /* =========================
+       GAMBAR KEDUA
+    ========================= */
+    .about-img-sec {
+        width: 57%;
+        height: 175px;
+        border-width: 4px;
+    }
+
+    /* =========================
+       BADGE
+    ========================= */
+    .about-badge {
+        bottom: 20px;
+        left: 0;
+
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    .about-badge .yrs {
+        font-size: 22px;
+    }
+
+    .about-badge .lbl {
+        font-size: 10px;
+    }
+
+    /* =========================
+       JUDUL
+    ========================= */
+    .about-content h2 {
+        font-size: 27px;
+        line-height: 1.25;
+    }
+
+    /* =========================
+       PARAGRAF
+    ========================= */
+    .about-content > p {
+        font-size: 13.5px;
+        line-height: 1.75;
+    }
+
+    /* =========================
+       CHECKLIST
+    ========================= */
+    .checklist {
+        font-size: 12.5px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .about-images {
+        height: 300px;
+    }
+
+    .about-img-main {
+        width: 76%;
+        height: 215px;
+    }
+
+    .about-img-sec {
+        width: 58%;
+        height: 155px;
+    }
+
+    .about-badge {
+        padding: 8px 16px;
+    }
+
+    .about-badge .yrs {
+        font-size: 20px;
+    }
+
+    .about-badge .lbl {
+        font-size: 9px;
+    }
+
+    .about-content h2 {
+        font-size: 25px;
+    }
+}
 
         /* ================= DETAIL PAGES ================= */
         .detail-page {
