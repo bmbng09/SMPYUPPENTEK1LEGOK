@@ -576,6 +576,219 @@
         }
 
 
+        /* =========================================
+   ABOUT ANIMATION
+========================================= */
+
+/* Kondisi awal semua elemen */
+.animate-left,
+.animate-right,
+.animate-up,
+.animate-badge {
+    opacity: 0;
+}
+
+
+/* =========================
+   GAMBAR MASUK DARI KIRI
+========================= */
+
+.animate-left {
+    transform: translateX(-80px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================
+   GAMBAR MASUK DARI KANAN
+========================= */
+
+.animate-right {
+    transform: translateX(80px);
+    transition:
+        opacity 0.9s ease 0.15s,
+        transform 0.9s cubic-bezier(.22, 1, .36, 1) 0.15s;
+}
+
+
+/* =========================
+   TEKS MASUK DARI BAWAH
+========================= */
+
+.animate-up {
+    transform: translateY(35px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================
+   BADGE
+========================= */
+
+.animate-badge {
+    transform: translateY(40px) scale(.85);
+    transition:
+        opacity 0.7s ease .3s,
+        transform 0.8s cubic-bezier(.34, 1.56, .64, 1) .3s;
+}
+
+
+/* =========================
+   KONDISI SETELAH AKTIF
+========================= */
+
+.about.show-animation .animate-left,
+.about.show-animation .animate-right,
+.about.show-animation .animate-up,
+.about.show-animation .animate-badge {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+
+/* =========================
+   DELAY
+========================= */
+
+.about.show-animation .delay-1 {
+    transition-delay: .15s;
+}
+
+.about.show-animation .delay-2 {
+    transition-delay: .3s;
+}
+
+.about.show-animation .delay-3 {
+    transition-delay: .45s;
+}
+
+.about.show-animation .delay-4 {
+    transition-delay: .6s;
+}
+
+.about.show-animation .delay-5 {
+    transition-delay: .75s;
+}
+
+.about.show-animation .delay-6 {
+    transition-delay: .9s;
+}
+
+
+/* =========================
+   TYPEWRITER
+========================= */
+
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+}
+
+
+/* Jalankan mesin ketik setelah section aktif */
+.about.show-animation .typewriter {
+    width: 100%;
+    animation: typing 2.5s steps(45, end) .5s forwards;
+}
+
+
+/* Cursor mesin ketik */
+.about.show-animation .typewriter::after {
+    content: "|";
+    margin-left: 3px;
+    color: var(--primary);
+    animation: blink-cursor .7s infinite;
+}
+
+
+/* =========================
+   KEYFRAMES
+========================= */
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-cursor {
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-images {
+        height: 400px;
+    }
+
+    .typewriter {
+        white-space: normal;
+    }
+
+    .about.show-animation .typewriter {
+        width: 100%;
+        animation: none;
+    }
+
+    .about.show-animation .typewriter::after {
+        display: none;
+    }
+}
+
+
+/* =========================
+   REDUCE MOTION
+   Untuk user yang mematikan
+   animasi di perangkat
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .animate-left,
+    .animate-right,
+    .animate-up,
+    .animate-badge {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .typewriter {
+        width: 100%;
+        animation: none !important;
+    }
+
+    .typewriter::after {
+        display: none;
+    }
+}
+
             /* ABOUT */
     .about{padding:90px 0;background:var(--light-bg);}
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
@@ -899,7 +1112,7 @@
         </section>
 
                 <!-- ABOUT -->
-        <section class="about" id="about">
+        <!-- <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
             <div class="about-images">
@@ -937,7 +1150,93 @@
             </div>
             </div>
         </div>
-        </section>
+        </section> -->
+
+         <!-- ABOUT -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+
+            <!-- IMAGE -->
+            <div class="about-images">
+
+                <img src="aboutt.jpg"
+                     alt="Belajar"
+                     class="about-img-main animate-left"/>
+
+                <img src="abouttt.jpg"
+                     alt="Diskusi"
+                     class="about-img-sec animate-right"/>
+
+                <div class="about-badge animate-badge">
+                    <div class="yrs">42+</div>
+                    <div class="lbl">Tahun<br>Mengabdi</div>
+                </div>
+
+            </div>
+
+            <!-- CONTENT -->
+            <div class="about-content">
+
+                <h2 class="section-title animate-up">
+                    Tentang Sekolah
+                </h2>
+
+                <h2 class="animate-up typewriter">
+                    Sistem Pendidikan Kami 
+                    <br><span>Menginspirasi</span>
+                    Anda.
+                </h2>
+
+                <p class="animate-up delay-1">
+                    SMP Yuppentek 1 Legok adalah sekolah menengah pertama
+                    unggulan yang berkomitmen untuk mencetak lulusan yang
+                    cerdas, berkarakter, dan siap bersaing di era global.
+                </p>
+
+                <p class="animate-up delay-2">
+                    Dengan kurikulum yang berbasis karakter dan teknologi,
+                    SMP Yuppentek 1 Legok telah membuktikan diri sebagai
+                    lembaga pendidikan yang mampu menghasilkan generasi muda
+                    yang berprestasi dan berakhlak mulia.
+                </p>
+
+                <div class="row mt-4">
+
+                    <div class="col-6">
+
+                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-3">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Kurikulum Berbasis Karakter</span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-4">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Laboratorium Lengkap</span>
+                        </div>
+
+                    </div>
+
+                    <div class="col-6">
+
+                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-5">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Pembelajaran Digital</span>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-6">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Lingkungan Belajar Nyaman</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- About Section -->
         <!-- <section id="about" class="py-5">
@@ -1942,6 +2241,39 @@ function salinRekening() {
     zIndex: 999999,
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const aboutSection = document.querySelector("#about");
+
+    if (!aboutSection) return;
+
+    const observer = new IntersectionObserver(
+        function (entries, observer) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    // Aktifkan animasi
+                    aboutSection.classList.add("show-animation");
+
+                    // Stop observer supaya animasi tidak
+                    // dimainkan ulang ketika scroll naik-turun
+                    observer.unobserve(aboutSection);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.25
+        }
+    );
+
+    observer.observe(aboutSection);
+
+});
     </script>
 </body>
 </html>
