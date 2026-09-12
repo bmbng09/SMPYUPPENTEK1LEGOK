@@ -3,6 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Open Graph untuk Share WhatsApp -->
+    <meta property="og:title"
+          content="SMP Yuppentek 1 Legok">
+
+    <meta property="og:description"
+          content="Berita dan informasi terbaru SMP Yuppentek 1 Legok.">
+
+    <meta property="og:image"
+          content="https://smpyuppentek-1-legok.vercel.app/berita7.png">
+
+    <meta property="og:url"
+          content="https://smpyuppentek-1-legok.vercel.app/news.html">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:site_name"
+          content="SMP Yuppentek 1 Legok">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+          content="SMP Yuppentek 1 Legok">
+    <meta name="twitter:description"
+          content="Berita dan informasi terbaru SMP Yuppentek 1 Legok.">
+    <meta name="twitter:image"
+          content="https://smpyuppentek-1-legok.vercel.app/berita7.png">
+    
     <title>Berita dan Pengumuman</title>
     <link rel="website icon" type="png" href="logosmp.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -663,11 +691,29 @@ function cariBerita(q) {
   renderList();
 }
 
-function shareWA() {
-  const n = newsData.find(x => x.id === activeId);
-  if (!n) return;
-  const text = `Berita dari SMP Yuppentek 1 Legok:\n\n*${n.title}*\n\n${n.excerpt}\n\nSelengkapnya di website sekolah.`;
-  window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+// function shareWA() {
+//   const n = newsData.find(x => x.id === activeId);
+//   if (!n) return;
+//   const text = `Berita dari SMP Yuppentek 1 Legok:\n\n*${n.title}*\n\n${n.excerpt}\n\nSelengkapnya di website sekolah.`;
+//   window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+// }
+    function shareWA() {
+    const n = newsData.find(x => x.id === activeId);
+    if (!n) return;
+
+    const link = "https://smpyuppentek-1-legok.vercel.app/news.html";
+
+    const text = `*${n.title}*
+
+${n.excerpt}
+
+Baca selengkapnya di website SMP Yuppentek 1 Legok:
+${link}`;
+
+    window.open(
+        'https://wa.me/?text=' + encodeURIComponent(text),
+        '_blank'
+    );
 }
 
 function salinLink() {
