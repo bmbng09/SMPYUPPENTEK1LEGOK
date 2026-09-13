@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Open Graph untuk Share WhatsApp -->
+    <!-- Open Graph untuk Share WhatsApp -->
     <meta property="og:title"
           content="SMP Yuppentek 1 Legok">
 
@@ -11,7 +11,7 @@
           content="Berita dan informasi terbaru SMP Yuppentek 1 Legok.">
 
     <meta property="og:image"
-          content="https://smpyuppentek-1-legok.vercel.app/berita9.png">
+          content="https://smpyuppentek-1-legok.vercel.app/berita7.png">
 
     <meta property="og:url"
           content="https://smpyuppentek-1-legok.vercel.app/news.html">
@@ -30,9 +30,9 @@
           content="Berita dan informasi terbaru SMP Yuppentek 1 Legok.">
     <meta name="twitter:image"
           content="https://smpyuppentek-1-legok.vercel.app/berita7.png">
-    
-    <title>Berita dan Pengumuman</title>
-    <link rel="website icon" type="png" href="logosmp.png"/>
+<title>Berita & Pengumuman</title>
+<link rel="website icon" type="png" 
+href="logosmp.png" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 <style>
@@ -50,32 +50,45 @@
   --red: #dc2626;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
+html,body{max-width:100%;overflow-x:hidden;}
 body{font-family:'Source Sans 3',sans-serif;background:#f1f4f8;color:var(--gray-900);}
 a{text-decoration:none;color:inherit;}
 img{display:block;width:100%;object-fit:cover;}
 
 /* ─── TOPBAR ─── */
 .topbar{background:var(--dark);color:rgba(255,255,255,0.6);font-size:0.75rem;padding:7px 0;border-bottom:2px solid var(--primary);}
-.topbar .inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;}
-.topbar a{color:rgba(255,255,255,0.75);font-weight:600;display:flex;align-items:center;gap:6px;transition:color .2s;}
+.topbar .inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+.topbar a{color:rgba(255,255,255,0.75);font-weight:600;display:flex;align-items:center;gap:6px;transition:color .2s;white-space:nowrap;}
 .topbar a:hover{color:var(--accent);}
+.topbar-address{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+@media(max-width:600px){.topbar .inner{justify-content:center;}.topbar-address{display:none;}}
 
 /* ─── HEADER ─── */
 .site-header{background:var(--white);border-bottom:1px solid var(--gray-300);padding:0;}
-.header-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:20px;height:64px;}
+.header-inner{max-width:1200px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap;}
 .site-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:var(--primary);letter-spacing:-0.5px;white-space:nowrap;}
 .site-logo span{color:var(--accent);}
-.header-divider{width:1px;height:32px;background:var(--gray-300);}
+.header-divider{width:1px;height:32px;background:var(--gray-300);flex-shrink:0;}
 .header-tagline{font-size:0.78rem;color:var(--gray-500);line-height:1.4;}
+@media(max-width:480px){.site-logo{font-size:1.2rem;}.header-divider{display:none;}.header-tagline{font-size:0.72rem;}}
 
 /* ─── NAV ─── */
 .site-nav{background:var(--primary);position:sticky;top:0;z-index:999;}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:2px;}
-.nav-item{padding:13px 16px;font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.8);cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;}
+.nav-item{padding:13px 16px;font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.8);cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+.nav-categories{display:flex;align-items:center;gap:2px;}
 .nav-item:hover,.nav-item.active{color:#fff;border-bottom-color:var(--accent);}
-.nav-search{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.nav-search{margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .nav-search input{background:rgba(255,255,255,0.12);border:none;border-radius:20px;padding:6px 14px;color:#fff;font-size:0.8rem;outline:none;width:160px;}
 .nav-search input::placeholder{color:rgba(255,255,255,0.5);}
+@media(max-width:900px){
+  .nav-inner{flex-wrap:wrap;padding:8px 12px;gap:6px 4px;}
+  .nav-categories{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;scrollbar-width:none;}
+  .nav-categories::-webkit-scrollbar{display:none;}
+  .nav-item{padding:9px 12px;font-size:0.78rem;}
+  .nav-search{margin-left:0;width:100%;}
+  .nav-search input{width:100%;font-size:16px;}
+}
 
 /* ─── BREAKING ─── */
 .breaking{background:var(--white);border-bottom:1px solid var(--gray-300);padding:8px 0;overflow:hidden;}
@@ -187,7 +200,7 @@ img{display:block;width:100%;object-fit:cover;}
 .article-content blockquote{border-left:4px solid var(--primary);padding:14px 20px;background:#f0f4ff;border-radius:0 8px 8px 0;margin:20px 0;font-style:italic;color:var(--gray-700);}
 .article-content h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--dark);margin:24px 0 12px;}
 
-.share-bar{display:flex;align-items:center;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid var(--gray-300);}
+.share-bar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid var(--gray-300);}
 .share-label{font-size:0.8rem;font-weight:600;color:var(--gray-500);}
 .share-btn{padding:7px 16px;border-radius:5px;font-size:0.78rem;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;gap:5px;}
 .share-wa{background:#25d366;color:#fff;}
@@ -217,7 +230,7 @@ img{display:block;width:100%;object-fit:cover;}
 <div class="topbar">
   <div class="inner">
     <a href="index.html"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
-    <span>SMP YUPPENTEK 1 Legok — Serdang Wetan, Legok, Tangerang</span>
+    <span class="topbar-address">SMP YUPPENTEK 1 Legok — Serdang Wetan, Legok, Tangerang</span>
   </div>
 </div>
 
@@ -233,11 +246,13 @@ img{display:block;width:100%;object-fit:cover;}
 <!-- NAV -->
 <nav class="site-nav">
   <div class="nav-inner">
-    <div class="nav-item active" onclick="filterKategori('Semua')">Semua</div>
-    <div class="nav-item" onclick="filterKategori('Prestasi')">Prestasi</div>
-    <div class="nav-item" onclick="filterKategori('Kegiatan')">Kegiatan</div>
-    <div class="nav-item" onclick="filterKategori('Pengumuman')">Pengumuman</div>
-    <div class="nav-item" onclick="filterKategori('SPMB')">SPMB</div>
+    <div class="nav-categories">
+      <div class="nav-item active" onclick="filterKategori(this,'Semua')">Semua</div>
+      <div class="nav-item" onclick="filterKategori(this,'Prestasi')">Prestasi</div>
+      <div class="nav-item" onclick="filterKategori(this,'Kegiatan')">Kegiatan</div>
+      <div class="nav-item" onclick="filterKategori(this,'Pengumuman')">Pengumuman</div>
+      <div class="nav-item" onclick="filterKategori(this,'SPMB')">SPMB</div>
+    </div>
     <div class="nav-search">
       <input type="text" placeholder="Cari berita..." oninput="cariBerita(this.value)">
       <i class="bi bi-search" style="color:rgba(255,255,255,.6);font-size:.9rem;"></i>
@@ -319,7 +334,7 @@ img{display:block;width:100%;object-fit:cover;}
       <div class="share-bar">
         <span class="share-label">Bagikan:</span>
         <button class="share-btn share-wa" onclick="shareWA()"><i class="bi bi-whatsapp"></i> WhatsApp</button>
-        <button class="share-btn share-copy" onclick="salinLink()"><i class="bi bi-link-45deg"></i> Salin Link</button>
+        <button class="share-btn share-copy" onclick="salinLink(this)"><i class="bi bi-link-45deg"></i> Salin Link</button>
       </div>
       <div class="related-section">
         <h3>Berita Lainnya</h3>
@@ -490,9 +505,9 @@ Prestasi membanggakan kembali diraih oleh siswa SMP Yuppentek 1 Legok dalam ajan
     author: "Waka. Kesiswaan",
     category: "Kegiatan",
     image: "berita7.png",
-    excerpt: "Dalam rangka memeriahkan Hari Ulang Tahun Republik Indonesia, SMP YUPPENTEK 1 Legok menggelar berbagai kegiatan dan perlombaan yang diikuti dengan penuh antusias oleh siswa serta seluruh warga sekolah.",
+    excerpt: "Dalam rangka memeriahkan Hari Ulang Tahun Republik Indonesia, SMP Yuppentek 1 Legok menggelar berbagai kegiatan dan perlombaan yang diikuti dengan penuh antusias oleh siswa serta seluruh warga sekolah.",
     content: `
-        Dalam rangka memperingati dan memeriahkan Hari Ulang Tahun Republik Indonesia, SMP YUPPENTEK 1 Legok turut menyelenggarakan berbagai kegiatan dan perlombaan yang melibatkan siswa serta warga sekolah.
+        Dalam rangka memperingati dan memeriahkan Hari Ulang Tahun Republik Indonesia, SMP Yuppentek 1 Legok turut menyelenggarakan berbagai kegiatan dan perlombaan yang melibatkan siswa serta warga sekolah.
 
     Kegiatan lomba HUT RI berlangsung dengan penuh semangat dan antusias. Para siswa mengikuti berbagai perlombaan dengan suasana yang meriah, seru, dan penuh kebersamaan. Selain menjadi sarana hiburan, kegiatan ini juga menjadi kesempatan bagi siswa untuk berinteraksi, bekerja sama, serta menunjukkan semangat sportivitas.
 
@@ -505,24 +520,24 @@ Prestasi membanggakan kembali diraih oleh siswa SMP Yuppentek 1 Legok dalam ajan
   },
   {
     id: 9,
-    title: "Back to School! SMP YUPPENTEK 1 Legok Kembali Melaksanakan Pembelajaran Tatap Muka",
+    title: "Back to School! SMP Yuppentek 1 Legok Kembali Melaksanakan Pembelajaran Tatap Muka",
     date: "2026-09-12",
     author: "Waka. Kesiswaan",
     category: "Pengumuman",
     image: "berita9.png",
-    excerpt: "Setelah pelaksanaan Pembelajaran Jarak Jauh (PJJ) akibat abu vulkanik dari erupsi Krakatau, SMP YUPPENTEK 1 Legok kembali melaksanakan kegiatan pembelajaran tatap muka di sekolah dengan penuh semangat dan antusias.",
+    excerpt: "Setelah pelaksanaan Pembelajaran Jarak Jauh (PJJ) akibat abu vulkanik dari erupsi Krakatau, SMP Yuppentek 1 Legok kembali melaksanakan kegiatan pembelajaran tatap muka di sekolah dengan penuh semangat dan antusias.",
     content: `
-    SMP YUPPENTEK 1 Legok kembali melaksanakan kegiatan pembelajaran tatap muka setelah sebelumnya menerapkan Pembelajaran Jarak Jauh (PJJ) sebagai bentuk penyesuaian terhadap kondisi lingkungan akibat abu vulkanik dari erupsi Krakatau.
+    SMP Yuppentek 1 Legok kembali melaksanakan kegiatan pembelajaran tatap muka setelah sebelumnya menerapkan Pembelajaran Jarak Jauh (PJJ) sebagai bentuk penyesuaian terhadap kondisi lingkungan akibat abu vulkanik dari erupsi Krakatau.
 
     Kembalinya siswa ke sekolah menjadi momen yang penuh semangat dan antusias. Para siswa kembali hadir di lingkungan sekolah untuk mengikuti kegiatan belajar mengajar bersama guru dan teman-teman setelah menjalani pembelajaran dari rumah.
 
     Suasana sekolah kembali dipenuhi keceriaan dan semangat belajar. Para siswa tampak antusias menyambut kegiatan pembelajaran tatap muka, berinteraksi dengan teman-teman, serta mengikuti berbagai aktivitas pendidikan yang dilaksanakan di lingkungan sekolah.
 
-    Kegiatan ini menjadi bagian dari upaya SMP YUPPENTEK 1 Legok untuk terus memberikan pengalaman pembelajaran yang optimal bagi seluruh siswa dengan tetap memperhatikan kondisi dan situasi lingkungan sekitar.
+    Kegiatan ini menjadi bagian dari upaya SMP YuppENTEK 1 Legok untuk terus memberikan pengalaman pembelajaran yang optimal bagi seluruh siswa dengan tetap memperhatikan kondisi dan situasi lingkungan sekitar.
 
     Melalui kembalinya pembelajaran tatap muka ini, diharapkan seluruh siswa dapat kembali membangun semangat belajar, meningkatkan kedisiplinan, serta terus bertumbuh dan berprestasi dalam lingkungan sekolah.
 
-    Selamat datang kembali di sekolah, para siswa SMP YUPPENTEK 1 Legok! Mari terus belajar, bertumbuh, berprestasi.
+    Selamat datang kembali di sekolah, para siswa SMP Yuppentek 1 Legok! Mari terus belajar, bertumbuh, berprestasi.
     `
   },
   {
@@ -676,11 +691,14 @@ function kembali() {
   window.scrollTo(0, 0);
 }
 
-function filterKategori(kat) {
-  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-  event.target.classList.add('active');
+function filterKategori(el, kat) {
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+  if (el) el.classList.add('active');
   filteredData = kat === 'Semua' ? [...newsData] : newsData.filter(n => n.category === kat);
   renderList();
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('listView').classList.remove('hidden');
+  window.scrollTo(0, 0);
 }
 
 function cariBerita(q) {
@@ -689,6 +707,8 @@ function cariBerita(q) {
     ? newsData.filter(n => n.title.toLowerCase().includes(query) || n.excerpt.toLowerCase().includes(query))
     : [...newsData];
   renderList();
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('listView').classList.remove('hidden');
 }
 
 // function shareWA() {
@@ -697,7 +717,7 @@ function cariBerita(q) {
 //   const text = `Berita dari SMP Yuppentek 1 Legok:\n\n*${n.title}*\n\n${n.excerpt}\n\nSelengkapnya di website sekolah.`;
 //   window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
 // }
-    function shareWA() {
+function shareWA() {
     const n = newsData.find(x => x.id === activeId);
     if (!n) return;
 
@@ -716,14 +736,16 @@ ${link}`;
     );
 }
 
-function salinLink() {
+function salinLink(btn) {
+  if (!btn) return;
+  const ori = btn.innerHTML;
   navigator.clipboard.writeText(window.location.href).then(() => {
-    const btn = event.target.closest('button');
-    const ori = btn.innerHTML;
     btn.innerHTML = '<i class="bi bi-check"></i> Tersalin!';
     btn.style.background = '#d1fae5';
     btn.style.color = '#065f46';
     setTimeout(() => { btn.innerHTML = ori; btn.style.background = ''; btn.style.color = ''; }, 2000);
+  }).catch(() => {
+    alert('Gagal menyalin link. Silakan salin manual dari address bar.');
   });
 }
 
