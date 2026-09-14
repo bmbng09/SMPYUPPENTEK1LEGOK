@@ -13,8 +13,8 @@
         :root {
             --primary-color: #1e40af;
             --secondary-color: #f59e0b;
-            --dark-color: #1f2937;
             --accent:#f5a623;
+            --dark-color: #1f2937;
             --light-bg: #f3f4f6;
             --accent-color: #10b981;
         }
@@ -575,7 +575,6 @@
             margin-bottom: 20px;
         }
 
-
         /* =========================================
    ABOUT ANIMATION
 ========================================= */
@@ -1020,6 +1019,35 @@
     }
 }
 
+
+/* =========================
+   REDUCE MOTION
+   Untuk user yang mematikan
+   animasi di perangkat
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .animate-left,
+    .animate-right,
+    .animate-up,
+    .animate-badge {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .typewriter {
+        width: 100%;
+        animation: none !important;
+    }
+
+    .typewriter::after {
+        display: none;
+    }
+}
+
+
         /* ================= DETAIL PAGES ================= */
         .detail-page {
             display: none;
@@ -1218,6 +1246,7 @@
         .swal2-container {
     z-index: 999999 !important;
 }
+
 
 /* SweetAlert2 */
 /* =========================================================
@@ -1650,7 +1679,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content">
-                            <h1>SELAMAT DATANG DI SMP YUPPENTEK 1 LEGOK</h1>
+                            <h1>Selamat Datang di SMP YUPPENTEK 1 Legok</h1>
                             <p>Membentuk Generasi Cerdas, Berkarakter, dan Berprestasi</p>
                             <a href="brosur.pdf" class="btn-primary-custom"><b>Download Brosur</b></a>
                         </div>
@@ -1660,7 +1689,7 @@
                         <div class="row mt-5 mt-lg-5 mt-3">
                             <div class="col-6 mb-3">
                                 <div class="stats-box" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="stats-number" data-count="264">0</div>
+                                    <div class="stats-number" data-count="195">0</div>
                                     <div class="stats-label"><b>Siswa Aktif</b></div>
                                 </div>
                             </div>
@@ -1688,21 +1717,15 @@
             </div>
         </section>
 
-                <!-- ABOUT -->
-        <!-- <section class="about" id="about">
-        <div class="container">
-            <div class="about-grid">
-            <div class="about-images">
-                <img src="aboutt.jpg" alt="Belajar" class="about-img-main"/>
-                <img src="abouttt.jpg" alt="Diskusi" class="about-img-sec"/>
-                <div class="about-badge"><div class="yrs">42+</div><div class="lbl">Tahun<br>Mengabdi</div></div>
-            </div>
-            <div class="about-content">
-                <h2 class="section-title">Tentang Sekolah</h2>
-                <h2>Sistem Pendidikan Kami <span>Menginspirasi</span> Anda.</h2>
-                <p>SMP YUPPENTEK 1 Legok adalah sekolah menengah pertama unggulan yang berkomitmen untuk mencetak lulusan yang cerdas, berkarakter, dan siap bersaing di era global.</p>
-                <p>Dengan kurikulum yang berbasis karakter dan teknologi, SMP YUPPENTEK 1 Legok telah membuktikan diri sebagai lembaga pendidikan yang mampu menghasilkan generasi muda yang berprestasi dan berakhlak mulia.</p>
-                <div class="row mt-4">
+        <!-- About Section -->
+        <!-- <section id="about" class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <h2 class="section-title">Tentang Sekolah</h2>
+                        <p class="lead"></p>
+                        <p></p>
+                        <div class="row mt-4">
                             <div class="col-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <i class="bi bi-check-circle-fill text-success me-2"></i>
@@ -1724,12 +1747,16 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-5 mt-4 mt-lg-0" data-aos="fade-left">
+                        <img src="about.png" alt="Tentang Sekolah" class="img-fluid rounded shadow">
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
         </section> -->
 
-         <!-- ABOUT -->
+
+        <!-- ABOUT -->
 <section class="about" id="about">
     <div class="container">
         <div class="about-grid">
@@ -1766,64 +1793,63 @@
                 </h2>
 
                 <p class="animate-up delay-1">
-                    SMP YUPPENTEK 1 Legok adalah sekolah menengah pertama
+                    SMP Yuppentek 1 Legok adalah sekolah menengah pertama
                     unggulan yang berkomitmen untuk mencetak lulusan yang
                     cerdas, berkarakter, dan siap bersaing di era global.
                 </p>
 
                 <p class="animate-up delay-2">
                     Dengan kurikulum yang berbasis karakter dan teknologi,
-                    SMP YUPPENTEK 1 Legok telah membuktikan diri sebagai
+                    SMP Yuppentek 1 Legok telah membuktikan diri sebagai
                     lembaga pendidikan yang mampu menghasilkan generasi muda
                     yang berprestasi dan berakhlak mulia.
                 </p>
 
                 <div class="row mt-4">
+    <div class="col-12 col-md-6">
+        <div class="d-flex align-items-center mb-3 checklist animate-up delay-3">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Kurikulum Berbasis Karakter</span>
+        </div>
 
-                    <div class="col-6">
+        <div class="d-flex align-items-center mb-3 checklist animate-up delay-4">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Laboratorium Lengkap</span>
+        </div>
+    </div>
 
-                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-3">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span>Kurikulum Berbasis Karakter</span>
-                        </div>
+    <div class="col-12 col-md-6">
+        <div class="d-flex align-items-center mb-3 checklist animate-up delay-5">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Pembelajaran Digital</span>
+        </div>
 
-                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-4">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span>Laboratorium Lengkap</span>
-                        </div>
-
-                    </div>
-
-                    <div class="col-6">
-
-                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-5">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span>Pembelajaran Digital</span>
-                        </div>
-
-                        <div class="d-flex align-items-center mb-3 checklist animate-up delay-6">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span>Lingkungan Belajar Nyaman</span>
-                        </div>
-
-                    </div>
-
-                </div>
+        <div class="d-flex align-items-center mb-3 checklist animate-up delay-6">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Lingkungan Belajar Nyaman</span>
+        </div>
+    </div>
+</div>
 
             </div>
         </div>
     </div>
 </section>
-
-        <!-- About Section -->
-        <!-- <section id="about" class="py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6" data-aos="fade-right">
-                        <h2 class="section-title">Tentang Sekolah</h2>
-                        <p class="lead">SMP Yuppentek 1 Legok adalah sekolah menengah pertama unggulan yang berkomitmen untuk mencetak lulusan yang cerdas, berkarakter, dan siap bersaing di era global.</p>
-                        <p>Dengan kurikulum yang berbasis karakter dan teknologi, SMP Yuppentek 1 Legok telah membuktikan diri sebagai lembaga pendidikan yang mampu menghasilkan generasi muda yang berprestasi dan berakhlak mulia.</p>
-                        <div class="row mt-4">
+        <!-- ABOUT -->
+        <!-- <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+            <div class="about-images">
+                <img src="aboutt.jpg" alt="Belajar" class="about-img-main"/>
+                <img src="abouttt.jpg" alt="Diskusi" class="about-img-sec"/>
+                <div class="about-badge"><div class="yrs">42+</div><div class="lbl">Tahun<br>Mengabdi</div></div>
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Tentang Sekolah</h2>
+                <h2>Sistem Pendidikan Kami <span>Menginspirasi</span> Anda.</h2>
+                <p>SMP Yuppentek 1 Legok adalah sekolah menengah pertama unggulan yang berkomitmen untuk mencetak lulusan yang cerdas, berkarakter, dan siap bersaing di era global.</p>
+                <p>Dengan kurikulum yang berbasis karakter dan teknologi, SMP Yuppentek 1 Legok telah membuktikan diri sebagai lembaga pendidikan yang mampu menghasilkan generasi muda yang berprestasi dan berakhlak mulia.</p>
+                <div class="row mt-4">
                             <div class="col-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <i class="bi bi-check-circle-fill text-success me-2"></i>
@@ -1845,12 +1871,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-5 mt-4 mt-lg-0" data-aos="fade-left">
-                        <img src="about.png" alt="Tentang Sekolah" class="img-fluid rounded shadow">
-                    </div>
-                </div>
             </div>
+            </div>
+        </div>
         </section> -->
 
         <!-- Ekstrakurikuler Section -->
@@ -1884,7 +1907,7 @@
             <div class="container">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <h2 class="section-title">Prestasi Sekolah</h2>
-                    <p class="lead">Pencapaian membanggakan dari siswa-siswi SMP YUPPENTEK 1 Legok</p>
+                    <p class="lead">Pencapaian membanggakan dari siswa-siswi SMP Yuppentek 1 Legok</p>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
@@ -1904,8 +1927,8 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="achievement-card">
                             <i class="bi bi-trophy achievement-icon"></i>
-                            <h5>Juara 2 Kejuaraan Tae Kwon Do Putra SMP</h5>
-                            <p>Tingkat Kabupaten Tangerang 2022</p>
+                            <h5>Juara 3 Kejuaraan Tae Kwon Do Putri SMP</h5>
+                            <p>Tingkat Kabupaten Tangerang 2026</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
@@ -1916,7 +1939,7 @@
                         </div>
                     </div>
                     <div class="text-center mt-4">
-                        <a href="info.html" class="btn-primary-custom">Lihat Semua Prestasi</a>
+                        <a href="achievements.html" class="btn-primary-custom">Lihat Semua Prestasi</a>
                     </div>
                 </div>
             </div>
@@ -1943,17 +1966,17 @@
             <div class="container">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <h2 class="section-title">Frequently Asked Questions</h2>
-                    <p class="lead">Pertanyaan yang sering diajukan tentang SMP YUPPENTEK 1 Legok</p>
+                    <p class="lead">Pertanyaan yang sering diajukan tentang SMP Yuppentek 1 Legok</p>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
                             <button class="faq-question" onclick="toggleFAQ(this)">
-                                <span>Di mana lokasi SMP YUPPENTEK 1 Legok?</span>
+                                <span>Di mana lokasi SMP Yuppentek 1 Legok?</span>
                                 <i class="bi bi-chevron-down"></i>
                             </button>
                             <div class="faq-answer">
-                                <p>SMP YUPPENTEK 1 Legok terletak di:</p>
+                                <p>SMP Yuppentek 1 Legok terletak di:</p>
                                 <p><strong>JL Raya PLP, No. 47 RT. 002 RW.03<br>
                                 Kel. Serdang Wetan, Kec. Legok<br>
                                 Kab. Tangerang, Banten 15820</strong></p>
@@ -1981,7 +2004,7 @@
 
                         <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
                             <button class="faq-question" onclick="toggleFAQ(this)">
-                                <span>Bagaimana sistem pembelajaran di SMP YUPPENTEK 1 Legok?</span>
+                                <span>Bagaimana sistem pembelajaran di SMP Yuppentek 1 Legok?</span>
                                 <i class="bi bi-chevron-down"></i>
                             </button>
                             <div class="faq-answer">
@@ -2084,7 +2107,7 @@
                         <p>Sekolah menengah pertama unggulan dalam mencetak generasi cerdas, berkarakter, dan berprestasi.</p>
                         <div class="social-links mt-3">
                             <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
-                            <a href="https://www.instagram.com/smp.yuppentek1legok?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="https://www.instagram.com/smpyuppentek1legok/?utm_source=ig_web_button_share_sheet" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
                             <a href="https://www.tiktok.com/@osis_yusalegta?is_from_webapp=1&sender_device=pc" class="text-white me-3"><i class="bi bi-tiktok fs-5"></i></a>
                         </div>
                     </div>
@@ -2122,7 +2145,7 @@
         <div class="detail-header">
             <div class="container">
                 <h1 id="ekskulTitle">Detail Ekstrakurikuler</h1>
-                <p class="lead">Informasi lengkap ekstrakurikuler SMP YUPPENTEK 1 Legok</p>
+                <p class="lead">Informasi lengkap ekstrakurikuler SMP Yuppentek 1 Legok</p>
             </div>
         </div>
         <div class="detail-content">
@@ -2160,7 +2183,7 @@
         <div class="detail-header">
             <div class="container">
                 <h1 id="facilityTitle">Detail Fasilitas</h1>
-                <p class="lead">Informasi lengkap fasilitas SMP YUPPENTEK 1 Legok</p>
+                <p class="lead">Informasi lengkap fasilitas SMP Yuppentek 1 Legok</p>
             </div>
         </div>
         <div class="detail-content">
@@ -2185,7 +2208,7 @@
         <div class="detail-header">
             <div class="container">
                 <h1 id="newsTitle">Detail Berita</h1>
-                <p class="lead">Informasi lengkap berita SMP YUPPENTEK 1 Legok</p>
+                <p class="lead">Informasi lengkap berita SMP Yuppentek 1 Legok</p>
             </div>
         </div>
         <div class="detail-content">
@@ -2211,11 +2234,18 @@
         const newsData = [
             {
                 id: 1,
-                title: "Juara 2 Kategori Kyorugi SMP Putri - Tae Kwon Do",
-                date: "2025-11-30",
+                title: "Juara 1 Kategori Kyorugi Cadet Putri - Kejurnas Tae Kwon Do Gubernur Banten Cup 2026",
+                date: "2026-07-12",
                 author: "Tim Humas",
+                category: "Prestasi",
                 image: "berita3.png",
-                content: `Rina Aulia - Siswi SMP YUPPENTEK 1 Legok yang berhasil meraih juara 2 kategori Kyorugi SMP Putri dalam Kejuaraan Tae Kwon Do.`
+                excerpt: "Rina Aulia berhasil meraih juara 1 kategori Kyorugi Cadet Putri dalam Kejurnas Tae Kwon Do Gubernur Banten Cup 2026.",
+                content: `
+                <p>Sebuah prestasi membanggakan kembali diraih oleh siswa SMP Yuppentek 1 Legok. <strong>Rina Aulia</strong>, siswi kelas VIII, berhasil meraih <strong>Juara 1 Kategori Kyorugi Cadet Putri</strong> dalam Kejurnas Tae Kwon Do Gubernur Banten Cup 2026.</p>
+                <p>Kejuaraan ini diikuti oleh puluhan sekolah dari seluruh Kabupaten Tangerang. Rina tampil dengan penuh semangat dan menunjukkan teknik bertarung yang matang hasil latihan intensif bersama pelatih Yayat Supriatna.</p>
+                <blockquote style="border-left:4px solid #1e40af;padding:12px 20px;background:#f0f4ff;border-radius:0 8px 8px 0;margin:20px 0;font-style:italic;color:#374151;">"Saya sangat senang dan bangga bisa membawa nama sekolah. Ini hasil kerja keras latihan selama berbulan-bulan." — Rina Aulia</blockquote>
+                <p>Kepala sekolah menyampaikan apresiasi yang setinggi-tingginya atas pencapaian ini dan berharap prestasi serupa dapat terus diraih oleh siswa-siswi SMP Yuppentek 1 Legok di masa mendatang.</p>
+                `
             },
             {
                 id: 2,
@@ -2223,7 +2253,7 @@
                 date: "2022-10-26",
                 author: "Kesiswaan",
                 image: "berita2.webp",
-                content: `SMP YUPPENTEK 1 Legok berhasil raih Juara 1 Tingkat Wilayah III dan Juara 3 Tingkat Kabupaten Tangerang dalam Lomba Tata Upacara Bendera.`
+                content: `SMP Yuppentek 1 Legok berhasil raih Juara 1 Tingkat Wilayah III dan Juara 3 Tingkat Kabupaten Tangerang dalam Lomba Tata Upacara Bendera.`
             },
             {
                 id: 3,
@@ -2231,7 +2261,7 @@
                 date: "2023-07-10",
                 author: "Kesiswaan",
                 image: "pebri.jpeg",
-                content: `<p><strong>Penghargaan</strong> - Febri Falentino Siswa SMP YUPPENTEK 1 Legok berhasil menjadi peserta Jumbara PMR Tingkat Nasional IX 2023 yang diselenggarakan di Provinsi Lampung pada tanggal 02-10 Juli 2023.</p>`
+                content: `<p><strong>Penghargaan</strong> - Febri Falentino Siswa SMP Yuppentek 1 Legok berhasil menjadi peserta Jumbara PMR Tingkat Nasional IX 2023 yang diselenggarakan di Provinsi Lampung pada tanggal 02-10 Juli 2023.</p>`
             }
         ];
 
@@ -2275,7 +2305,7 @@
                 detailImage: "pmr.webp",
                 detailDescription: "PMR (Palang Merah Remaja) adalah ekstrakurikuler yang fokus pada keterampilan pertolongan pertama, kesehatan, dan jiwa sosial tinggi.",
                 schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
-                coach: "Bambang Istijab, S.Kom.", achievements: [""]
+                coach: "Bambang Istijab", achievements: [""]
             },
             paskibra: {
                 title: "PASKIBRA", image: "paskib.webp",
@@ -2283,7 +2313,7 @@
                 detailImage: "paskib.webp",
                 detailDescription: "Paskibra (Pasukan Pengibar Bendera) bertugas mengibarkan bendera saat upacara rutin dan hari besar nasional di lingkungan sekolah, bertujuan membentuk karakter, disiplin, dan nasionalisme siswa melalui latihan baris-berbaris dan formasi.",
                 schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
-                coach: "Bambang Istijab, S.Kom.", achievements: [""]
+                coach: "Bambang Istijab", achievements: [""]
             },
             taekwondo: {
                 title: "Tae Kwon Do", image: "taekwondoo.jpg",
@@ -2294,12 +2324,12 @@
                 coach: "Yayat Supriatna", achievements: [""]
             },
             voli: {
-                title: "Voli", image: "voly.jpeg",
+                title: "Voli", image: "voli.jpeg",
                 description: "Olahraga voli untuk melatih teknik dasar, strategi permainan, dan kerja sama tim.",
-                detailImage: "voly.jpeg",
+                detailImage: "voli.jpeg",
                 detailDescription: "Voli adalah kegiatan ekstrakurikuler olahraga yang melatih teknik dasar (passing, servis, smash, block) hingga strategi permainan, membangun karakter, kerja sama tim, dan sportivitas.",
                 schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
-                coach: "Bambang Istijab, S.Kom.", achievements: ["Juara 1 O2SN 2026 Tingkat Kecamatan Legok"]
+                coach: "Bambang Istijab", achievements: ["Juara 1 O2SN 2026 Tingkat Kecamatan Legok"]
             }
         };
 
@@ -2433,14 +2463,19 @@
         }
 
         function showNewsDetail(newsId) {
-            const news = newsData.find(n => n.id === newsId);
-            if (!news) return;
-            document.getElementById('newsTitle').textContent = news.title;
-            document.getElementById('newsImage').src = news.image;
-            document.getElementById('newsDate').textContent = formatDate(news.date);
-            document.getElementById('newsAuthor').textContent = news.author;
-            document.getElementById('newsContent').innerHTML = news.content;
-            showDetailPage('newsDetail');
+        const news = newsData.find(n => n.id === newsId);
+        if (!news) return;
+        document.getElementById('newsTitle').textContent = news.title;
+        document.getElementById('newsDate').textContent = formatDate(news.date);
+        document.getElementById('newsAuthor').textContent = news.author;
+        document.getElementById('newsContent').innerHTML = news.content;
+
+        // Fix gambar — pakai style object-fit cover dengan tinggi tetap
+        const img = document.getElementById('newsImage');
+        img.src = news.image;
+        img.style.cssText = 'width:100%;height:420px;object-fit:cover;border-radius:15px;display:block;';
+
+        showDetailPage('newsDetail');
         }
 
         function showDetailPage(pageId) {
@@ -2578,6 +2613,11 @@ function bukaFormPendaftaran() {
           .rf-fname.filled{color:#059669}
           .rf-opt{background:#fef3c7;color:#92400e;font-size:0.68rem;padding:2px 7px;border-radius:10px;margin-left:5px;font-weight:500}
           .rf-upload-icon{width:32px;height:32px;border-radius:6px;background:#e0e7ff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+          @media (max-width: 480px){
+            .rf-row{grid-template-columns:1fr;gap:0}
+            .rf-input{font-size:16px;padding:9px 10px}
+          }
         </style>
 
         <div style="background:#1e40af;margin:-1.25em -1.4em 1.2em;padding:1.2em 1.4em;border-radius:8px 8px 0 0;">
@@ -2697,7 +2737,7 @@ function bukaFormPendaftaran() {
       </div>
       
     `,
-    width: '600px',
+    width: 'min(600px, 94vw)',
     zIndex: 99999,
     showCancelButton: true,
     confirmButtonText: 'Kirim Pendaftaran',
