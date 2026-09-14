@@ -19,9 +19,15 @@
             --accent-color: #10b981;
         }
 
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden; /* prevent horizontal scroll on mobile */
+            max-width: 100%;
         }
 
         /* ================= NAVBAR ================= */
@@ -72,10 +78,11 @@
             font-weight: 700;
             font-size: clamp(0.78rem, 2.2vw, 1.2rem);
             white-space: nowrap;
-            overflow: visible;
-            /* text-overflow: ellipsis; */
+            overflow: hidden;
+            text-overflow: ellipsis;
             flex: 1 1 auto;
             min-width: 0;
+            max-width: 100%;
         }
 
         .navbar-brand img.logo {
@@ -189,7 +196,8 @@
 
             .navbar-brand {
                 max-width: calc(100% - 56px);
-                overflow: visible;  /* ← tambahkan ini */
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
 
@@ -2324,9 +2332,9 @@
                 coach: "Yayat Supriatna", achievements: [""]
             },
             voli: {
-                title: "Voli", image: "voly.jpeg",
+                title: "Voli", image: "voli.jpeg",
                 description: "Olahraga voli untuk melatih teknik dasar, strategi permainan, dan kerja sama tim.",
-                detailImage: "voly.jpeg",
+                detailImage: "voli.jpeg",
                 detailDescription: "Voli adalah kegiatan ekstrakurikuler olahraga yang melatih teknik dasar (passing, servis, smash, block) hingga strategi permainan, membangun karakter, kerja sama tim, dan sportivitas.",
                 schedule: ["Sabtu, 07:00 - 12:00", "Waktu KBM, 07:00 - 12:00 (Bila Diperlukan)"],
                 coach: "Bambang Istijab", achievements: ["Juara 1 O2SN 2026 Tingkat Kecamatan Legok"]
