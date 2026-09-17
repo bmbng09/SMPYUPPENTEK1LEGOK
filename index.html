@@ -1093,6 +1093,17 @@
             object-fit: cover;
         }
 
+                        /* Khusus gambar detail berita: rasio 4:5 (feed IG), dibatasi agar tidak raksasa di layar lebar */
+        #newsDetail .detail-image {
+            max-width: 480px;
+            margin: 0 auto 30px;
+        }
+
+        #newsImage {
+            height: auto;
+            aspect-ratio: 4 / 5;
+        }
+
         .detail-info {
             background: white;
             padding: 30px;
