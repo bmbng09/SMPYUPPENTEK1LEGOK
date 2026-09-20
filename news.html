@@ -941,7 +941,7 @@ function shareWA() {
     const n = newsData.find(x => x.id === activeId);
     if (!n) return;
 
-    const link = "https://smpyuppentek-1-legok.vercel.app/news.html";
+    const link = `https://smpyuppentek-1-legok.vercel.app/api/og?id=${n.id}`; // ganti baris ini
 
     const text = `*${n.title}*
 
@@ -967,6 +967,13 @@ function salinLink(btn) {
   }).catch(() => {
     alert('Gagal menyalin link. Silakan salin manual dari address bar.');
   });
+}
+
+// Auto-buka artikel kalau URL bawa ?id= (dari link hasil share)
+const _paramId = new URLSearchParams(window.location.search).get('id');
+if (_paramId) {
+    const _n = newsData.find(x => x.id == _paramId);
+    if (_n) bukaDetail(_n.id);
 }
 
 renderList();
