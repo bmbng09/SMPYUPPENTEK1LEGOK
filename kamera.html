@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>Foto Kehadiran - SMP YUPPENTEK 1 LEGOK</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .header h1 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .header p {
+      margin: 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .camera-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    }
+
+    .camera-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #020617;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #video,
+    #preview {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    #preview {
+      display: none;
+    }
+
+    #canvas {
+      display: none;
+    }
+
+    .status {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #f8fafc;
+      color: #475569;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    button {
+      flex: 1;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #btnFoto {
+      background: #16a34a;
+      color: #ffffff;
+    }
+
+    #btnUlang {
+      display: none;
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    #btnGunakan {
+      display: none;
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .info {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .error {
+      color: #dc2626;
+      background: #fef2f2;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 14px;
+      }
+
+      .camera-card {
+        padding: 12px;
+        border-radius: 18px;
+      }
+
+      .header h1 {
+        font-size: 21px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="header">
+      <h1>📷 Foto Kehadiran</h1>
+      <p>SMP YUPPENTEK 1 LEGOK</p>
+    </div>
+
+    <div class="camera-card">
+
+      <div class="camera-wrapper">
+        <video
+          id="video"
+          autoplay
+          muted
+          playsinline
+        ></video>
+
+        <canvas id="canvas"></canvas>
+
+        <img
+          id="preview"
+          alt="Preview foto kehadiran"
+        >
+      </div>
+
+      <div id="status" class="status">
+        Menyiapkan kamera...
+      </div>
+
+      <div class="actions">
+
+        <button
+          id="btnFoto"
+          type="button"
+          onclick="ambilFoto()"
+        >
+          📸 Ambil Foto
+        </button>
+
+        <button
+          id="btnUlang"
+          type="button"
+          onclick="ambilUlang()"
+        >
+          ↻ Ambil Ulang
+        </button>
+
+        <button
+          id="btnGunakan"
+          type="button"
+          onclick="gunakanFoto()"
+        >
+          ✓ Gunakan Foto
+        </button>
+
+      </div>
+
+      <div class="info">
+        Pastikan seluruh kelas terlihat jelas di dalam kamera sebelum mengambil foto.
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    let stream = null;
+    let fotoBase64 = null;
+
+
+    // ==========================================
+    // MULAI KAMERA
+    // ==========================================
+
+    async function mulaiKamera() {
+
+      const video = document.getElementById('video');
+      const status = document.getElementById('status');
+
+      try {
+
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+
+          throw new Error(
+            'Browser tidak mendukung akses kamera.'
+          );
+
+        }
+
+        status.className = 'status';
+        status.innerText = 'Meminta izin kamera...';
+
+
+        stream = await navigator.mediaDevices.getUserMedia({
+
+          video: {
+            facingMode: {
+              ideal: 'environment'
+            },
+
+            width: {
+              ideal: 1280
+            },
+
+            height: {
+              ideal: 720
+            }
+          },
+
+          audio: false
+
+        });
+
+
+        video.srcObject = stream;
+
+
+        // Pastikan video benar-benar mulai berjalan
+        await video.play();
+
+
+        status.innerText =
+          'Kamera siap. Arahkan kamera ke kelas lalu tekan "Ambil Foto".';
+
+
+        console.log('Kamera berhasil dibuka.');
+
+        console.log(
+          'Resolusi:',
+          video.videoWidth,
+          'x',
+          video.videoHeight
+        );
+
+      } catch (error) {
+
+        console.error('Kamera gagal:', error);
+
+        status.className = 'status error';
+
+        if (error.name === 'NotAllowedError') {
+
+          status.innerText =
+            'Akses kamera ditolak. Silakan izinkan kamera untuk situs ini.';
+
+        } else if (error.name === 'NotFoundError') {
+
+          status.innerText =
+            'Kamera tidak ditemukan pada perangkat ini.';
+
+        } else if (error.name === 'NotReadableError') {
+
+          status.innerText =
+            'Kamera sedang digunakan aplikasi lain.';
+
+        } else {
+
+          status.innerText =
+            'Kamera tidak dapat dibuka: ' + error.message;
+
+        }
+
+      }
+
+    }
+
+
+    // ==========================================
+    // AMBIL FOTO
+    // ==========================================
+
+    function ambilFoto() {
+
+      const video = document.getElementById('video');
+      const canvas = document.getElementById('canvas');
+      const preview = document.getElementById('preview');
+      const status = document.getElementById('status');
+
+      if (!video.videoWidth || !video.videoHeight) {
+
+        status.className = 'status error';
+
+        status.innerText =
+          'Kamera belum siap. Tunggu beberapa detik lalu coba lagi.';
+
+        return;
+
+      }
+
+
+      const width = video.videoWidth;
+      const height = video.videoHeight;
+
+
+      canvas.width = width;
+      canvas.height = height;
+
+
+      const ctx = canvas.getContext('2d');
+
+      ctx.drawImage(
+        video,
+        0,
+        0,
+        width,
+        height
+      );
+
+
+      fotoBase64 = canvas.toDataURL(
+        'image/jpeg',
+        0.85
+      );
+
+
+      preview.src = fotoBase64;
+
+
+      video.style.display = 'none';
+      preview.style.display = 'block';
+
+
+      document.getElementById('btnFoto').style.display = 'none';
+      document.getElementById('btnUlang').style.display = 'block';
+      document.getElementById('btnGunakan').style.display = 'block';
+
+
+      status.className = 'status';
+
+      status.innerText =
+        'Foto berhasil diambil. Periksa hasil foto sebelum digunakan.';
+
+
+      hentikanKamera();
+
+    }
+
+
+    // ==========================================
+    // AMBIL ULANG
+    // ==========================================
+
+    async function ambilUlang() {
+
+      fotoBase64 = null;
+
+      const video = document.getElementById('video');
+      const preview = document.getElementById('preview');
+      const status = document.getElementById('status');
+
+
+      preview.style.display = 'none';
+      video.style.display = 'block';
+
+
+      document.getElementById('btnFoto').style.display = 'block';
+      document.getElementById('btnUlang').style.display = 'none';
+      document.getElementById('btnGunakan').style.display = 'none';
+
+
+      status.className = 'status';
+      status.innerText = 'Menyiapkan kamera...';
+
+
+      await mulaiKamera();
+
+    }
+
+
+    // ==========================================
+    // GUNAKAN FOTO
+    // ==========================================
+
+    function gunakanFoto() {
+
+      if (!fotoBase64) {
+
+        alert('Belum ada foto yang diambil.');
+
+        return;
+
+      }
+
+
+      /*
+       * UNTUK SEKARANG:
+       * Foto belum dikirim ke Apps Script.
+       *
+       * Kita hanya memastikan kamera eksternal
+       * berhasil mengambil foto.
+       */
+
+      console.log(
+        'Foto berhasil dibuat:',
+        fotoBase64.substring(0, 100)
+      );
+
+
+      const status = document.getElementById('status');
+
+      status.innerText =
+        '✓ Foto berhasil disiapkan. Kamera eksternal berfungsi.';
+
+
+      alert(
+        'Foto berhasil diambil!\n\nTahap kamera sudah berhasil. ' +
+        'Nanti kita sambungkan foto ini ke Absensi dan Google Drive.'
+      );
+
+    }
+
+
+    // ==========================================
+    // MATIKAN KAMERA
+    // ==========================================
+
+    function hentikanKamera() {
+
+      if (!stream) {
+        return;
+      }
+
+
+      stream.getTracks().forEach(
+        track => track.stop()
+      );
+
+
+      stream = null;
+
+    }
+
+
+    // ==========================================
+    // SAAT HALAMAN DIBUKA
+    // ==========================================
+
+    window.addEventListener(
+      'load',
+      mulaiKamera
+    );
+
+
+    // ==========================================
+    // SAAT MENINGGALKAN HALAMAN
+    // ==========================================
+
+    window.addEventListener(
+      'beforeunload',
+      hentikanKamera
+    );
+
+  </script>
+
+</body>
+</html>
