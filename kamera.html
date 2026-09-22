@@ -432,43 +432,45 @@
     // GUNAKAN FOTO
     // ==========================================
 
-    function gunakanFoto() {
+function gunakanFoto() {
 
-      if (!fotoBase64) {
+  if (!fotoBase64) {
+    alert('Belum ada foto yang diambil.');
+    return;
+  }
 
-        alert('Belum ada foto yang diambil.');
+  // Kirim foto kembali ke halaman Absensi
+  if (window.opener && !window.opener.closed) {
 
-        return;
+    window.opener.postMessage(
+      {
+        type: 'PEMBIASAAN_FOTO',
+        foto: fotoBase64
+      },
+      '*'
+    );
 
-      }
+    hentikanKamera();
 
+    document.getElementById('status').innerText =
+      '✓ Foto berhasil dikirim ke halaman Absensi.';
 
-      /*
-       * UNTUK SEKARANG:
-       * Foto belum dikirim ke Apps Script.
-       *
-       * Kita hanya memastikan kamera eksternal
-       * berhasil mengambil foto.
-       */
+    // Tutup tab kamera
+    setTimeout(() => {
+      window.close();
+    }, 500);
 
-      console.log(
-        'Foto berhasil dibuat:',
-        fotoBase64.substring(0, 100)
-      );
+  } else {
 
+    alert(
+      'Halaman Absensi tidak ditemukan.\n\n' +
+      'Buka kamera melalui tombol "Ambil Foto Kehadiran" ' +
+      'di aplikasi Absensi.'
+    );
 
-      const status = document.getElementById('status');
+  }
 
-      status.innerText =
-        '✓ Foto berhasil disiapkan. Kamera eksternal berfungsi.';
-
-
-      alert(
-        'Foto berhasil diambil!\n\nTahap kamera sudah berhasil. ' +
-        'Nanti kita sambungkan foto ini ke Absensi dan Google Drive.'
-      );
-
-    }
+}
 
 
     // ==========================================
