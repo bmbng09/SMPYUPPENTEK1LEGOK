@@ -432,43 +432,98 @@
     // GUNAKAN FOTO
     // ==========================================
 
-function gunakanFoto() {
+    function gunakanFoto() {
 
   if (!fotoBase64) {
-    alert('Belum ada foto yang diambil.');
+
+    alert(
+      'Belum ada foto yang diambil.'
+    );
+
     return;
+
   }
 
-  // Kirim foto kembali ke halaman Absensi
-  if (window.opener && !window.opener.closed) {
+
+  // ==========================================
+  // BACA MODE DARI URL
+  // ==========================================
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const mode =
+    params.get('mode') || 'pembiasaan';
+
+
+  // ==========================================
+  // TENTUKAN JENIS PESAN
+  // ==========================================
+
+  const messageType =
+    mode === 'kbm'
+      ? 'KBM_FOTO'
+      : 'PEMBIASAAN_FOTO';
+
+
+  // ==========================================
+  // KIRIM FOTO KE HALAMAN PEMBUKA
+  // ==========================================
+
+  if (
+    window.opener &&
+    !window.opener.closed
+  ) {
 
     window.opener.postMessage(
       {
-        type: 'PEMBIASAAN_FOTO',
+        type: messageType,
         foto: fotoBase64
       },
       '*'
     );
 
-    hentikanKamera();
 
-    document.getElementById('status').innerText =
-      '✓ Foto berhasil dikirim ke halaman Absensi.';
-
-    // Tutup tab kamera
-    setTimeout(() => {
-      window.close();
-    }, 500);
-
-  } else {
-
-    alert(
-      'Halaman Absensi tidak ditemukan.\n\n' +
-      'Buka kamera melalui tombol "Ambil Foto Kehadiran" ' +
-      'di aplikasi Absensi.'
+    console.log(
+      'Foto dikirim ke opener:',
+      messageType
     );
 
+
+    const status =
+      document.getElementById(
+        'status'
+      );
+
+
+    status.innerText =
+      '✓ Foto berhasil dikirim.';
+
+
+    // Beri sedikit waktu agar
+    // postMessage diterima oleh opener
+    setTimeout(function() {
+
+      window.close();
+
+    }, 500);
+
+
+    return;
+
   }
+
+
+  // ==========================================
+  // JIKA TIDAK ADA OPENER
+  // ==========================================
+
+  alert(
+    'Halaman utama tidak ditemukan. Silakan buka kamera dari aplikasi E-Attendance.'
+  );
 
 }
 
