@@ -463,9 +463,11 @@
   // TENTUKAN JENIS PESAN
   // ==========================================
 
-  const messageType =
-    mode === 'kbm'
-      ? 'KBM_FOTO'
+const messageType =
+  mode === 'kbm'
+    ? 'KBM_FOTO'
+    : mode === 'kbm_keluar'
+      ? 'KBM_KELUAR_FOTO'
       : 'PEMBIASAAN_FOTO';
 
 
