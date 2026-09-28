@@ -221,6 +221,230 @@ img{display:block;width:100%;object-fit:cover;}
 .pagination{display:flex;gap:6px;justify-content:center;margin-top:20px;}
 .pg-btn{width:34px;height:34px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:600;cursor:pointer;border:1px solid var(--gray-300);background:var(--white);color:var(--gray-700);transition:all .2s;}
 .pg-btn:hover,.pg-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+
+
+
+/* =========================================
+   RUANG PENGADUAN ANTI-PERUNDUNGAN
+   ========================================= */
+
+.report-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+
+  margin: 35px 0;
+  padding: 28px;
+
+  background: linear-gradient(
+    135deg,
+    #151515 0%,
+    #222222 100%
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 6px solid #e32626;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.18);
+
+  color: #ffffff;
+}
+
+
+/* ICON */
+
+.report-icon {
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e32626;
+  border-radius: 50%;
+
+  font-size: 28px;
+
+  box-shadow:
+    0 6px 18px rgba(227, 38, 38, 0.35);
+}
+
+
+/* CONTENT */
+
+.report-content {
+  flex: 1;
+}
+
+
+/* LABEL */
+
+.report-label {
+  display: inline-block;
+
+  margin-bottom: 8px;
+  padding: 5px 10px;
+
+  background: #e32626;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+  border-radius: 5px;
+}
+
+
+/* TITLE */
+
+.report-content h4 {
+  margin: 3px 0 14px;
+
+  font-size: 24px;
+  line-height: 1.25;
+
+  font-weight: 800;
+}
+
+.report-content h4 span {
+  color: #e32626;
+}
+
+
+/* PARAGRAPH */
+
+.report-content p {
+  margin: 9px 0;
+
+  color: #e6e6e6;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* NOTE ANONIM */
+
+.report-note {
+  margin: 18px 0;
+
+  padding: 14px 16px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+
+  color: #dddddd;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.report-note strong {
+  color: #ffffff;
+}
+
+
+/* BUTTON */
+
+.report-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 5px;
+  padding: 13px 20px;
+
+  background: #e32626;
+  color: #ffffff !important;
+
+  text-decoration: none !important;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  border-radius: 8px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.report-button:hover {
+  background: #c91d1d;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(227, 38, 38, 0.3);
+}
+
+
+/* SMALL TEXT */
+
+.report-small {
+  display: block;
+
+  margin-top: 12px;
+
+  color: #aaaaaa;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   RESPONSIVE MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .report-box {
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    border-left-width: 5px;
+  }
+
+  .report-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+
+    font-size: 24px;
+  }
+
+  .report-content h4 {
+    font-size: 20px;
+  }
+
+  .report-content p {
+    font-size: 14px;
+  }
+
+  .report-button {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+
+    font-size: 13px;
+  }
+
+}
 </style>
 </head>
 <body>
@@ -1041,145 +1265,216 @@ Dalam rangka memperingati Hari Pramuka Tahun 2026, siswa-siswi SMP YUPPENTEK 1 L
     `
 },
   {
-    id: 15,
-    title: "SMP YUPPENTEK 1 Legok Tetapkan Gerakan Sekolah Anti-Perundungan",
-    date: "2026-09-28",
-    author: "Waka. Kesiswaan",
-    category: "Pengumuman",
-    image: "beritabuli.png",
-    excerpt: "SMP YUPPENTEK 1 Legok resmi menyelenggarakan Gerakan Sekolah Anti-Perundungan sebagai langkah nyata dalam membangun budaya sekolah yang aman, nyaman, inklusif, dan bebas dari berbagai bentuk perundungan.",
-    content: `
-      <p>
-        <strong>SMP YUPPENTEK 1 Legok</strong> resmi menyelenggarakan
-        <strong>Gerakan Sekolah Anti-Perundungan</strong> sebagai bagian dari upaya
-        membangun dan memperkuat <strong>Budaya Sekolah Aman dan Nyaman</strong>
-        di lingkungan sekolah.
-      </p>
+  id: 15,
+  title: "SMP YUPPENTEK 1 Legok Tetapkan Gerakan Sekolah Anti-Perundungan",
+  date: "2026-09-28",
+  author: "Waka. Kesiswaan",
+  category: "Pengumuman",
+  image: "beritabuli.png",
 
-      <p>
-        Hal tersebut ditetapkan melalui
-        <strong>Keputusan Kepala SMP YUPPENTEK 1 Legok
-        Nomor 014/S.6/SMP-YUPP/VIII/2026</strong> tentang
-        <strong>Penyelenggaraan Gerakan Sekolah Anti-Perundungan dalam Mendukung
-        Budaya Sekolah Aman dan Nyaman</strong>. Keputusan tersebut dikeluarkan
-        di Legok pada <strong>26 September 2026</strong>.
-      </p>
+  excerpt: "SMP YUPPENTEK 1 Legok resmi menyelenggarakan Gerakan Sekolah Anti-Perundungan sebagai langkah nyata dalam membangun budaya sekolah yang aman, nyaman, inklusif, dan bebas dari berbagai bentuk perundungan. Sekolah juga menyediakan Formulir Pengaduan Perundungan sebagai ruang aman bagi murid untuk melaporkan kejadian yang dialami, dilihat, atau diketahui.",
 
-      <p>
-        Gerakan ini dilaksanakan sebagai bentuk komitmen sekolah untuk memastikan
-        setiap murid dapat memperoleh pendidikan dalam lingkungan yang
-        <strong>aman, nyaman, bermartabat, dan bebas dari perundungan serta
-        berbagai bentuk kekerasan</strong>.
-      </p>
+  content: `
+    <p>
+      <strong>SMP YUPPENTEK 1 Legok</strong> resmi menyelenggarakan
+      <strong>Gerakan Sekolah Anti-Perundungan</strong> sebagai bagian dari upaya
+      membangun dan memperkuat <strong>Budaya Sekolah Aman dan Nyaman</strong>
+      di lingkungan sekolah.
+    </p>
 
-      <p>
-        Perundungan tidak hanya dapat terjadi dalam bentuk fisik, tetapi juga dapat
-        berupa perundungan verbal, sosial, psikologis, hingga perundungan di ruang
-        digital. Karena itu, sekolah mendorong terciptanya budaya yang menumbuhkan
-        sikap saling menghormati, empati, kepedulian, keberanian untuk melapor,
-        serta penyelesaian masalah secara mendidik dan berorientasi pada pemulihan.
-      </p>
+    <p>
+      Hal tersebut ditetapkan melalui
+      <strong>Keputusan Kepala SMP YUPPENTEK 1 Legok
+      Nomor 014/S.6/SMP-YUPP/VIII/2026</strong> tentang
+      <strong>Penyelenggaraan Gerakan Sekolah Anti-Perundungan dalam Mendukung
+      Budaya Sekolah Aman dan Nyaman</strong>. Keputusan tersebut dikeluarkan
+      di Legok pada <strong>26 September 2026</strong>.
+    </p>
 
-      <h3>Gerakan Anti-Perundungan di SMP YUPPENTEK 1 Legok</h3>
+    <p>
+      Gerakan ini dilaksanakan sebagai bentuk komitmen sekolah untuk memastikan
+      setiap murid dapat memperoleh pendidikan dalam lingkungan yang
+      <strong>aman, nyaman, bermartabat, dan bebas dari perundungan serta
+      berbagai bentuk kekerasan</strong>.
+    </p>
 
-      <p>
-        Dalam pelaksanaannya, Gerakan Sekolah Anti-Perundungan dilakukan dengan
-        pendekatan yang <strong>promotif, preventif, edukatif, humanis,
-        partisipatif, inklusif, dan berorientasi pada kepentingan terbaik bagi
-        murid</strong>.
-      </p>
+    <p>
+      Perundungan tidak hanya dapat terjadi dalam bentuk fisik, tetapi juga dapat
+      berupa perundungan verbal, sosial, psikologis, hingga perundungan di ruang
+      digital. Karena itu, sekolah mendorong terciptanya budaya yang menumbuhkan
+      sikap saling menghormati, empati, kepedulian, keberanian untuk melapor,
+      serta penyelesaian masalah secara mendidik dan berorientasi pada pemulihan.
+    </p>
 
-      <p>
-        Adapun pelaksanaan gerakan ini meliputi beberapa hal penting, yaitu:
-      </p>
+    <h3>Gerakan Anti-Perundungan di SMP YUPPENTEK 1 Legok</h3>
 
-      <ul>
-        <li>
-          <strong>Edukasi dan kampanye anti-perundungan</strong> untuk meningkatkan
-          pemahaman seluruh warga sekolah mengenai bahaya dan dampak perundungan.
-        </li>
-        <li>
-          <strong>Pembiasaan perilaku saling menghormati dan berempati</strong>
-          dalam kehidupan sehari-hari di lingkungan sekolah.
-        </li>
-        <li>
-          <strong>Penguatan etika komunikasi dan keamanan digital</strong>,
-          termasuk dalam penggunaan media sosial dan ruang komunikasi digital.
-        </li>
-        <li>
-          <strong>Penyediaan ruang pengaduan atau penyampaian kekhawatiran yang aman</strong>
-          agar murid dan warga sekolah dapat menyampaikan permasalahan tanpa rasa takut.
-        </li>
-        <li>
-          <strong>Pengawasan lingkungan sekolah</strong> sebagai bagian dari upaya
-          pencegahan terjadinya perundungan.
-        </li>
-        <li>
-          <strong>Pelibatan guru, tenaga kependidikan, murid, orang tua/wali,
-          dan pihak terkait</strong> dalam membangun budaya sekolah yang aman dan nyaman.
-        </li>
-        <li>
-          <strong>Tindak lanjut dan pemulihan</strong> sesuai dengan ketentuan
-          yang berlaku apabila terdapat dugaan atau kejadian perundungan.
-        </li>
-      </ul>
+    <p>
+      Dalam pelaksanaannya, Gerakan Sekolah Anti-Perundungan dilakukan dengan
+      pendekatan yang <strong>promotif, preventif, edukatif, humanis,
+      partisipatif, inklusif, dan berorientasi pada kepentingan terbaik bagi
+      murid</strong>.
+    </p>
 
-      <h3>Kampanye Anti-Perundungan</h3>
+    <p>
+      Adapun pelaksanaan gerakan ini meliputi beberapa hal penting, yaitu:
+    </p>
 
-      <p>
-        Untuk menyampaikan pesan anti-perundungan secara lebih luas, sekolah dapat
-        menggunakan berbagai media kampanye, seperti <strong>banner, poster,
-        media sosial, kegiatan kelas, kegiatan OSIS, pembiasaan sekolah,
-        dan berbagai media edukasi lainnya</strong>.
-      </p>
+    <ul>
+      <li>
+        <strong>Edukasi dan kampanye anti-perundungan</strong> untuk meningkatkan
+        pemahaman seluruh warga sekolah mengenai bahaya dan dampak perundungan.
+      </li>
 
-      <p>
-        Melalui berbagai media tersebut, pesan tentang pentingnya menciptakan
-        lingkungan sekolah yang aman dan nyaman diharapkan dapat menjadi bagian
-        dari kehidupan sehari-hari seluruh warga SMP YUPPENTEK 1 Legok.
-      </p>
+      <li>
+        <strong>Pembiasaan perilaku saling menghormati dan berempati</strong>
+        dalam kehidupan sehari-hari di lingkungan sekolah.
+      </li>
 
-      <h3>Jika Terjadi Perundungan</h3>
+      <li>
+        <strong>Penguatan etika komunikasi dan keamanan digital</strong>,
+        termasuk dalam penggunaan media sosial dan ruang komunikasi digital.
+      </li>
 
-      <p>
-        Setiap dugaan atau kejadian perundungan akan ditangani melalui mekanisme
-        sekolah dengan mengedepankan <strong>keselamatan, kerahasiaan, keadilan,
-        perlindungan dari pembalasan, serta pendekatan yang mendidik dan
-        memulihkan</strong>, sesuai dengan ketentuan peraturan perundang-undangan.
-      </p>
+      <li>
+        <strong>Penyediaan ruang pengaduan atau penyampaian kekhawatiran yang aman</strong>
+        agar murid dan warga sekolah dapat menyampaikan permasalahan tanpa rasa takut.
+      </li>
 
-      <blockquote>
-        STOP BULLYING!<br>
-        Kata menyakitkan, luka tak terlihat.
-      </blockquote>
+      <li>
+        <strong>Pengawasan lingkungan sekolah</strong> sebagai bagian dari upaya
+        pencegahan terjadinya perundungan.
+      </li>
 
-      <h3>Mari Ciptakan Sekolah yang Aman dan Nyaman</h3>
+      <li>
+        <strong>Pelibatan guru, tenaga kependidikan, murid, orang tua/wali,
+        dan pihak terkait</strong> dalam membangun budaya sekolah yang aman dan nyaman.
+      </li>
 
-      <p>
-        Gerakan Sekolah Anti-Perundungan bukan hanya menjadi tanggung jawab
-        sekolah, tetapi membutuhkan kepedulian dan partisipasi seluruh warga
-        sekolah. Guru, tenaga kependidikan, murid, orang tua atau wali, serta
-        pihak terkait memiliki peran dalam menciptakan lingkungan pendidikan
-        yang aman dan nyaman.
-      </p>
+      <li>
+        <strong>Tindak lanjut dan pemulihan</strong> sesuai dengan ketentuan
+        yang berlaku apabila terdapat dugaan atau kejadian perundungan.
+      </li>
+    </ul>
 
-      <p>
-        Mari bersama-sama membangun budaya sekolah yang mengedepankan
-        <strong>saling menghormati, empati, kepedulian, dan keberanian untuk
-        bersuara</strong>. Jangan diam ketika melihat perundungan dan jangan
-        menjadi bagian dari perilaku yang dapat menyakiti orang lain.
-      </p>
 
-      <p>
-        <strong>Hormati perbedaan. Gunakan kata yang baik. Jangan diam ketika
-        melihat perundungan. Ciptakan lingkungan sekolah yang aman dan nyaman.</strong>
-      </p>
+    <h3>Kampanye Anti-Perundungan</h3>
 
-      <p>
-        <em>Be kind. Be cool. Be a hero.</em>
-      </p>
-    `
-  },
+    <p>
+      Untuk menyampaikan pesan anti-perundungan secara lebih luas, sekolah dapat
+      menggunakan berbagai media kampanye, seperti <strong>banner, poster,
+      media sosial, kegiatan kelas, kegiatan OSIS, pembiasaan sekolah,
+      dan berbagai media edukasi lainnya</strong>.
+    </p>
+
+    <p>
+      Melalui berbagai media tersebut, pesan tentang pentingnya menciptakan
+      lingkungan sekolah yang aman dan nyaman diharapkan dapat menjadi bagian
+      dari kehidupan sehari-hari seluruh warga SMP YUPPENTEK 1 Legok.
+    </p>
+
+
+    <h3>Jika Terjadi Perundungan</h3>
+
+    <p>
+      Setiap dugaan atau kejadian perundungan akan ditangani melalui mekanisme
+      sekolah dengan mengedepankan <strong>keselamatan, kerahasiaan, keadilan,
+      perlindungan dari pembalasan, serta pendekatan yang mendidik dan
+      memulihkan</strong>, sesuai dengan ketentuan peraturan perundang-undangan.
+    </p>
+
+
+    <!-- FORM PENGADUAN PERUNDUNGAN -->
+    <div class="report-box">
+
+      <div class="report-icon">
+        
+      </div>
+
+      <div class="report-content">
+
+        <div class="report-label">
+          RUANG PENGADUAN
+        </div>
+
+        <h4>
+          Kamu Tidak Sendirian.
+          <span>Kami Siap Mendengarkan.</span>
+        </h4>
+
+        <p>
+          Jika kamu mengalami, melihat, atau mengetahui adanya tindakan
+          perundungan, jangan takut untuk bercerita.
+        </p>
+
+        <p>
+          Jika kamu merasa malu, takut, atau belum siap menyampaikan laporan
+          secara langsung kepada guru, kamu dapat menggunakan
+          <strong>Formulir Pengaduan Perundungan</strong> yang disediakan
+          oleh SMP YUPPENTEK 1 Legok.
+        </p>
+
+        <div class="report-note">
+          <strong>Kamu boleh tetap anonim.</strong><br>
+          Kamu tidak wajib mencantumkan nama untuk menyampaikan laporan.
+          Jika kamu memilih untuk mencantumkan identitas, informasi tersebut
+          akan dijaga kerahasiaannya dan digunakan untuk membantu proses
+          penanganan laporan.
+        </div>
+
+        <a
+          href="https://forms.gle/g74w35pv6Ko3Y7W57"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="report-button"
+        >
+          LAPORKAN PERUNDUNGAN
+        </a>
+
+        <small class="report-small">
+          Gunakan formulir ini untuk melaporkan perundungan yang kamu alami,
+          kamu lihat, atau kamu ketahui.
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <blockquote>
+      STOP BULLYING!<br>
+      Kata menyakitkan, luka tak terlihat.
+    </blockquote>
+
+
+    <h3>Mari Ciptakan Sekolah yang Aman dan Nyaman</h3>
+
+    <p>
+      Gerakan Sekolah Anti-Perundungan bukan hanya menjadi tanggung jawab
+      sekolah, tetapi membutuhkan kepedulian dan partisipasi seluruh warga
+      sekolah. Guru, tenaga kependidikan, murid, orang tua atau wali, serta
+      pihak terkait memiliki peran dalam menciptakan lingkungan pendidikan
+      yang aman dan nyaman.
+    </p>
+
+    <p>
+      Mari bersama-sama membangun budaya sekolah yang mengedepankan
+      <strong>saling menghormati, empati, kepedulian, dan keberanian untuk
+      bersuara</strong>. Jangan diam ketika melihat perundungan dan jangan
+      menjadi bagian dari perilaku yang dapat menyakiti orang lain.
+    </p>
+
+    <p>
+      <strong>
+        Hormati perbedaan. Gunakan kata yang baik. Jangan diam ketika
+        melihat perundungan. Ciptakan lingkungan sekolah yang aman dan nyaman.
+      </strong>
+    </p>
+
+    <p>
+      <em>Be kind. Be cool. Be a hero.</em>
+    </p>
+  `
+},
   {
     id: 16,
     title: "SMP YUPPENTEK 1 Legok Tetapkan Kawasan Tanpa Rokok untuk Wujudkan Lingkungan Sekolah Sehat",
