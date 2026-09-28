@@ -187,7 +187,15 @@
       </div>
 
       <div class="actions">
-
+      
+        <button
+          id="btnSwitch"
+          type="button"
+          onclick="gantiKamera()"
+        >
+          🔄 Ganti Kamera
+        </button>
+      
         <button
           id="btnFoto"
           type="button"
@@ -195,7 +203,7 @@
         >
           📸 Ambil Foto
         </button>
-
+      
         <button
           id="btnUlang"
           type="button"
@@ -203,7 +211,7 @@
         >
           ↻ Ambil Ulang
         </button>
-
+      
         <button
           id="btnGunakan"
           type="button"
@@ -211,7 +219,7 @@
         >
           ✓ Gunakan Foto
         </button>
-
+      
       </div>
 
       <div class="info">
@@ -225,8 +233,11 @@
 
   <script>
 
-    let stream = null;
-    let fotoBase64 = null;
+  let stream = null;
+  let fotoBase64 = null;
+  
+  // Kamera awal: belakang
+  let kameraMenghadap = 'environment';
 
 
     // ==========================================
@@ -254,19 +265,21 @@
 
         stream = await navigator.mediaDevices.getUserMedia({
 
-          video: {
-            facingMode: {
-              ideal: 'environment'
-            },
-
-            width: {
-              ideal: 1280
-            },
-
-            height: {
-              ideal: 720
-            }
+        video: {
+        
+          facingMode: {
+            ideal: kameraMenghadap
           },
+        
+          width: {
+            ideal: 1280
+          },
+        
+          height: {
+            ideal: 720
+          }
+        
+        },
 
           audio: false
 
@@ -324,6 +337,51 @@
       }
 
     }
+
+    // ==========================================
+// GANTI KAMERA DEPAN / BELAKANG
+// ==========================================
+
+async function gantiKamera() {
+
+  const status =
+    document.getElementById('status');
+
+  try {
+
+    status.className = 'status';
+
+    status.innerText =
+      'Mengganti kamera...';
+
+    // Matikan kamera yang sedang aktif
+    hentikanKamera();
+
+    // Tukar kamera
+    kameraMenghadap =
+      kameraMenghadap === 'environment'
+        ? 'user'
+        : 'environment';
+
+    // Buka kamera baru
+    await mulaiKamera();
+
+  } catch (error) {
+
+    console.error(
+      'Gagal mengganti kamera:',
+      error
+    );
+
+    status.className =
+      'status error';
+
+    status.innerText =
+      'Gagal mengganti kamera. Silakan coba lagi.';
+
+  }
+
+}
 
 
     // ==========================================
