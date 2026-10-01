@@ -19,9 +19,29 @@
             --accent-color: #10b981;
         }
 
+        /* html + body dua-duanya harus overflow-x hidden, kalau cuma body
+           Safari/Chrome HP tetap bisa digeser ke samping */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden; /* prevent horizontal scroll on mobile */
+        }
+
+        /* lapisan pengaman: apapun yang "nongol" ke samping (animasi AOS, dll) dipotong */
+        #mainContent {
+            overflow-x: clip;
+        }
+
+        /* di layar kecil, animasi AOS fade-left/right diganti naik dari bawah
+           (bawaan AOS geser 100px dari samping -> bikin halaman melebar) */
+        @media (max-width: 991px) {
+            [data-aos="fade-left"]:not(.aos-animate),
+            [data-aos="fade-right"]:not(.aos-animate) {
+                transform: translate3d(0, 30px, 0);
+            }
         }
 
         /* ================= NAVBAR ================= */
