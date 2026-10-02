@@ -765,16 +765,302 @@
 
         /* ================= CONTACT ================= */
         .contact-info {
-            background: var(--primary-color);
+            position: relative;
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            isolation: isolate;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2447b8 100%);
             color: white;
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 8px 22px rgba(30, 64, 175, 0.18);
+            transition: transform .35s ease, box-shadow .35s ease;
         }
 
-        .contact-info i {
-            font-size: 2rem;
+        .contact-info:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 38px rgba(30, 64, 175, 0.32);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* kilap yang nyapu sekali pas di-hover */
+        .contact-info::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -80%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,.2), transparent);
+            transform: skewX(-20deg);
+            pointer-events: none;
+            transition: left .8s ease;
+        }
+
+        .contact-info:hover::after {
+            left: 130%;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .contact-icon i {
+            display: block;              /* biar bisa dianimasi (transform) */
+            font-size: 1.7rem;
+            line-height: 1;
             color: var(--secondary-color);
-            margin-bottom: 15px;
+        }
+
+        .contact-info h5 {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .contact-info p {
+            margin: 0;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .contact-info p a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.45);
+            transition: color .25s ease, border-color .25s ease;
+        }
+
+        .contact-info p a:hover {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .contact-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .contact-cta i {
+            transition: transform .25s ease;
+        }
+
+        .contact-info:hover .contact-cta i {
+            transform: translate(3px, -3px);
+        }
+
+        /* animasi ikon sesuai maknanya, jalan pas kartu di-hover */
+        .contact-info:hover .icon-pin i   { animation: pinBounce .7s ease; }
+        .contact-info:hover .icon-phone i { animation: phoneRing .8s ease; }
+        .contact-info:hover .icon-clock i { animation: clockSpin .9s ease; }
+
+        @keyframes pinBounce {
+            0%, 100% { transform: translateY(0); }
+            30%      { transform: translateY(-10px); }
+            55%      { transform: translateY(0); }
+            75%      { transform: translateY(-4px); }
+        }
+
+        @keyframes phoneRing {
+            0%, 70%, 100% { transform: rotate(0); }
+            10% { transform: rotate(-18deg); }
+            20% { transform: rotate(18deg); }
+            30% { transform: rotate(-14deg); }
+            40% { transform: rotate(14deg); }
+            50% { transform: rotate(-8deg); }
+            60% { transform: rotate(8deg); }
+        }
+
+        @keyframes clockSpin {
+            from { transform: rotate(0); }
+            to   { transform: rotate(360deg); }
+        }
+
+        /* ----- form kirim pesan ----- */
+        .contact-form-card {
+            border: 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .contact-form-card .form-control {
+            border-radius: 10px;
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .contact-form-card .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 .25rem rgba(30, 64, 175, 0.15);
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-wa i {
+            transition: transform .3s ease;
+        }
+
+        .btn-wa:hover i {
+            transform: translateX(4px) rotate(-8deg);
+        }
+
+        /* kolom wajib yang kosong bergetar sebentar */
+        .contact-form-card .form-control.shake {
+            border-color: #dc2626;
+            animation: fieldShake .4s ease;
+        }
+
+        @keyframes fieldShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-7px); }
+            40% { transform: translateX(7px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .contact-info,
+            .contact-info::after { transition: none; }
+            .contact-info:hover .contact-icon i { animation: none; }
+            .contact-form-card .form-control.shake { animation: none; }
+        }
+
+        /* ----- animasi tambahan form kirim pesan ----- */
+        .contact-form-card {
+            position: relative;
+        }
+
+        /* garis warna di atas kartu "menggambar" dari kiri ke kanan */
+        .contact-form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.2s cubic-bezier(.22, 1, .36, 1) .3s;
+        }
+
+        .aos-animate .contact-form-card::before {
+            transform: scaleX(1);
+        }
+
+        .form-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .form-head-icon {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(30, 64, 175, 0.1);
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .aos-animate .form-head-icon {
+            animation: headIconPop .7s ease .4s both;
+        }
+
+        @keyframes headIconPop {
+            0%   { transform: scale(.5); opacity: 0; }
+            60%  { transform: scale(1.18); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .form-sub {
+            font-size: .85rem;
+            color: #6b7280;
+        }
+
+        /* ikon di dalam kolom, jadi biru pas kolomnya di-fokus */
+        .field {
+            position: relative;
+        }
+
+        .field .form-control {
+            padding-left: 42px;
+        }
+
+        .field-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            color: #9ca3af;
+            pointer-events: none;
+            transition: color .25s ease, transform .25s ease;
+        }
+
+        .field-area .field-icon {
+            top: 19px;
+            transform: none;
+        }
+
+        .field:focus-within .field-icon {
+            color: var(--primary-color);
+            transform: translateY(-50%) scale(1.15);
+        }
+
+        .field-area:focus-within .field-icon {
+            transform: scale(1.15);
+        }
+
+        /* tombol kirim: berdenyut halus, lalu loading -> sukses */
+        .btn-wa:not(.is-sending):not(.is-done):not(:hover) {
+            animation: btnPulse 2.6s infinite;
+        }
+
+        @keyframes btnPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(245, 158, 11, .5); }
+            70%  { box-shadow: 0 0 0 14px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
+        .btn-wa:disabled {
+            cursor: wait;
+            transform: none;
+        }
+
+        .btn-wa.is-done,
+        .btn-wa.is-done:hover {
+            background-color: #059669;
+            cursor: default;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .contact-form-card::before { transition: none; transform: scaleX(1); }
+            .aos-animate .form-head-icon { animation: none; }
+            .btn-wa:not(.is-sending):not(.is-done):not(:hover) { animation: none; }
         }
 
         /* ================= FAQ ================= */
@@ -784,17 +1070,42 @@
         }
 
         .faq-item {
+            position: relative;
             background: white;
             border-radius: 10px;
             margin-bottom: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: box-shadow .3s ease, background .3s ease;
+        }
+
+        /* garis biru di sisi kiri */
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+            transform: scaleY(0);
+            transition: transform .3s ease;
         }
 
         .faq-item:hover {
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
+        }
+
+        .faq-item:hover::before {
+            transform: scaleY(0.45);
+        }
+
+        .faq-item.open {
+            box-shadow: 0 10px 28px rgba(30, 64, 175, 0.16);
+        }
+
+        .faq-item.open::before {
+            transform: scaleY(1);
         }
 
         .faq-question {
@@ -803,38 +1114,66 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             font-weight: 600;
             color: var(--dark-color);
             border: none;
             background: none;
             width: 100%;
             text-align: left;
-            transition: all 0.3s ease;
+            transition: color .3s ease, background-color .3s ease;
         }
 
         .faq-question:hover {
             background-color: #f8f9fa;
         }
 
-        .faq-question i {
+        .faq-item.open .faq-question {
             color: var(--primary-color);
-            transition: transform 0.3s ease;
+            background-color: #f5f8ff;
+        }
+
+        .faq-question i {
+            flex-shrink: 0;
+            color: var(--primary-color);
+            transition: transform .35s ease;
         }
 
         .faq-question.active i {
             transform: rotate(180deg);
         }
 
+        /* buka-tutup mulus: tinggi mengikuti isi (tanpa max-height) */
         .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
+            display: grid;
+            grid-template-rows: 0fr;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: grid-template-rows .4s ease;
         }
 
         .faq-answer.show {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-answer-inner {
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .faq-answer-body {
             padding: 0 25px 20px;
-            max-height: 500px;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity .35s ease .05s, transform .35s ease .05s;
+        }
+
+        .faq-answer.show .faq-answer-body {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-answer-body > :last-child {
+            margin-bottom: 0;
         }
 
         .faq-answer ul {
@@ -847,21 +1186,176 @@
             color: #6c757d;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .faq-answer, .faq-answer-body,
+            .faq-item::before, .faq-question i { transition: none; }
+        }
+
         /* ================= FOOTER ================= */
         footer {
+            position: relative;
             background-color: var(--dark-color);
             color: white;
-            padding: 40px 0 20px;
+            padding: 50px 0 20px;
+        }
+
+        /* gelombang di atas footer, bergeser pelan ke kiri */
+        footer::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -39px;
+            height: 40px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath fill='%231f2937' d='M0 20C200 40 400 40 600 20S1000 0 1200 20V40H0Z'/%3E%3C/svg%3E") repeat-x;
+            background-size: 1200px 40px;
+            animation: footerWave 14s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes footerWave {
+            from { background-position-x: 0; }
+            to   { background-position-x: -1200px; }
+        }
+
+        footer h5 {
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        footer h5::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 36px;
+            height: 3px;
+            border-radius: 3px;
+            background: var(--secondary-color);
+            transition: width .35s ease;
+        }
+
+        footer .col-lg-4:hover h5::after {
+            width: 64px;
         }
 
         .footer-links a {
+            position: relative;
             color: rgba(255,255,255,0.8);
             text-decoration: none;
-            transition: color 0.3s ease;
+            padding-left: 0;
+            transition: color .3s ease, padding-left .3s ease;
+        }
+
+        .footer-links a::before {
+            content: "\f285";
+            font-family: "bootstrap-icons";
+            position: absolute;
+            left: 0;
+            top: 1px;
+            opacity: 0;
+            color: var(--secondary-color);
+            transition: opacity .3s ease;
         }
 
         .footer-links a:hover {
             color: var(--secondary-color);
+            padding-left: 20px;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+        }
+
+        /* ikon sosial media: bulat, naik + berubah warna merek pas di-hover */
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 1.15rem;
+            text-decoration: none;
+            transition: transform .3s ease, background .3s ease, box-shadow .3s ease;
+        }
+
+        .social-btn i {
+            transition: transform .3s ease;
+        }
+
+        .social-btn:hover {
+            color: #fff;
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .35);
+        }
+
+        .social-btn:hover i {
+            transform: scale(1.18) rotate(-8deg);
+        }
+
+        .sb-fb:hover { background: #1877f2; }
+        .sb-ig:hover { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+        .sb-tt:hover { background: #000; box-shadow: 0 10px 20px rgba(0,0,0,.35), 0 0 0 2px #25f4ee, 0 0 0 4px #fe2c55; }
+
+        /* tombol kembali ke atas (kiri bawah, biar nggak nabrak tombol WA) */
+        .back-to-top {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 9998;
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, .35);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity .35s ease, transform .35s ease, background .25s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-4px);
+        }
+
+        .back-to-top i {
+            transition: transform .3s ease;
+        }
+
+        .back-to-top:hover i {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 576px) {
+            footer::before { top: -29px; height: 30px; background-size: 800px 30px; }
+            @keyframes footerWave { from { background-position-x: 0; } to { background-position-x: -800px; } }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            footer::before { animation: none; }
+            .back-to-top, .social-btn, .social-btn i { transition: none; }
         }
 
         /* ================= BUTTONS ================= */
@@ -1558,8 +2052,7 @@
             .contact-info { padding: 20px 15px; }
 
             .faq-question { padding: 15px 18px; font-size: 0.9rem; }
-            .faq-answer   { padding: 0 18px; }
-            .faq-answer.show { padding: 0 18px 15px; }
+            .faq-answer-body { padding: 0 18px 15px; }
         }
 
         @media (max-width: 576px) {
@@ -2063,6 +2556,10 @@
             </a>
     </div>
 
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Kembali ke atas">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
     <!-- Main Content -->
     <div id="mainContent">
         <!-- Navbar -->
@@ -2435,7 +2932,7 @@
                             </div>
                         </div>
 
-                        <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
                             <button class="faq-question" onclick="toggleFAQ(this)">
                                 <span>Bagaimana sistem pembelajaran di SMP Yuppentek 1 Legok?</span>
                                 <i class="bi bi-chevron-down"></i>
@@ -2466,60 +2963,86 @@
                     <p class="lead">Kami siap membantu Anda dengan informasi yang dibutuhkan</p>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 mb-4" data-aos="fade-right">
-                        <div class="contact-info">
-                            <i class="bi bi-geo-alt"></i>
+                    <div class="col-lg-4 mb-4" data-aos="zoom-in-up" data-aos-delay="0">
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=SMP+Yuppentek+1+Legok+Jl+Raya+PLP+Serdang+Wetan+Legok+Tangerang" target="_blank" rel="noopener noreferrer" class="contact-info" aria-label="Buka alamat SMP Yuppentek 1 Legok di Google Maps">
+                            <div class="contact-icon icon-pin"><i class="bi bi-geo-alt"></i></div>
                             <h5>Alamat</h5>
                             <p>JL Raya PLP, No. 47 RT. 002 RW.03<br>Kel. Serdang Wetan, Kec. Legok<br>Kab. Tangerang, Banten 15820</p>
-                        </div>
+                            <span class="contact-cta">Buka di Google Maps <i class="bi bi-arrow-up-right"></i></span>
+                        </a>
                     </div>
-                    <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="col-lg-4 mb-4" data-aos="zoom-in-up" data-aos-delay="150">
                         <div class="contact-info">
-                            <i class="bi bi-telephone"></i>
+                            <div class="contact-icon icon-phone"><i class="bi bi-telephone"></i></div>
                             <h5>Kontak</h5>
-                            <p>Whatsapp (Siti Nuraeni,A.Md): 0859 - 6033 - 8611<br>Developer (Bambang Istijab): 0882 - 8953 - 2896<br>Email: smpyuppentek1legok@gmail.com</p>
+                            <p>
+                                <a href="https://wa.me/6285960338611" target="_blank" rel="noopener noreferrer">Whatsapp (Siti Nuraeni,A.Md): 0859 - 6033 - 8611</a><br>
+                                <a href="https://wa.me/6288289532896" target="_blank" rel="noopener noreferrer">Developer (Bambang Istijab): 0882 - 8953 - 2896</a><br>
+                                <a href="mailto:smpyuppentek1legok@gmail.com">Email: smpyuppentek1legok@gmail.com</a>
+                            </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-4" data-aos="fade-left">
+                    <div class="col-lg-4 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="contact-info">
-                            <i class="bi bi-clock"></i>
+                            <div class="contact-icon icon-clock"><i class="bi bi-clock"></i></div>
                             <h5>Jam Operasional</h5>
-                            <p>Senin - Jumat: 07:00 - 14:00<br>Sabtu: 07:00 - 12:00 (Ekstrakurikuler)<br>Minggu & Hari Libur: Tutup</p>
+                            <p>Senin - Jumat: 07:00 - 14:00<br>Sabtu: 07:00 - 12:00 (Ekstrakurikuler)<br>Minggu &amp; Hari Libur: Tutup</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col-lg-8 mx-auto" data-aos="fade-up">
-                        <div class="card shadow">
+                        <div class="card shadow contact-form-card">
                             <div class="card-body p-4">
-                                <h5 class="card-title mb-4">Kirim Pesan</h5>
-                                <form onsubmit="kirimWA(); return false;">
+                                <div class="form-head">
+                                    <div class="form-head-icon"><i class="bi bi-chat-dots"></i></div>
+                                    <div>
+                                        <h5 class="card-title mb-1">Kirim Pesan</h5>
+                                        <p class="form-sub mb-0">Isi formulir di bawah, pesan akan dibuka langsung di WhatsApp sekolah.</p>
+                                    </div>
+                                </div>
+                                <form id="contactForm" onsubmit="kirimWA(); return false;">
                                     <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" required>
+                                        <div class="col-md-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
+                                            <div class="field">
+                                                <i class="bi bi-person field-icon"></i>
+                                                <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" required>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <input type="tel" id="telepon" class="form-control" placeholder="No. Telepon">
+                                        <div class="col-md-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="80">
+                                            <div class="field">
+                                                <i class="bi bi-telephone field-icon"></i>
+                                                <input type="tel" id="telepon" class="form-control" placeholder="No. Telepon">
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <select id="subjek" class="form-control" required>
-                                                <option value="">Pilih Subjek</option>
-                                                <option>Pendaftaran Siswa</option>
-                                                <option>Kerjasama</option>
-                                                <option>Pertanyaan Umum</option>
-                                                <option>Lainnya</option>
-                                            </select>
+                                        <div class="col-md-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="160">
+                                            <div class="field">
+                                                <i class="bi bi-tag field-icon"></i>
+                                                <select id="subjek" class="form-control" required>
+                                                    <option value="">Pilih Subjek</option>
+                                                    <option>Pendaftaran Siswa</option>
+                                                    <option>Kerjasama</option>
+                                                    <option>Pertanyaan Umum</option>
+                                                    <option>Lainnya</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <input type="text" id="asal" class="form-control" placeholder="Asal SD / Sekolah Sebelumnya / Perihal">
+                                        <div class="col-md-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="240">
+                                            <div class="field">
+                                                <i class="bi bi-building field-icon"></i>
+                                                <input type="text" id="asal" class="form-control" placeholder="Asal SD / Sekolah Sebelumnya / Perihal">
+                                            </div>
                                         </div>
-                                        <div class="col-12">
-                                            <textarea id="pesan" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                                        <div class="col-12" data-aos="fade-up" data-aos-duration="600" data-aos-delay="320">
+                                            <div class="field field-area">
+                                                <i class="bi bi-chat-left-text field-icon"></i>
+                                                <textarea id="pesan" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                                            </div>
                                         </div>
-                                        <div class="col-12 text-center">
-                                            <button type="submit" class="btn-primary-custom">
-                                                Kirim via WhatsApp
+                                        <div class="col-12 text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+                                            <button type="submit" class="btn-primary-custom btn-wa">
+                                                <i class="bi bi-whatsapp"></i> Kirim via WhatsApp
                                             </button>
                                         </div>
                                     </div>
@@ -2535,23 +3058,23 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 mb-4">
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-offset="0">
                         <h5 class="mb-3">SMP YUPPENTEK 1 LEGOK</h5>
                         <p>Sekolah menengah pertama unggulan dalam mencetak generasi cerdas, berkarakter, dan berprestasi.</p>
                         <div class="social-links mt-3">
-                            <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
-                            <a href="https://www.instagram.com/smpyuppentek1legok/?utm_source=ig_web_button_share_sheet" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
-                            <a href="https://www.tiktok.com/@osis_yusalegta?is_from_webapp=1&sender_device=pc" class="text-white me-3"><i class="bi bi-tiktok fs-5"></i></a>
+                            <a href="https://www.facebook.com/share/g/1CL7YMtf1F/" class="social-btn sb-fb" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/smpyuppentek1legok/?utm_source=ig_web_button_share_sheet" class="social-btn sb-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@osis_yusalegta?is_from_webapp=1&amp;sender_device=pc" class="social-btn sb-tt" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-4">
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="150" data-aos-offset="0">
                         <h5 class="mb-3">Link Cepat</h5>
                         <div class="footer-links">
                             <a href="brosur.pdf" class="d-block mb-2">SPMB</a>
                             <a href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/20603231" class="d-block mb-2">Data Pendidikan</a>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-4">
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">
                         <h5 class="mb-3">Newsletter</h5>
                         <p>Dapatkan informasi terbaru dari sekolah melalui email Anda.</p>
                         <form class="mt-3">
@@ -2562,14 +3085,15 @@
                         </form>
                     </div>
                 </div>
-                <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
-                <div class="text-center">
+                <hr class="my-4" style="border-color: rgba(255,255,255,0.1);" data-aos="fade-up" data-aos-offset="0">
+                <div class="text-center" data-aos="fade-up" data-aos-offset="0">
                     <p class="copyright">
-                    © 2025 SMP YUPPENTEK 1 LEGOK. |
+                    &copy; <span id="footerYear">2026</span> SMP YUPPENTEK 1 LEGOK. |
                     <button type="button" class="developer-link" onclick="showDeveloperInfo()">
                         Developed with Bambang Istijab
                     </button>
                     </p>
+                </div>
             </div>
         </footer>
     </div>
@@ -2710,11 +3234,96 @@
         ];
 
         function toggleFAQ(button) {
+            const item = button.closest('.faq-item');
             const answer = button.nextElementSibling;
-            document.querySelectorAll('.faq-question').forEach(q => { if (q !== button) q.classList.remove('active'); });
-            document.querySelectorAll('.faq-answer').forEach(a => { if (a !== answer) a.classList.remove('show'); });
-            button.classList.toggle('active');
-            answer.classList.toggle('show');
+            const willOpen = !answer.classList.contains('show');
+
+            // tutup semua dulu (accordion: 1 yang kebuka)
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('open');
+                const q = i.querySelector('.faq-question');
+                q.classList.remove('active');
+                q.setAttribute('aria-expanded', 'false');
+                i.querySelector('.faq-answer').classList.remove('show');
+            });
+
+            if (willOpen) {
+                item.classList.add('open');
+                button.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+                answer.classList.add('show');
+            }
+        }
+
+        // bungkus isi jawaban supaya animasi tinggi (grid 0fr -> 1fr) bisa jalan
+        function initFAQ() {
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const answer = item.querySelector('.faq-answer');
+                const q = item.querySelector('.faq-question');
+                if (!answer || !q) return;
+                if (!answer.querySelector('.faq-answer-inner')) {
+                    const inner = document.createElement('div');
+                    inner.className = 'faq-answer-inner';
+                    const body = document.createElement('div');
+                    body.className = 'faq-answer-body';
+                    while (answer.firstChild) body.appendChild(answer.firstChild);
+                    inner.appendChild(body);
+                    answer.appendChild(inner);
+                }
+                q.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        // form kirim pesan: kolom kosong bergetar + tombol loading -> sukses
+        function initContactForm() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('invalid', e => {
+                const el = e.target;
+                el.classList.remove('shake');
+                void el.offsetWidth;            // restart animasi
+                el.classList.add('shake');
+                el.addEventListener('animationend', () => el.classList.remove('shake'), { once: true });
+            }, true);
+
+            const btn = form.querySelector('.btn-wa');
+            if (!btn) return;
+            const original = btn.innerHTML;
+
+            // submit cuma kepicu kalau semua kolom wajib sudah valid
+            form.addEventListener('submit', () => {
+                btn.disabled = true;
+                btn.classList.add('is-sending');
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Membuka WhatsApp...';
+
+                setTimeout(() => {
+                    btn.classList.remove('is-sending');
+                    btn.classList.add('is-done');
+                    btn.innerHTML = '<i class="bi bi-check2-circle"></i> WhatsApp dibuka';
+
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.classList.remove('is-done');
+                        btn.innerHTML = original;
+                    }, 2500);
+                }, 1200);
+            });
+        }
+
+        // tombol kembali ke atas + tahun footer otomatis
+        function initFooterExtras() {
+            const year = document.getElementById('footerYear');
+            if (year) year.textContent = new Date().getFullYear();
+
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            window.addEventListener('scroll', () => {
+                btn.classList.toggle('show', window.scrollY > 600);
+            }, { passive: true });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
 
         const ekskulData = {
@@ -3137,6 +3746,9 @@
             loadFacilities();
             loadNews();
             loadGallery();
+            initFAQ();
+            initContactForm();
+            initFooterExtras();
         });
 
         // ============================================================
