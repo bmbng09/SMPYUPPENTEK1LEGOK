@@ -19,11 +19,17 @@
             --accent-color: #10b981;
         }
 
-        /* html + body dua-duanya harus overflow-x hidden, kalau cuma body
-           Safari/Chrome HP tetap bisa digeser ke samping */
-        html, body {
+        /* overflow-x hidden hanya di html (diteruskan ke viewport / scroll utama),
+           body pakai clip supaya tidak jadi scroll container sendiri
+           -> tidak ada lagi scrollbar ganda di sebelah kiri scrollbar asli */
+        html {
             max-width: 100%;
             overflow-x: hidden;
+        }
+        
+        body {
+            max-width: 100%;
+            overflow-x: clip;
         }
 
         body {
